@@ -1,0 +1,1059 @@
+/* =========================================================
+   VELOOP PAYOUT PAGE
+========================================================= */
+
+.payout-page {
+  width: 100%;
+  min-height: 100vh;
+
+  padding:
+    24px
+    clamp(18px, 4vw, 52px)
+    70px;
+
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(92, 45, 190, 0.10),
+      transparent 30%
+    ),
+    #161827;
+
+  color: #ffffff;
+
+  overflow-x: hidden;
+
+  animation:
+    payoutPageIn
+    0.45s
+    ease-out;
+}
+
+
+/* =========================================================
+   COMMON WIDTH
+========================================================= */
+
+.payout-page > * {
+  width: 100%;
+
+  max-width: 1280px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.payout-hero {
+  position: relative;
+
+  width: 100%;
+  max-width: 1280px;
+
+  height: 320px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: visible;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #161827 0%,
+      #161827 42%,
+      #15162a 58%,
+      #11112a 78%,
+      #0d0d25 100%
+    );
+}
+
+
+/* =========================================================
+   HERO BACKGROUND GLOW
+========================================================= */
+
+.hero-background-glow {
+  position: absolute;
+
+  width: 520px;
+  height: 300px;
+
+  right: 90px;
+  top: 5px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(91, 43, 190, 0.20),
+      transparent 68%
+    );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 53%;
+}
+
+
+.hero-content h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size:
+    clamp(38px, 4vw, 54px);
+
+  font-weight: 700;
+
+  line-height: 1.08;
+
+  letter-spacing: -1.5px;
+}
+
+
+.hero-content h1 span {
+  color: #8b5cf6;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8b5cf6,
+      #a855f7
+    );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+.hero-content p {
+  max-width: 570px;
+
+  margin:
+    17px 0 0;
+
+  color: #9da3c1;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   HERO IMAGE WRAPPER
+========================================================= */
+
+.hero-image-wrapper {
+  position: absolute;
+
+  top: 0;
+
+  right: -5px;
+
+  width: 48%;
+
+  height: 320px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-image {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  object-position: right center;
+
+  filter:
+    saturate(1.06)
+    contrast(1.03)
+    brightness(0.92)
+    drop-shadow(
+      0 20px 38px
+      rgba(78, 35, 180, 0.25)
+    );
+
+  /*
+     LEFT SIDE BLENDING
+  */
+
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 5%,
+      rgba(0, 0, 0, 0.70) 13%,
+      #000000 22%,
+      #000000 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 5%,
+      rgba(0, 0, 0, 0.70) 13%,
+      #000000 22%,
+      #000000 100%
+    );
+}
+
+
+/* =========================================================
+   GOLD COIN GLOW
+========================================================= */
+
+.coin-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(245, 158, 11, 0.20) 0%,
+      rgba(245, 158, 11, 0.08) 32%,
+      transparent 70%
+    );
+
+  filter: blur(12px);
+
+  z-index: -1;
+}
+
+
+.coin-glow-one {
+  width: 115px;
+  height: 115px;
+
+  top: 15px;
+  right: 245px;
+}
+
+
+.coin-glow-two {
+  width: 90px;
+  height: 90px;
+
+  top: 105px;
+  right: 35px;
+}
+
+
+/* =========================================================
+   BALANCE
+========================================================= */
+
+.balance-wrapper {
+  position: relative;
+
+  z-index: 10;
+
+  margin-top: -4px;
+}
+
+
+/* =========================================================
+   PAYOUT METHOD
+========================================================= */
+
+.payout-method-wrapper {
+  margin-top: 34px;
+}
+
+
+/* =========================================================
+   SELECTED METHOD VISUAL
+========================================================= */
+
+.payout-method-visual {
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   REWARDS SECTION
+========================================================= */
+
+.rewards-section {
+  width: 100%;
+
+  margin-top: 34px;
+
+  padding: 28px;
+
+  border:
+    1px solid
+    rgba(91, 94, 130, 0.55);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25, 27, 49, 0.97),
+      rgba(15, 17, 34, 0.98)
+    );
+
+  box-shadow:
+    0 20px 55px
+    rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+
+.section-heading h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+
+.section-heading p {
+  margin:
+    6px 0 0;
+
+  color: #858aa1;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   REWARD GRID
+========================================================= */
+
+.reward-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   CONTINUE BUTTON
+========================================================= */
+
+.continue-button {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 20px;
+
+  padding:
+    14px 20px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6d28d9,
+      #7c3aed
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 24px
+    rgba(109, 40, 217, 0.16);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.continue-button::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 65%
+    );
+
+  transform:
+    translateX(-100%);
+
+  transition:
+    transform 0.5s ease;
+}
+
+
+.continue-button:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(109, 40, 217, 0.25);
+}
+
+
+.continue-button:hover:not(:disabled)::after {
+  transform:
+    translateX(100%);
+}
+
+
+.continue-button:active:not(:disabled) {
+  transform:
+    translateY(0);
+}
+
+
+.continue-button:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   PAGE ANIMATION
+========================================================= */
+
+@keyframes payoutPageIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   REWARD CARD ANIMATION
+========================================================= */
+
+.reward-grid > * {
+  animation:
+    rewardCardIn
+    0.4s
+    ease
+    both;
+}
+
+
+.reward-grid > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+
+.reward-grid > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+
+.reward-grid > *:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+
+.reward-grid > *:nth-child(4) {
+  animation-delay: 0.16s;
+}
+
+
+@keyframes rewardCardIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .payout-page {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+
+  .payout-hero {
+    height: 330px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 56px;
+  }
+
+
+  .hero-content p {
+    font-size: 17px;
+  }
+
+
+  .hero-image-wrapper {
+    width: 46%;
+
+    height: 330px;
+
+    right: 0;
+  }
+
+
+  .hero-image {
+    max-height: 330px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .payout-page {
+    padding:
+      24px
+      22px
+      50px;
+  }
+
+
+  .payout-hero {
+    height: 300px;
+  }
+
+
+  .hero-content {
+    width: 54%;
+  }
+
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+
+  .hero-image-wrapper {
+    width: 48%;
+
+    height: 300px;
+
+    right: 0;
+  }
+
+
+  .coin-glow-one {
+    right: 190px;
+  }
+
+
+  .coin-glow-two {
+    right: 15px;
+  }
+
+
+  .reward-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .rewards-section {
+    padding: 22px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .payout-page {
+    padding:
+      20px
+      18px
+      45px;
+  }
+
+
+  .payout-hero {
+    height: auto;
+
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding-top: 10px;
+
+    background:
+      radial-gradient(
+        circle at 70% 70%,
+        rgba(91, 43, 190, 0.15),
+        transparent 50%
+      ),
+      #161827;
+  }
+
+
+  .hero-content {
+    width: 100%;
+  }
+
+
+  .hero-content h1 {
+    font-size: 36px;
+
+    letter-spacing: -1px;
+  }
+
+
+  .hero-content p {
+    max-width: 600px;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+  }
+
+
+  .hero-image-wrapper {
+    position: relative;
+
+    top: auto;
+
+    right: auto;
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 235px;
+
+    margin-top: -3px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: visible;
+  }
+
+
+  .hero-image {
+    width: 100%;
+
+    height: auto;
+
+    max-height: none;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    -webkit-mask-image: none;
+
+    mask-image: none;
+  }
+
+
+  .hero-background-glow {
+    width: 350px;
+
+    height: 220px;
+
+    right: 50%;
+
+    transform:
+      translateX(50%);
+
+    top: 80px;
+  }
+
+
+  .coin-glow-one {
+    width: 90px;
+
+    height: 90px;
+
+    top: 20px;
+
+    right: 30%;
+  }
+
+
+  .coin-glow-two {
+    width: 70px;
+
+    height: 70px;
+
+    top: 100px;
+
+    right: 5%;
+  }
+
+
+  .balance-wrapper {
+    margin-top: -4px;
+  }
+
+
+  .payout-method-wrapper {
+    margin-top: 30px;
+  }
+
+
+  .rewards-section {
+    margin-top: 28px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .payout-page {
+    padding:
+      16px
+      14px
+      35px;
+  }
+
+
+  .payout-hero {
+    padding-top: 5px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 30px;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.8px;
+  }
+
+
+  .hero-content p {
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+  }
+
+
+  .hero-image-wrapper {
+    width: 108%;
+
+    min-height: 205px;
+
+    margin-left: -4%;
+
+    margin-top: -3px;
+  }
+
+
+  .hero-image {
+    width: 100%;
+  }
+
+
+  .hero-background-glow {
+    width: 280px;
+
+    height: 190px;
+
+    top: 60px;
+  }
+
+
+  .coin-glow-one {
+    width: 70px;
+
+    height: 70px;
+  }
+
+
+  .coin-glow-two {
+    width: 55px;
+
+    height: 55px;
+  }
+
+
+  .balance-wrapper {
+    margin-top: -3px;
+  }
+
+
+  .payout-method-wrapper {
+    margin-top: 27px;
+  }
+
+
+  .rewards-section {
+    margin-top: 25px;
+
+    padding:
+      17px
+      14px;
+
+    border-radius: 17px;
+  }
+
+
+  .section-heading {
+    margin-bottom: 16px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 19px;
+  }
+
+
+  .section-heading p {
+    font-size: 12px;
+  }
+
+
+  .reward-grid {
+    grid-template-columns: 1fr;
+
+    gap: 11px;
+  }
+
+
+  .continue-button {
+    min-height: 50px;
+
+    margin-top: 16px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .payout-page {
+    padding:
+      14px
+      11px
+      30px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 27px;
+  }
+
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+
+  .hero-image-wrapper {
+    width: 114%;
+
+    min-height: 180px;
+
+    margin-left: -7%;
+  }
+
+
+  .hero-background-glow {
+    width: 230px;
+
+    height: 160px;
+  }
+
+
+  .rewards-section {
+    padding:
+      15px
+      12px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .section-heading p {
+    font-size: 11px;
+  }
+
+
+  .continue-button {
+    min-height: 48px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+input:focus-visible {
+  outline:
+    2px solid
+    rgba(139, 92, 246, 0.65);
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .payout-page,
+  .reward-grid > *,
+  .continue-button,
+  .continue-button::after {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}

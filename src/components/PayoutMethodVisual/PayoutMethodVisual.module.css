@@ -1,0 +1,373 @@
+.wrapper {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 20px;
+  padding: 20px 22px;
+
+  border: 1px solid #2d3047;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at left center,
+      rgba(124, 58, 237, 0.1),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #17192d,
+      #101222
+    );
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.15);
+
+   transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+  animation: methodVisualIn 0.3s ease;
+}
+
+@keyframes methodVisualIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrapper:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   VISUAL
+========================= */
+
+.visual {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+
+.mainIcon,
+.destinationIcon {
+  display: grid;
+  place-items: center;
+
+  border-radius: 15px;
+}
+
+
+.mainIcon {
+  width: 64px;
+  height: 64px;
+
+  border: 1px solid rgba(139, 92, 246, 0.3);
+
+  background: rgba(124, 58, 237, 0.1);
+
+  color: #a78bfa;
+
+  box-shadow:
+    0 8px 25px rgba(124, 58, 237, 0.08);
+}
+
+
+.destinationIcon {
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid #30334a;
+
+  background: #151729;
+
+  color: #aeb2c3;
+}
+
+
+.flowLine {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  margin: 0 8px;
+
+  color: #62677b;
+}
+
+
+.flowLine span {
+  width: 22px;
+  height: 1px;
+
+  background: #3a3d52;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  min-width: 0;
+  flex: 1;
+}
+
+
+.label {
+  display: block;
+
+  color: #a78bfa;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+}
+
+
+.content h3 {
+  margin: 5px 0 0;
+
+  color: #ffffff;
+
+  font-size: 18px;
+}
+
+
+.content p {
+  max-width: 570px;
+
+  margin: 6px 0 0;
+
+  color: #858a9f;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   DESTINATION
+========================= */
+
+.destination {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 11px;
+  padding: 6px 9px;
+
+  border: 1px solid #2d3047;
+  border-radius: 7px;
+
+  background: rgba(7, 9, 20, 0.45);
+}
+
+
+.destination span {
+  color: #70758a;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+}
+
+
+.destination strong {
+  color: #d5d7e1;
+
+  font-size: 9px;
+}
+
+
+/* =========================
+   UPI
+========================= */
+
+.upi {
+  border-color: rgba(139, 92, 246, 0.28);
+}
+
+.upi .mainIcon {
+  color: #a78bfa;
+}
+
+
+/* =========================
+   AMAZON
+========================= */
+
+.amazon {
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.amazon .mainIcon {
+  color: #f59e0b;
+
+  border-color: rgba(245, 158, 11, 0.25);
+
+  background: rgba(245, 158, 11, 0.08);
+}
+
+
+/* =========================
+   GOOGLE PLAY
+========================= */
+
+.google {
+  border-color: rgba(52, 168, 83, 0.2);
+}
+
+.google .mainIcon {
+  color: #34a853;
+
+  border-color: rgba(52, 168, 83, 0.25);
+
+  background: rgba(52, 168, 83, 0.08);
+}
+
+
+/* =========================
+   PAYPAL
+========================= */
+
+.paypal {
+  opacity: 0.65;
+}
+
+.paypal .mainIcon {
+  color: #0070ba;
+
+  border-color: #30334a;
+
+  background: #151729;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .wrapper {
+    gap: 16px;
+
+    padding: 18px;
+  }
+
+  .mainIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .destinationIcon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .content h3 {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .wrapper {
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+
+  .visual {
+    align-self: center;
+  }
+
+  .mainIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .mainIcon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .destinationIcon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .destinationIcon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .flowLine {
+    margin: 0 5px;
+  }
+
+  .flowLine span {
+    width: 12px;
+  }
+
+  .content h3 {
+    font-size: 14px;
+  }
+
+  .content p {
+    font-size: 9px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+  .wrapper {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .visual {
+    align-self: center;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .destination {
+    justify-content: center;
+  }
+}

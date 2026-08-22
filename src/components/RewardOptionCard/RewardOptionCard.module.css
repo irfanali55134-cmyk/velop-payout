@@ -1,0 +1,153 @@
+.card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 175px;
+  padding: clamp(16px, 2vw, 22px);
+  text-align: left;
+  border: 1px solid #2d3047;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #17192d, #101222);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: #7c3aed;
+}
+
+.selected {
+  border-color: #8b5cf6;
+  background: linear-gradient(
+    145deg,
+    rgba(124, 58, 237, 0.2),
+    #101222
+  );
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.12);
+}
+
+.locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 23px;
+  height: 23px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #7c3aed;
+  color: white;
+}
+
+.amount {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.rewardType {
+  margin-top: 5px;
+  color: #8f94a8;
+  font-size: 13px;
+}
+
+.required {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 18px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.veBadge {
+  width: 22px;
+  height: 22px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+
+  font-size: 11px;
+}
+
+.status {
+  margin-top: 16px;
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.eligible {
+  background: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+}
+
+.notEligible {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 160px;
+  }
+
+  .required {
+    margin-top: 14px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .card {
+    min-height: 145px;
+    padding: 18px;
+  }
+
+  .amount {
+    font-size: 26px;
+  }
+
+  .status {
+    margin-top: 14px;
+  }
+}
+
+/* VERY SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .card {
+    min-height: 135px;
+  }
+
+  .amount {
+    font-size: 24px;
+  }
+}

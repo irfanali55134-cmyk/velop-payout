@@ -1,0 +1,802 @@
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: relative;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: #121324;
+
+  border-bottom: 1px solid rgba(67, 69, 98, 0.55);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.14);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   NAVBAR INNER
+========================================================= */
+
+.navbarInner {
+  width: 100%;
+  max-width: 1400px;
+
+  min-height: 72px;
+
+  margin: 0 auto;
+
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+
+.logoMark {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #6d28d9
+    );
+
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: 800;
+
+  box-shadow:
+    0 7px 20px
+    rgba(124, 58, 237, 0.28);
+}
+
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+
+.logoMain {
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.logoSub {
+  margin-top: 4px;
+
+  color: #858ba5;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 2.2px;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.navItem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 13px;
+
+  border-radius: 10px;
+
+  color: #969bb2;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.navItem:hover {
+  color: #ffffff;
+
+  background:
+    rgba(124, 58, 237, 0.08);
+}
+
+
+.navItem.active {
+  color: #ffffff;
+
+  background:
+    rgba(124, 58, 237, 0.14);
+}
+
+
+.navItem.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 13px;
+  right: 13px;
+
+  bottom: -18px;
+
+  height: 2px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7c3aed,
+      #a855f7
+    );
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.navRight {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notificationButton {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #30334d;
+
+  border-radius: 11px;
+
+  background: #17192d;
+
+  color: #c4c7d7;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.notificationButton:hover {
+  border-color:
+    rgba(139, 92, 246, 0.55);
+
+  background:
+    rgba(124, 58, 237, 0.12);
+
+  color: #ffffff;
+}
+
+
+.notificationDot {
+  position: absolute;
+
+  top: 7px;
+  right: 7px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #a855f7;
+
+  box-shadow:
+    0 0 8px
+    rgba(168, 85, 247, 0.75);
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.navDivider {
+  width: 1px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  background: #30334b;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profileWrapper {
+  position: relative;
+
+  flex-shrink: 0;
+}
+
+
+.profileButton {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 4px 6px 4px 4px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+
+.profileButton:hover {
+  background:
+    rgba(124, 58, 237, 0.09);
+}
+
+
+.avatar {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #a855f7
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  min-width: 65px;
+}
+
+
+.profileInfo strong {
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+
+.profileInfo span {
+  margin-top: 2px;
+
+  color: #777d96;
+
+  font-size: 10px;
+}
+
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   PROFILE DROPDOWN
+========================================================= */
+
+.profileDropdown {
+  position: absolute;
+
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 190px;
+
+  padding: 7px;
+
+  border:
+    1px solid
+    rgba(76, 78, 108, 0.7);
+
+  border-radius: 14px;
+
+  background: #17192d;
+
+  box-shadow:
+    0 18px 40px
+    rgba(0, 0, 0, 0.3);
+
+  box-sizing: border-box;
+}
+
+
+.profileDropdown a,
+.logoutButton {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px 11px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #aeb2c5;
+
+  font-size: 12px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+
+.profileDropdown a:hover {
+  background:
+    rgba(124, 58, 237, 0.12);
+
+  color: #ffffff;
+}
+
+
+.dropdownDivider {
+  width: 100%;
+  height: 1px;
+
+  margin: 6px 0;
+
+  background: #30334b;
+}
+
+
+.logoutButton {
+  color: #f28b8b;
+}
+
+
+.logoutButton:hover {
+  background:
+    rgba(239, 68, 68, 0.08);
+
+  color: #ff9c9c;
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+========================================================= */
+
+.mobileMenuButton {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #30334d;
+
+  border-radius: 10px;
+
+  background: #17192d;
+
+  color: #d5d7e3;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobileMenu {
+  display: none;
+
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+
+.mobileMenu nav {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.mobileNavItem {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  color: #969bb2;
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+}
+
+
+.mobileNavItem:hover {
+  color: #ffffff;
+
+  background:
+    rgba(124, 58, 237, 0.09);
+}
+
+
+.mobileActive {
+  color: #ffffff;
+
+  background:
+    rgba(124, 58, 237, 0.14);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .navbarInner {
+    padding:
+      0 22px;
+  }
+
+
+  .desktopNav {
+    gap: 2px;
+  }
+
+
+  .navItem {
+    padding:
+      9px 9px;
+
+    font-size: 12px;
+  }
+
+
+  .navItem.active::after {
+    left: 9px;
+    right: 9px;
+
+    bottom: -18px;
+  }
+
+
+  .profileInfo {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .navbarInner {
+    min-height: 66px;
+
+    padding:
+      0 18px;
+
+    gap: 12px;
+  }
+
+
+  .desktopNav {
+    display: none;
+  }
+
+
+  .navRight {
+    margin-left: auto;
+  }
+
+
+  .navDivider {
+    display: none;
+  }
+
+
+  .mobileMenuButton {
+    display: flex;
+  }
+
+
+  .mobileMenu {
+    display: block;
+
+    padding:
+      8px 18px 16px;
+
+    border-top:
+      1px solid
+      rgba(60, 62, 91, 0.45);
+
+    background:
+      #121324;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .navbarInner {
+    min-height: 62px;
+
+    padding:
+      0 14px;
+  }
+
+
+  .logo {
+    gap: 8px;
+  }
+
+
+  .logoMark {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+  }
+
+
+  .logoText {
+    display: flex;
+  }
+
+
+  .logoMain {
+    font-size: 14px;
+  }
+
+
+  .logoSub {
+    font-size: 6px;
+
+    letter-spacing: 1.8px;
+  }
+
+
+  .navRight {
+    gap: 7px;
+  }
+
+
+  .notificationButton {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+  }
+
+
+  .mobileMenuButton {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+  }
+
+
+  .mobileMenu {
+    padding:
+      8px 14px 14px;
+  }
+
+
+  .mobileNavItem {
+    padding:
+      12px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .navbarInner {
+    min-height: 58px;
+
+    padding:
+      0 11px;
+  }
+
+
+  .logoText {
+    display: none;
+  }
+
+
+  .logoMark {
+    width: 35px;
+    height: 35px;
+  }
+
+
+  .notificationButton {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .mobileMenuButton {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .mobileMenu {
+    padding:
+      7px 11px 12px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .navItem,
+  .profileButton,
+  .notificationButton {
+    transition: none;
+  }
+}
