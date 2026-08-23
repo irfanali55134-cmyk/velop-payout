@@ -1,83 +1,196 @@
 .card {
   position: relative;
+
   width: 100%;
   min-width: 0;
-  min-height: 175px;
-  padding: clamp(16px, 2vw, 22px);
+  min-height: 172px;
+
+  padding: 20px;
+
   text-align: left;
+
   border: 1px solid #2d3047;
   border-radius: 16px;
-  background: linear-gradient(145deg, #17192d, #101222);
+
+  background:
+    linear-gradient(
+      145deg,
+      #1c1f36,
+      #111322
+    );
+
   color: #ffffff;
+
   cursor: pointer;
+
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
+    background 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-.card:hover:not(:disabled) {
+.card:hover:not(.locked) {
   transform: translateY(-3px);
-  border-color: #7c3aed;
+
+  border-color: rgba(139, 92, 246, 0.75);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.2);
 }
+
+.card:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 3px;
+}
+
+
+/* =========================
+   SELECTED
+========================= */
 
 .selected {
   border-color: #8b5cf6;
-  background: linear-gradient(
-    145deg,
-    rgba(124, 58, 237, 0.2),
-    #101222
-  );
-  box-shadow: 0 0 25px rgba(124, 58, 237, 0.12);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(124, 58, 237, 0.22),
+      #15172a
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.18),
+    0 14px 35px rgba(91, 43, 190, 0.14);
 }
 
+
+/* =========================
+   LOCKED
+========================= */
+
 .locked {
-  opacity: 0.55;
+  opacity: 0.62;
+
   cursor: not-allowed;
 }
 
+.locked:hover {
+  transform: none;
+}
+
+
+/* =========================
+   TOP
+========================= */
+
+.cardTop {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+/* =========================
+   AMOUNT
+========================= */
+
+.amount {
+  color: #ffffff;
+
+  font-size: 30px;
+  font-weight: 750;
+
+  line-height: 1;
+
+  letter-spacing: -0.8px;
+}
+
+
+/* =========================
+   LOCK ICON
+========================= */
+
+.lockIcon {
+  color: #7d8298;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   CHECK
+========================= */
+
 .check {
   position: absolute;
+
   top: 12px;
   right: 12px;
 
-  width: 23px;
-  height: 23px;
+  width: 24px;
+  height: 24px;
 
   display: grid;
   place-items: center;
 
   border-radius: 50%;
+
   background: #7c3aed;
-  color: white;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 15px rgba(124, 58, 237, 0.3);
 }
 
-.amount {
-  font-size: clamp(24px, 3vw, 30px);
-  font-weight: 700;
-  line-height: 1.1;
-}
+
+/* =========================
+   REWARD TYPE
+========================= */
 
 .rewardType {
-  margin-top: 5px;
-  color: #8f94a8;
-  font-size: 13px;
+  margin-top: 9px;
+
+  color: #9297aa;
+
+  font-size: 12px;
+
+  line-height: 1.4;
 }
+
+
+/* =========================
+   REQUIRED VES
+========================= */
 
 .required {
   display: flex;
-  align-items: center;
-  gap: 7px;
 
-  margin-top: 18px;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  color: #e8e9f0;
 
   font-size: 13px;
+
   font-weight: 600;
 }
 
-.veBadge {
-  width: 22px;
-  height: 22px;
+
+/* =========================
+   V COIN
+========================= */
+
+.veCoin {
+  width: 24px;
+  height: 24px;
 
   display: grid;
   place-items: center;
@@ -85,69 +198,146 @@
   flex-shrink: 0;
 
   border-radius: 50%;
-  background: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
+
+  border: 2px solid #fbbf24;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fde68a,
+      #f59e0b 55%,
+      #b45309 100%
+    );
+
+  color: #78350f;
 
   font-size: 11px;
+  font-weight: 800;
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    0 3px 8px rgba(245, 158, 11, 0.18);
 }
+
+
+/* =========================
+   STATUS
+========================= */
 
 .status {
   margin-top: 16px;
-  padding: 8px 10px;
 
-  border-radius: 8px;
+  width: fit-content;
 
-  font-size: 11px;
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  font-size: 10px;
+
   font-weight: 600;
+
+  line-height: 1.2;
 }
 
+
+/* =========================
+   ELIGIBLE
+========================= */
+
 .eligible {
-  background: rgba(34, 197, 94, 0.1);
+  background: rgba(34, 197, 94, 0.09);
+
   color: #4ade80;
 }
 
+
+/* =========================
+   NOT ELIGIBLE
+========================= */
+
 .notEligible {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.09);
+
   color: #f87171;
 }
 
-/* TABLET */
 
-@media (max-width: 768px) {
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
   .card {
-    min-height: 160px;
+    min-height: 165px;
+
+    padding: 18px;
   }
 
-  .required {
-    margin-top: 14px;
+  .amount {
+    font-size: 28px;
   }
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
   .card {
-    min-height: 145px;
-    padding: 18px;
+    min-height: 150px;
+
+    padding: 17px;
+
+    border-radius: 14px;
   }
 
   .amount {
     font-size: 26px;
   }
 
+  .required {
+    margin-top: 17px;
+  }
+
   .status {
-    margin-top: 14px;
+    margin-top: 13px;
   }
 }
 
-/* VERY SMALL MOBILE */
+
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media (max-width: 380px) {
   .card {
-    min-height: 135px;
+    min-height: 142px;
+
+    padding: 15px;
   }
 
   .amount {
     font-size: 24px;
+  }
+
+  .rewardType {
+    font-size: 11px;
+  }
+
+  .required {
+    font-size: 12px;
+  }
+
+  .veCoin {
+    width: 22px;
+    height: 22px;
+
+    font-size: 10px;
+  }
+
+  .status {
+    font-size: 9px;
   }
 }
