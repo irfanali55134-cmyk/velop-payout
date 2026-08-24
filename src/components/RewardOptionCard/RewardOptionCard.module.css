@@ -1,9 +1,16 @@
+/* =========================================================
+   REWARD OPTION CARD
+========================================================= */
+
 .card {
   position: relative;
 
   width: 100%;
   min-width: 0;
-  min-height: 172px;
+  min-height: 182px;
+
+  display: flex;
+  flex-direction: column;
 
   padding: 20px;
 
@@ -15,39 +22,72 @@
   background:
     linear-gradient(
       145deg,
-      #1c1f36,
-      #111322
+      #1b1e33 0%,
+      #121426 100%
     );
 
   color: #ffffff;
 
   cursor: pointer;
 
+  overflow: hidden;
+
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
-.card:hover:not(.locked) {
+/* subtle top highlight */
+
+.card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 18px;
+  right: 18px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.12),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.card:hover:not(:disabled) {
   transform: translateY(-3px);
 
-  border-color: rgba(139, 92, 246, 0.75);
+  border-color: rgba(139, 92, 246, 0.65);
+
+  background:
+    linear-gradient(
+      145deg,
+      #20233b 0%,
+      #14172a 100%
+    );
 
   box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.2);
-}
-
-.card:focus-visible {
-  outline: 2px solid #8b5cf6;
-  outline-offset: 3px;
+    0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
 
-/* =========================
+/* =========================================================
    SELECTED
-========================= */
+========================================================= */
 
 .selected {
   border-color: #8b5cf6;
@@ -55,88 +95,41 @@
   background:
     linear-gradient(
       145deg,
-      rgba(124, 58, 237, 0.22),
-      #15172a
+      rgba(124, 58, 237, 0.18),
+      rgba(18, 20, 38, 0.98)
     );
 
   box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.18),
-    0 14px 35px rgba(91, 43, 190, 0.14);
+    0 0 0 1px rgba(139, 92, 246, 0.12),
+    0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.selected:hover:not(:disabled) {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.15),
+    0 14px 32px rgba(0, 0, 0, 0.2);
 }
 
 
-/* =========================
-   LOCKED
-========================= */
-
-.locked {
-  opacity: 0.62;
-
-  cursor: not-allowed;
-}
-
-.locked:hover {
-  transform: none;
-}
-
-
-/* =========================
-   TOP
-========================= */
-
-.cardTop {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 12px;
-}
-
-
-/* =========================
-   AMOUNT
-========================= */
-
-.amount {
-  color: #ffffff;
-
-  font-size: 30px;
-  font-weight: 750;
-
-  line-height: 1;
-
-  letter-spacing: -0.8px;
-}
-
-
-/* =========================
-   LOCK ICON
-========================= */
-
-.lockIcon {
-  color: #7d8298;
-
-  flex-shrink: 0;
-}
-
-
-/* =========================
+/* =========================================================
    CHECK
-========================= */
+========================================================= */
 
 .check {
   position: absolute;
 
-  top: 12px;
-  right: 12px;
+  top: 13px;
+  right: 13px;
 
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
 
   display: grid;
   place-items: center;
 
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
 
   background: #7c3aed;
@@ -144,28 +137,78 @@
   color: #ffffff;
 
   box-shadow:
-    0 5px 15px rgba(124, 58, 237, 0.3);
+    0 4px 12px rgba(124, 58, 237, 0.25);
+
+  animation: checkIn 0.2s ease-out;
 }
 
 
-/* =========================
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.cardTop {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 34px;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   AMOUNT
+========================================================= */
+
+.amount {
+  color: #ffffff;
+
+  font-size: clamp(25px, 3vw, 31px);
+
+  font-weight: 750;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.6px;
+}
+
+
+/* =========================================================
+   LOCK ICON
+========================================================= */
+
+.lockIcon {
+  flex-shrink: 0;
+
+  color: #777d94;
+
+  opacity: 0.85;
+}
+
+
+/* =========================================================
    REWARD TYPE
-========================= */
+========================================================= */
 
 .rewardType {
-  margin-top: 9px;
+  margin-top: 5px;
 
   color: #9297aa;
 
   font-size: 12px;
 
+  font-weight: 500;
+
   line-height: 1.4;
 }
 
 
-/* =========================
+/* =========================================================
    REQUIRED VES
-========================= */
+========================================================= */
 
 .required {
   display: flex;
@@ -174,21 +217,25 @@
 
   gap: 8px;
 
-  margin-top: 20px;
+  margin-top: 18px;
 
-  color: #e8e9f0;
+  color: #d7d9e4;
 
   font-size: 13px;
 
   font-weight: 600;
+
+  line-height: 1.3;
 }
 
 
-/* =========================
-   V COIN
-========================= */
+/* =========================================================
+   VE COIN
+========================================================= */
 
 .veCoin {
+  position: relative;
+
   width: 24px;
   height: 24px;
 
@@ -197,94 +244,198 @@
 
   flex-shrink: 0;
 
-  border-radius: 50%;
+  border: 1px solid rgba(245, 158, 11, 0.4);
 
-  border: 2px solid #fbbf24;
+  border-radius: 50%;
 
   background:
     radial-gradient(
       circle at 35% 30%,
-      #fde68a,
-      #f59e0b 55%,
+      #ffd978 0%,
+      #f59e0b 42%,
       #b45309 100%
     );
 
-  color: #78350f;
+  color: #fff7df;
 
   font-size: 11px;
+
   font-weight: 800;
 
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.5),
-    0 3px 8px rgba(245, 158, 11, 0.18);
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 3px 8px rgba(245, 158, 11, 0.16);
 }
 
 
-/* =========================
+/* inner coin ring */
+
+.veCoin::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 3px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
    STATUS
-========================= */
+========================================================= */
 
 .status {
-  margin-top: 16px;
+  display: flex;
 
-  width: fit-content;
+  align-items: center;
 
-  padding: 6px 9px;
+  min-height: 31px;
 
-  border-radius: 7px;
+  margin-top: auto;
 
-  font-size: 10px;
+  padding: 7px 10px;
 
-  font-weight: 600;
+  border-radius: 8px;
 
-  line-height: 1.2;
+  font-size: 10.5px;
+
+  font-weight: 650;
+
+  line-height: 1.3;
 }
 
 
-/* =========================
+/* =========================================================
    ELIGIBLE
-========================= */
+========================================================= */
 
 .eligible {
-  background: rgba(34, 197, 94, 0.09);
+  background:
+    rgba(34, 197, 94, 0.08);
 
-  color: #4ade80;
+  color: #65d98a;
+
+  border: 1px solid rgba(34, 197, 94, 0.1);
 }
 
 
-/* =========================
+/* =========================================================
    NOT ELIGIBLE
-========================= */
+========================================================= */
 
 .notEligible {
-  background: rgba(239, 68, 68, 0.09);
+  background:
+    rgba(239, 68, 68, 0.07);
 
-  color: #f87171;
+  color: #f48787;
+
+  border: 1px solid rgba(239, 68, 68, 0.08);
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/* =========================================================
+   LOCKED
+========================================================= */
 
-@media (max-width: 900px) {
+.locked {
+  cursor: not-allowed;
+
+  opacity: 0.72;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181a2b,
+      #111321
+    );
+}
+
+.locked:hover {
+  transform: none;
+
+  border-color: #2d3047;
+
+  box-shadow: none;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181a2b,
+      #111321
+    );
+}
+
+
+/* =========================================================
+   ACTIVE PRESS
+========================================================= */
+
+.card:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.card:focus-visible {
+  outline: 2px solid #a78bfa;
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes checkIn {
+  from {
+    opacity: 0;
+
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
   .card {
-    min-height: 165px;
+    min-height: 175px;
 
     padding: 18px;
   }
 
   .amount {
-    font-size: 28px;
+    font-size: 27px;
+  }
+
+  .required {
+    margin-top: 16px;
   }
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .card {
     min-height: 150px;
 
@@ -294,22 +445,45 @@
   }
 
   .amount {
-    font-size: 26px;
+    font-size: 25px;
+  }
+
+  .rewardType {
+    font-size: 11px;
   }
 
   .required {
-    margin-top: 17px;
+    margin-top: 13px;
+
+    font-size: 12px;
+  }
+
+  .veCoin {
+    width: 23px;
+    height: 23px;
   }
 
   .status {
-    margin-top: 13px;
+    min-height: 29px;
+
+    padding: 6px 9px;
+
+    font-size: 10px;
+  }
+
+  .check {
+    width: 23px;
+    height: 23px;
+
+    top: 11px;
+    right: 11px;
   }
 }
 
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 380px) {
   .card {
@@ -319,15 +493,15 @@
   }
 
   .amount {
-    font-size: 24px;
-  }
-
-  .rewardType {
-    font-size: 11px;
+    font-size: 23px;
   }
 
   .required {
-    font-size: 12px;
+    margin-top: 11px;
+
+    gap: 7px;
+
+    font-size: 11px;
   }
 
   .veCoin {
@@ -338,6 +512,22 @@
   }
 
   .status {
-    font-size: 9px;
+    min-height: 27px;
+
+    font-size: 9.5px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .check {
+    animation: none !important;
+
+    transition: none !important;
   }
 }

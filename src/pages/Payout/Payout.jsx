@@ -6,10 +6,6 @@ import BalanceSummary from "../../components/BalanceSummary/BalanceSummary";
 import PayoutMethodSelector from "../../components/PayoutMethodSelector/PayoutMethodSelector";
 import PayoutMethodVisual from "../../components/PayoutMethodVisual/PayoutMethodVisual";
 import RewardOptionCard from "../../components/RewardOptionCard/RewardOptionCard";
-import RewardProgress from "../../components/RewardProgress/RewardProgress";
-import BeforeYouRedeem from "../../components/BeforeYouRedeem/BeforeYouRedeem";
-import SecurityRules from "../../components/SecurityRules/SecurityRules";
-import FAQ from "../../components/FAQ/FAQ";
 
 import RedemptionPage from "../../components/RedemptionPage/RedemptionPage";
 import UPIValidation from "../../components/UPIValidation/UPIValidation";
@@ -25,29 +21,57 @@ import payoutOptions from "../../data/payoutOptions";
 
 import "./Payout.css";
 
+
+/* =========================================================
+   GET PAYOUT METHOD FROM URL
+========================================================= */
+
+function getMethodFromURL() {
+  const params = new URLSearchParams(
+    window.location.search
+  );
+
+  const method = params.get("method");
+
+  if (
+    method === "upi" ||
+    method === "amazon" ||
+    method === "googlePlay"
+  ) {
+    return method;
+  }
+
+  return "upi";
+}
+
+
 function Payout() {
-  /* =====================================================
+  /* =========================================================
      BALANCE
-  ===================================================== */
+  ========================================================= */
 
   const availableVEs = 3850;
 
-  /* =====================================================
-     METHOD
-  ===================================================== */
 
-  const [selectedMethod, setSelectedMethod] = useState("upi");
+  /* =========================================================
+     SELECTED PAYOUT METHOD
+  ========================================================= */
 
-  /* =====================================================
-     REWARD
-  ===================================================== */
+  const [selectedMethod, setSelectedMethod] =
+    useState(getMethodFromURL);
+
+
+  /* =========================================================
+     SELECTED REWARD
+  ========================================================= */
 
   const [selectedReward, setSelectedReward] =
     useState(null);
 
-  /* =====================================================
-     FLOW STATE
-  ===================================================== */
+
+  /* =========================================================
+     FLOW STATES
+  ========================================================= */
 
   const [showRedemptionPage, setShowRedemptionPage] =
     useState(false);
@@ -73,56 +97,43 @@ function Payout() {
   const [showPaypalUnavailable, setShowPaypalUnavailable] =
     useState(false);
 
-  /* =====================================================
-     USER DETAILS
-  ===================================================== */
 
-  const [upiValue, setUpiValue] = useState("");
+  /* =========================================================
+     PAYOUT DETAILS
+  ========================================================= */
 
-  const [emailValue, setEmailValue] = useState("");
+  const [upiValue, setUpiValue] =
+    useState("");
 
-  /* =====================================================
-     READ METHOD FROM URL
-  ===================================================== */
+  const [emailValue, setEmailValue] =
+    useState("");
 
-  useEffect(() => {
-    const params = new URLSearchParams(
-      window.location.search
-    );
 
-    const method = params.get("method");
-
-    if (
-      method === "upi" ||
-      method === "amazon" ||
-      method === "googlePlay"
-    ) {
-      setSelectedMethod(method);
-    }
-  }, []);
-
-  /* =====================================================
-     CURRENT PAYOUT DATA
-  ===================================================== */
+  /* =========================================================
+     CURRENT PAYOUT
+  ========================================================= */
 
   const currentPayout =
     payoutOptions[selectedMethod] ||
     payoutOptions.upi;
 
-  const rewards = currentPayout.rewards;
+  const rewards =
+    currentPayout?.rewards || [];
 
-  /* =====================================================
-     UPDATE URL WHEN METHOD CHANGES
-  ===================================================== */
+
+  /* =========================================================
+     KEEP URL IN SYNC
+  ========================================================= */
 
   useEffect(() => {
     const params = new URLSearchParams(
       window.location.search
     );
 
-    if (
-      params.get("method") !== selectedMethod
-    ) {
+    const currentMethod =
+      params.get("method");
+
+    if (currentMethod !== selectedMethod) {
       params.set(
         "method",
         selectedMethod
@@ -136,18 +147,10 @@ function Payout() {
     }
   }, [selectedMethod]);
 
-  /* =====================================================
-     NEXT REWARD
-  ===================================================== */
 
-  const nextReward = rewards.find(
-    (reward) =>
-      availableVEs < reward.requiredVEs
-  );
-
-  /* =====================================================
+  /* =========================================================
      CHANGE PAYOUT METHOD
-  ===================================================== */
+  ========================================================= */
 
   const handleMethodChange = (method) => {
     if (method === "paypal") {
@@ -171,9 +174,10 @@ function Payout() {
     setEmailValue("");
   };
 
-  /* =====================================================
+
+  /* =========================================================
      SELECT REWARD
-  ===================================================== */
+  ========================================================= */
 
   const handleRewardSelect = (reward) => {
     const eligible =
@@ -190,9 +194,10 @@ function Payout() {
     setShowInsufficient(false);
   };
 
-  /* =====================================================
-     CONTINUE FROM REWARD
-  ===================================================== */
+
+  /* =========================================================
+     CONTINUE REWARD
+  ========================================================= */
 
   const handleRewardContinue = () => {
     if (!selectedReward) {
@@ -211,27 +216,30 @@ function Payout() {
     setShowRedemptionPage(true);
   };
 
-  /* =====================================================
-     CONTINUE FROM REDEMPTION DETAILS
-  ===================================================== */
+
+  /* =========================================================
+     CONTINUE REDEMPTION DETAILS
+  ========================================================= */
 
   const handleRedemptionContinue = () => {
     setShowRedemptionPage(false);
     setShowValidation(true);
   };
 
-  /* =====================================================
-     CONTINUE FROM VALIDATION
-  ===================================================== */
+
+  /* =========================================================
+     CONTINUE VALIDATION
+  ========================================================= */
 
   const handleValidationContinue = () => {
     setShowValidation(false);
     setShowConfirmation(true);
   };
 
-  /* =====================================================
+
+  /* =========================================================
      BACK TO REWARDS
-  ===================================================== */
+  ========================================================= */
 
   const handleBackToRewards = () => {
     setShowRedemptionPage(false);
@@ -240,27 +248,30 @@ function Payout() {
     setShowProcessing(false);
   };
 
-  /* =====================================================
+
+  /* =========================================================
      BACK TO VALIDATION
-  ===================================================== */
+  ========================================================= */
 
   const handleBackToValidation = () => {
     setShowConfirmation(false);
     setShowValidation(true);
   };
 
-  /* =====================================================
+
+  /* =========================================================
      CONFIRM REDEMPTION
-  ===================================================== */
+  ========================================================= */
 
   const handleConfirmRedemption = () => {
     setShowConfirmation(false);
     setShowProcessing(true);
   };
 
-  /* =====================================================
+
+  /* =========================================================
      PROCESSING
-  ===================================================== */
+  ========================================================= */
 
   useEffect(() => {
     if (!showProcessing) {
@@ -277,9 +288,10 @@ function Payout() {
     };
   }, [showProcessing]);
 
-  /* =====================================================
-     SUCCESS
-  ===================================================== */
+
+  /* =========================================================
+     SUCCESS CLOSE
+  ========================================================= */
 
   const handleSuccessClose = () => {
     setShowSuccess(false);
@@ -297,18 +309,20 @@ function Payout() {
     setEmailValue("");
   };
 
-  /* =====================================================
+
+  /* =========================================================
      DESTINATION
-  ===================================================== */
+  ========================================================= */
 
   const destination =
     selectedMethod === "upi"
       ? upiValue
       : emailValue;
 
-  /* =====================================================
+
+  /* =========================================================
      REDEMPTION PAGE
-  ===================================================== */
+  ========================================================= */
 
   if (showRedemptionPage) {
     return (
@@ -329,9 +343,10 @@ function Payout() {
     );
   }
 
-  /* =====================================================
+
+  /* =========================================================
      VALIDATION PAGE
-  ===================================================== */
+  ========================================================= */
 
   if (showValidation) {
     return (
@@ -362,9 +377,10 @@ function Payout() {
     );
   }
 
-  /* =====================================================
+
+  /* =========================================================
      MAIN PAYOUT PAGE
-  ===================================================== */
+  ========================================================= */
 
   return (
     <>
@@ -377,7 +393,6 @@ function Payout() {
         ================================================= */}
 
         <section className="payout-header">
-
           <div className="payout-header-content">
 
             <span className="payout-eyebrow">
@@ -396,8 +411,8 @@ function Payout() {
             </p>
 
           </div>
-
         </section>
+
 
         {/* =================================================
             BALANCE
@@ -407,20 +422,18 @@ function Payout() {
           <BalanceSummary />
         </section>
 
+
         {/* =================================================
             PAYOUT METHOD
         ================================================= */}
 
         <section className="method-section">
           <PayoutMethodSelector
-            selectedMethod={
-              selectedMethod
-            }
-            onSelect={
-              handleMethodChange
-            }
+            selectedMethod={selectedMethod}
+            onSelect={handleMethodChange}
           />
         </section>
+
 
         {/* =================================================
             METHOD VISUAL
@@ -431,6 +444,7 @@ function Payout() {
             method={selectedMethod}
           />
         </section>
+
 
         {/* =================================================
             REWARDS
@@ -456,13 +470,14 @@ function Payout() {
             </div>
 
             <div className="reward-method-badge">
-              {currentPayout.name}
+              {currentPayout?.name}
             </div>
 
           </div>
 
+
           {/* =================================================
-              REWARD CARDS
+              REWARD GRID
           ================================================= */}
 
           <div className="reward-grid">
@@ -496,27 +511,9 @@ function Payout() {
 
           </div>
 
-          {/* =================================================
-              PROGRESS
-          ================================================= */}
-
-          {nextReward && (
-            <div className="reward-progress-section">
-
-              <RewardProgress
-                availableVEs={
-                  availableVEs
-                }
-                nextReward={
-                  nextReward
-                }
-              />
-
-            </div>
-          )}
 
           {/* =================================================
-              CONTINUE
+              REDEEM BUTTON
           ================================================= */}
 
           <button
@@ -527,9 +524,7 @@ function Payout() {
               availableVEs <
                 selectedReward.requiredVEs
             }
-            onClick={
-              handleRewardContinue
-            }
+            onClick={handleRewardContinue}
           >
             <span>
               Redeem Reward
@@ -542,29 +537,6 @@ function Payout() {
 
         </section>
 
-        {/* =================================================
-            BEFORE YOU REDEEM
-        ================================================= */}
-
-        <section className="before-redeem-section">
-          <BeforeYouRedeem />
-        </section>
-
-        {/* =================================================
-            SECURITY
-        ================================================= */}
-
-        <section className="security-section">
-          <SecurityRules />
-        </section>
-
-        {/* =================================================
-            FAQ
-        ================================================= */}
-
-        <section className="faq-section">
-          <FAQ />
-        </section>
 
         {/* =================================================
             CONFIRMATION
@@ -575,12 +547,8 @@ function Payout() {
             <ConfirmationModal
               method={selectedMethod}
               reward={selectedReward}
-              availableVEs={
-                availableVEs
-              }
-              destination={
-                destination
-              }
+              availableVEs={availableVEs}
+              destination={destination}
               onCancel={
                 handleBackToValidation
               }
@@ -589,6 +557,7 @@ function Payout() {
               }
             />
           )}
+
 
         {/* =================================================
             PROCESSING
@@ -599,11 +568,10 @@ function Payout() {
             <ProcessingModal
               method={selectedMethod}
               reward={selectedReward}
-              destination={
-                destination
-              }
+              destination={destination}
             />
           )}
+
 
         {/* =================================================
             SUCCESS
@@ -614,12 +582,8 @@ function Payout() {
             <SuccessModal
               method={selectedMethod}
               reward={selectedReward}
-              destination={
-                destination
-              }
-              onClose={
-                handleSuccessClose
-              }
+              destination={destination}
+              onClose={handleSuccessClose}
               onViewWallet={() => {
                 setShowSuccess(false);
               }}
@@ -630,6 +594,7 @@ function Payout() {
               }}
             />
           )}
+
 
         {/* =================================================
             ERROR
@@ -650,6 +615,7 @@ function Payout() {
           />
         )}
 
+
         {/* =================================================
             INSUFFICIENT BALANCE
         ================================================= */}
@@ -657,9 +623,7 @@ function Payout() {
         {showInsufficient &&
           selectedReward && (
             <InsufficientBalance
-              availableVEs={
-                availableVEs
-              }
+              availableVEs={availableVEs}
               requiredVEs={
                 selectedReward.requiredVEs
               }
@@ -676,6 +640,7 @@ function Payout() {
             />
           )}
 
+
         {/* =================================================
             PAYPAL UNAVAILABLE
         ================================================= */}
@@ -683,9 +648,7 @@ function Payout() {
         {showPaypalUnavailable && (
           <PayPalUnavailable
             onClose={() => {
-              setShowPaypalUnavailable(
-                false
-              );
+              setShowPaypalUnavailable(false);
             }}
           />
         )}

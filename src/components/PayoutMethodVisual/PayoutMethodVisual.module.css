@@ -1,38 +1,52 @@
+/* =========================================================
+   PAYOUT METHOD VISUAL
+========================================================= */
+
 .wrapper {
   width: 100%;
 
   display: flex;
   align-items: center;
 
-  gap: 22px;
+  gap: 24px;
 
   margin-top: 20px;
-  padding: 20px 22px;
+  padding: 22px 24px;
 
   border: 1px solid #2d3047;
   border-radius: 18px;
 
   background:
-    radial-gradient(
-      circle at left center,
-      rgba(124, 58, 237, 0.1),
-      transparent 38%
-    ),
     linear-gradient(
-      145deg,
-      #17192d,
-      #101222
+      135deg,
+      rgba(28, 30, 52, 0.98),
+      rgba(16, 18, 34, 0.98)
     );
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.15);
+    0 14px 34px rgba(0, 0, 0, 0.14);
 
-   transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    border-color 0.25s ease;
-  animation: methodVisualIn 0.3s ease;
+  transition:
+    border-color 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+
+  animation: methodVisualIn 0.3s ease-out;
 }
+
+.wrapper:hover {
+  transform: translateY(-1px);
+
+  border-color: #3b3e58;
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.17);
+}
+
+
+/* =========================================================
+   ENTRANCE
+========================================================= */
 
 @keyframes methodVisualIn {
   from {
@@ -46,14 +60,10 @@
   }
 }
 
-.wrapper:hover {
-  transform: translateY(-1px);
-}
 
-
-/* =========================
-   VISUAL
-========================= */
+/* =========================================================
+   VISUAL AREA
+========================================================= */
 
 .visual {
   display: flex;
@@ -63,29 +73,44 @@
 }
 
 
+/* =========================================================
+   ICON BOXES
+========================================================= */
+
 .mainIcon,
 .destinationIcon {
   display: grid;
   place-items: center;
 
+  flex-shrink: 0;
+
   border-radius: 15px;
 }
 
 
+/* =========================================================
+   MAIN ICON
+========================================================= */
+
 .mainIcon {
-  width: 64px;
-  height: 64px;
+  width: 66px;
+  height: 66px;
 
   border: 1px solid rgba(139, 92, 246, 0.3);
 
-  background: rgba(124, 58, 237, 0.1);
+  background:
+    rgba(124, 58, 237, 0.09);
 
   color: #a78bfa;
 
   box-shadow:
-    0 8px 25px rgba(124, 58, 237, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+
+/* =========================================================
+   DESTINATION ICON
+========================================================= */
 
 .destinationIcon {
   width: 48px;
@@ -93,226 +118,272 @@
 
   border: 1px solid #30334a;
 
+  border-radius: 13px;
+
   background: #151729;
 
   color: #aeb2c3;
 }
 
 
+/* =========================================================
+   FLOW
+========================================================= */
+
 .flowLine {
   display: flex;
   align-items: center;
 
-  gap: 4px;
+  gap: 5px;
 
-  margin: 0 8px;
+  margin: 0 9px;
 
-  color: #62677b;
+  color: #64697d;
 }
-
 
 .flowLine span {
-  width: 22px;
+  width: 24px;
   height: 1px;
 
-  background: #3a3d52;
+  background:
+    linear-gradient(
+      90deg,
+      #34374c,
+      #464a61
+    );
 }
 
 
-/* =========================
+/* =========================================================
    CONTENT
-========================= */
+========================================================= */
 
 .content {
   min-width: 0;
+
   flex: 1;
 }
-
 
 .label {
   display: block;
 
   color: #a78bfa;
 
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
 
-  letter-spacing: 1.4px;
+  line-height: 1.2;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
 }
 
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .content h3 {
   margin: 5px 0 0;
 
   color: #ffffff;
 
-  font-size: 18px;
+  font-size: 19px;
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  letter-spacing: -0.25px;
 }
 
 
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
 .content p {
-  max-width: 570px;
+  max-width: 650px;
 
   margin: 6px 0 0;
 
-  color: #858a9f;
+  color: #8d92a6;
 
-  font-size: 11px;
+  font-size: 12px;
 
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 
-/* =========================
+/* =========================================================
    DESTINATION
-========================= */
+========================================================= */
 
 .destination {
   display: inline-flex;
   align-items: center;
 
-  gap: 8px;
+  gap: 9px;
 
-  margin-top: 11px;
-  padding: 6px 9px;
+  margin-top: 12px;
+  padding: 7px 10px;
 
   border: 1px solid #2d3047;
-  border-radius: 7px;
+  border-radius: 8px;
 
-  background: rgba(7, 9, 20, 0.45);
+  background:
+    rgba(8, 10, 21, 0.45);
 }
 
+
+/* Destination label */
 
 .destination span {
-  color: #70758a;
+  color: #73788d;
 
-  font-size: 7px;
+  font-size: 7.5px;
   font-weight: 700;
 
-  letter-spacing: 0.8px;
+  line-height: 1;
+
+  letter-spacing: 0.9px;
+
+  text-transform: uppercase;
 }
 
+
+/* Destination value */
 
 .destination strong {
-  color: #d5d7e1;
+  color: #d8dae4;
 
-  font-size: 9px;
+  font-size: 10px;
+  font-weight: 600;
+
+  line-height: 1;
 }
 
 
-/* =========================
+/* =========================================================
    UPI
-========================= */
+========================================================= */
 
 .upi {
-  border-color: rgba(139, 92, 246, 0.28);
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
 .upi .mainIcon {
+  border-color: rgba(139, 92, 246, 0.35);
+
+  background:
+    rgba(124, 58, 237, 0.1);
+
   color: #a78bfa;
 }
 
 
-/* =========================
+/* =========================================================
    AMAZON
-========================= */
+========================================================= */
 
 .amazon {
-  border-color: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.22);
 }
 
 .amazon .mainIcon {
+  border-color: rgba(245, 158, 11, 0.28);
+
+  background:
+    rgba(245, 158, 11, 0.08);
+
   color: #f59e0b;
-
-  border-color: rgba(245, 158, 11, 0.25);
-
-  background: rgba(245, 158, 11, 0.08);
 }
 
 
-/* =========================
+/* =========================================================
    GOOGLE PLAY
-========================= */
+========================================================= */
 
 .google {
-  border-color: rgba(52, 168, 83, 0.2);
+  border-color: rgba(52, 168, 83, 0.22);
 }
 
 .google .mainIcon {
+  border-color: rgba(52, 168, 83, 0.28);
+
+  background:
+    rgba(52, 168, 83, 0.08);
+
   color: #34a853;
-
-  border-color: rgba(52, 168, 83, 0.25);
-
-  background: rgba(52, 168, 83, 0.08);
 }
 
 
-/* =========================
+/* =========================================================
    PAYPAL
-========================= */
+========================================================= */
 
 .paypal {
-  opacity: 0.65;
+  opacity: 0.62;
 }
 
 .paypal .mainIcon {
-  color: #0070ba;
-
   border-color: #30334a;
 
   background: #151729;
+
+  color: #0070ba;
 }
 
 
-/* =========================
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .wrapper {
-    gap: 16px;
+    gap: 19px;
 
-    padding: 18px;
+    padding: 20px;
   }
 
   .mainIcon {
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
   }
 
   .destinationIcon {
-    width: 43px;
-    height: 43px;
+    width: 45px;
+    height: 45px;
   }
 
   .content h3 {
-    font-size: 16px;
+    font-size: 17px;
+  }
+
+  .content p {
+    font-size: 11px;
   }
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .wrapper {
-    align-items: flex-start;
+    gap: 15px;
 
-    gap: 14px;
-
-    padding: 15px;
+    padding: 16px;
 
     border-radius: 15px;
   }
 
-  .visual {
-    align-self: center;
-  }
-
   .mainIcon {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 13px;
   }
 
   .mainIcon svg {
@@ -321,8 +392,10 @@
   }
 
   .destinationIcon {
-    width: 38px;
-    height: 38px;
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
   }
 
   .destinationIcon svg {
@@ -335,28 +408,56 @@
   }
 
   .flowLine span {
-    width: 12px;
+    width: 13px;
+  }
+
+  .label {
+    font-size: 8px;
+
+    letter-spacing: 1.2px;
   }
 
   .content h3 {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .content p {
-    font-size: 9px;
+    margin-top: 5px;
+
+    font-size: 10px;
+  }
+
+  .destination {
+    margin-top: 9px;
+
+    padding: 6px 8px;
+
+    gap: 7px;
+  }
+
+  .destination span {
+    font-size: 6.5px;
+  }
+
+  .destination strong {
+    font-size: 8.5px;
   }
 }
 
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 380px) {
   .wrapper {
     flex-direction: column;
 
     align-items: stretch;
+
+    gap: 15px;
+
+    padding: 15px;
   }
 
   .visual {
@@ -369,5 +470,18 @@
 
   .destination {
     justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    animation: none;
+
+    transition: none;
   }
 }

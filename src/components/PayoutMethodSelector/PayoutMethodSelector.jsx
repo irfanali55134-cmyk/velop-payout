@@ -1,92 +1,58 @@
 import { Check, Lock } from "lucide-react";
 
-import {
-  FaAmazon,
-  FaPaypal,
-  FaGooglePlay,
-} from "react-icons/fa6";
-
 import styles from "./PayoutMethodSelector.module.css";
+
+import upiLogo from "../../assets/payout/upi.jpg";
+import amazonLogo from "../../assets/payout/amazon2.jpg";
+import googlePlayLogo from "../../assets/payout/google-play.jpg";
+import paypalLogo from "../../assets/payout/paypal.jpg";
+
 
 const methods = [
   {
     id: "upi",
     name: "UPI",
     description: "Instant transfer to your bank account",
-    icon: "UPI",
+    icon: upiLogo,
   },
   {
     id: "amazon",
     name: "Amazon",
     description: "Amazon Gift Card via email",
-    icon: "AMAZON",
+    icon: amazonLogo,
   },
   {
     id: "googlePlay",
     name: "Google Play",
     description: "Google Play Gift Card via email",
-    icon: "PLAY",
+    icon: googlePlayLogo,
   },
   {
     id: "paypal",
     name: "PayPal",
     description: "Currently unavailable",
-    icon: "PAYPAL",
+    icon: paypalLogo,
     unavailable: true,
   },
 ];
 
-function MethodIcon({ type }) {
-  /* =========================
-     UPI
-  ========================= */
 
-  if (type === "UPI") {
-    return (
-      <div className={styles.upiLogo}>
-        <span className={styles.upiText}>UPI</span>
-      </div>
-    );
-  }
-
-  /* =========================
-     AMAZON
-  ========================= */
-
-  if (type === "AMAZON") {
-    return (
-      <FaAmazon
-        className={`${styles.brandIcon} ${styles.amazonBrand}`}
-      />
-    );
-  }
-
-  /* =========================
-     GOOGLE PLAY
-  ========================= */
-
-  if (type === "PLAY") {
-    return (
-      <FaGooglePlay
-        className={`${styles.brandIcon} ${styles.playBrand}`}
-      />
-    );
-  }
-
-  /* =========================
-     PAYPAL
-  ========================= */
-
-  if (type === "PAYPAL") {
-    return (
-      <FaPaypal
-        className={`${styles.brandIcon} ${styles.paypalBrand}`}
-      />
-    );
-  }
-
-  return null;
+function MethodIcon({ method }) {
+  return (
+    <img
+      src={method.icon}
+      alt={`${method.name} logo`}
+      className={`${styles.brandImage} ${
+        method.id === "upi"
+          ? styles.upiImage
+          : method.id === "paypal"
+          ? styles.paypalImage
+          : ""
+      }`}
+    />
+  );
 }
+
 
 function PayoutMethodSelector({
   selectedMethod,
@@ -94,6 +60,7 @@ function PayoutMethodSelector({
 }) {
   return (
     <section className={styles.wrapper}>
+
       {/* =========================
           HEADING
       ========================= */}
@@ -108,11 +75,13 @@ function PayoutMethodSelector({
         </div>
       </div>
 
+
       {/* =========================
           METHOD GRID
       ========================= */}
 
       <div className={styles.grid}>
+
         {methods.map((method) => {
           const isSelected =
             selectedMethod === method.id;
@@ -132,34 +101,43 @@ function PayoutMethodSelector({
                   : ""
               }`}
             >
+
               {/* =========================
-                  ICON
+                  LOGO
               ========================= */}
 
               <div className={styles.iconBox}>
-                <MethodIcon type={method.icon} />
+                <MethodIcon method={method} />
               </div>
+
 
               {/* =========================
                   CONTENT
               ========================= */}
 
               <div className={styles.content}>
+
                 <div className={styles.titleRow}>
+
                   <h3>{method.name}</h3>
 
-                  {/* Selected check */}
+
+                  {/* SELECTED CHECK */}
 
                   {isSelected &&
                     !method.unavailable && (
                       <span
                         className={styles.check}
                       >
-                        <Check size={15} />
+                        <Check
+                          size={15}
+                          strokeWidth={2.5}
+                        />
                       </span>
                     )}
 
-                  {/* Coming Soon */}
+
+                  {/* COMING SOON */}
 
                   {method.unavailable && (
                     <span
@@ -168,11 +146,18 @@ function PayoutMethodSelector({
                       Coming Soon
                     </span>
                   )}
+
                 </div>
 
-                <p>{method.description}</p>
 
-                {/* Unavailable */}
+                {/* DESCRIPTION */}
+
+                <p>
+                  {method.description}
+                </p>
+
+
+                {/* UNAVAILABLE */}
 
                 {method.unavailable && (
                   <div
@@ -185,13 +170,18 @@ function PayoutMethodSelector({
                     </span>
                   </div>
                 )}
+
               </div>
+
             </button>
           );
         })}
+
       </div>
+
     </section>
   );
 }
+
 
 export default PayoutMethodSelector;

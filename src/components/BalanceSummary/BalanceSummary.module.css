@@ -5,30 +5,31 @@
 .balanceCard {
   width: 100%;
 
-  padding:
-    clamp(20px, 3vw, 26px);
+  padding: clamp(20px, 3vw, 26px);
 
-  border:
-    1px solid
-    rgba(139, 92, 246, 0.35);
-
+  border: 1px solid rgba(139, 92, 246, 0.28);
   border-radius: 20px;
 
   background:
-    radial-gradient(
-      circle at 85% 10%,
-      rgba(124, 58, 237, 0.08),
-      transparent 28%
-    ),
     linear-gradient(
       135deg,
-      rgba(24, 25, 48, 0.98),
-      rgba(13, 15, 32, 0.98)
+      rgba(27, 29, 52, 0.98),
+      rgba(14, 16, 32, 0.98)
     );
 
   box-shadow:
-    0 15px 40px
-    rgba(0, 0, 0, 0.25);
+    0 14px 35px rgba(0, 0, 0, 0.18);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.balanceCard:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -38,32 +39,27 @@
 
 .header {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   gap: 20px;
 
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
-
 
 .header h2 {
   margin: 0;
 
   color: #ffffff;
 
-  font-size:
-    clamp(18px, 2vw, 21px);
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 700;
 
   line-height: 1.3;
 }
 
-
 .header p {
-  margin:
-    5px 0 0;
+  margin: 5px 0 0;
 
   color: #8f94a8;
 
@@ -79,32 +75,26 @@
 
 .actions {
   display: flex;
+  align-items: center;
 
   gap: 8px;
 
   flex-shrink: 0;
 }
 
-
 .actions button {
   width: 40px;
-
   height: 40px;
 
   display: grid;
-
   place-items: center;
 
-  border:
-    1px solid
-    #30334d;
-
+  border: 1px solid #30334d;
   border-radius: 11px;
 
-  background:
-    #17192d;
+  background: #17192d;
 
-  color: #c7c9d8;
+  color: #bfc3d4;
 
   cursor: pointer;
 
@@ -115,25 +105,23 @@
     transform 0.2s ease;
 }
 
-
 .actions button:hover {
-  border-color:
-    #7c3aed;
+  border-color: #7c3aed;
 
-  background:
-    #1c1e36;
+  background: #1c1e36;
 
-  color:
-    #ffffff;
+  color: #ffffff;
 
-  transform:
-    translateY(-1px);
+  transform: translateY(-1px);
 }
 
-
 .actions button:active {
-  transform:
-    translateY(0);
+  transform: translateY(0);
+}
+
+.actions button:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
 }
 
 
@@ -151,8 +139,7 @@
 
   align-items: center;
 
-  gap:
-    clamp(20px, 3vw, 32px);
+  gap: clamp(20px, 3vw, 32px);
 }
 
 
@@ -162,12 +149,15 @@
 
 .balanceItem {
   display: flex;
-
   align-items: center;
 
   min-width: 0;
 
   gap: 17px;
+}
+
+.balanceItem > div:last-child {
+  min-width: 0;
 }
 
 
@@ -179,20 +169,21 @@
   position: relative;
 
   width: 64px;
-
   height: 64px;
 
-  flex-shrink: 0;
-
   display: grid;
-
   place-items: center;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 
   isolation: isolate;
-
   overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 
@@ -206,31 +197,24 @@
   z-index: 3;
 
   width: 76%;
-
   height: 76%;
 
   display: grid;
-
   place-items: center;
 
   border-radius: 50%;
 
-  border:
-    2px solid
-    rgba(255, 255, 255, 0.20);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
-
 
 .coinInner span {
   font-size: 27px;
-
   font-weight: 800;
 
   line-height: 1;
 
   text-shadow:
-    0 2px 4px
-    rgba(0, 0, 0, 0.25);
+    0 2px 4px rgba(0, 0, 0, 0.22);
 }
 
 
@@ -244,11 +228,9 @@
   z-index: 4;
 
   width: 34px;
-
   height: 16px;
 
   top: 7px;
-
   left: 10px;
 
   border-radius: 50%;
@@ -256,15 +238,13 @@
   background:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.60),
+      rgba(255, 255, 255, 0.55),
       rgba(255, 255, 255, 0)
     );
 
-  transform:
-    rotate(-27deg);
+  transform: rotate(-27deg);
 
-  filter:
-    blur(0.5px);
+  filter: blur(0.5px);
 
   pointer-events: none;
 }
@@ -288,31 +268,18 @@
       #a94f05 100%
     );
 
-  border:
-    2px solid
-    rgba(255, 193, 53, 0.85);
+  border: 2px solid rgba(255, 193, 53, 0.8);
 
   box-shadow:
-
-    0 0 0 4px
-    rgba(245, 158, 11, 0.08),
-
-    0 8px 25px
-    rgba(245, 158, 11, 0.28),
-
-    inset 0 3px 5px
-    rgba(255, 255, 255, 0.55),
-
-    inset 0 -6px 9px
-    rgba(120, 50, 0, 0.25);
+    0 0 0 3px rgba(245, 158, 11, 0.06),
+    0 7px 18px rgba(245, 158, 11, 0.18),
+    inset 0 3px 5px rgba(255, 255, 255, 0.5),
+    inset 0 -6px 9px rgba(120, 50, 0, 0.22);
 }
-
 
 .veIcon .coinInner {
-  border-color:
-    rgba(255, 246, 205, 0.50);
+  border-color: rgba(255, 246, 205, 0.48);
 }
-
 
 .veIcon .coinInner span {
   color: #fff7d6;
@@ -337,31 +304,18 @@
       #37127c 100%
     );
 
-  border:
-    2px solid
-    rgba(167, 139, 250, 0.80);
+  border: 2px solid rgba(167, 139, 250, 0.75);
 
   box-shadow:
-
-    0 0 0 4px
-    rgba(124, 58, 237, 0.08),
-
-    0 8px 25px
-    rgba(124, 58, 237, 0.30),
-
-    inset 0 3px 5px
-    rgba(255, 255, 255, 0.45),
-
-    inset 0 -6px 9px
-    rgba(37, 10, 82, 0.30);
+    0 0 0 3px rgba(124, 58, 237, 0.06),
+    0 7px 18px rgba(124, 58, 237, 0.2),
+    inset 0 3px 5px rgba(255, 255, 255, 0.4),
+    inset 0 -6px 9px rgba(37, 10, 82, 0.25);
 }
-
 
 .sveIcon .coinInner {
-  border-color:
-    rgba(242, 236, 255, 0.42);
+  border-color: rgba(242, 236, 255, 0.42);
 }
-
 
 .sveIcon .coinInner span {
   color: #f5f0ff;
@@ -369,13 +323,8 @@
 
 
 /* =========================================================
-   BALANCE CONTENT
+   BALANCE TEXT
 ========================================================= */
-
-.balanceItem > div:last-child {
-  min-width: 0;
-}
-
 
 .balanceItem span {
   display: block;
@@ -389,14 +338,13 @@
   line-height: 1.3;
 }
 
-
 .balanceItem strong {
   display: block;
 
   color: #ffffff;
 
-  font-size:
-    clamp(24px, 3vw, 30px);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 750;
 
   line-height: 1.1;
 
@@ -404,7 +352,6 @@
 
   white-space: nowrap;
 }
-
 
 .balanceItem strong small {
   font-size: 14px;
@@ -416,10 +363,8 @@
   letter-spacing: 0;
 }
 
-
 .balanceItem p {
-  margin:
-    6px 0 0;
+  margin: 6px 0 0;
 
   color: #777c92;
 
@@ -435,7 +380,6 @@
 
 .divider {
   width: 1px;
-
   height: 76px;
 
   background:
@@ -454,46 +398,23 @@
 ========================================================= */
 
 .balanceItem:hover .icon {
-  transform:
-    translateY(-1px);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transform: translateY(-1px);
 }
-
 
 .balanceItem:hover .veIcon {
   box-shadow:
-
-    0 0 0 4px
-    rgba(245, 158, 11, 0.10),
-
-    0 10px 30px
-    rgba(245, 158, 11, 0.34),
-
-    inset 0 3px 5px
-    rgba(255, 255, 255, 0.55),
-
-    inset 0 -6px 9px
-    rgba(120, 50, 0, 0.25);
+    0 0 0 3px rgba(245, 158, 11, 0.08),
+    0 9px 22px rgba(245, 158, 11, 0.23),
+    inset 0 3px 5px rgba(255, 255, 255, 0.5),
+    inset 0 -6px 9px rgba(120, 50, 0, 0.22);
 }
-
 
 .balanceItem:hover .sveIcon {
   box-shadow:
-
-    0 0 0 4px
-    rgba(124, 58, 237, 0.10),
-
-    0 10px 30px
-    rgba(124, 58, 237, 0.38),
-
-    inset 0 3px 5px
-    rgba(255, 255, 255, 0.45),
-
-    inset 0 -6px 9px
-    rgba(37, 10, 82, 0.30);
+    0 0 0 3px rgba(124, 58, 237, 0.08),
+    0 9px 22px rgba(124, 58, 237, 0.25),
+    inset 0 3px 5px rgba(255, 255, 255, 0.4),
+    inset 0 -6px 9px rgba(37, 10, 82, 0.25);
 }
 
 
@@ -502,33 +423,26 @@
 ========================================================= */
 
 @media (max-width: 900px) {
-
   .balanceCard {
     padding: 22px;
   }
-
 
   .balances {
     gap: 20px;
   }
 
-
   .balanceItem {
     gap: 13px;
   }
 
-
   .icon {
     width: 56px;
-
     height: 56px;
   }
-
 
   .coinInner span {
     font-size: 24px;
   }
-
 
   .balanceItem strong {
     font-size: 25px;
@@ -541,13 +455,11 @@
 ========================================================= */
 
 @media (max-width: 600px) {
-
   .balanceCard {
     padding: 18px;
 
     border-radius: 17px;
   }
-
 
   .header {
     align-items: flex-start;
@@ -555,30 +467,24 @@
     margin-bottom: 20px;
   }
 
-
   .header h2 {
     font-size: 18px;
   }
-
 
   .header p {
     font-size: 11px;
   }
 
-
   .actions {
     gap: 6px;
   }
 
-
   .actions button {
     width: 34px;
-
     height: 34px;
 
     border-radius: 9px;
   }
-
 
   .balances {
     grid-template-columns: 1fr;
@@ -586,49 +492,38 @@
     gap: 17px;
   }
 
-
   .balanceItem {
     gap: 13px;
   }
 
-
   .icon {
     width: 50px;
-
     height: 50px;
   }
-
 
   .coinInner span {
     font-size: 21px;
   }
 
-
   .coinShine {
     width: 27px;
-
     height: 13px;
 
     top: 6px;
-
     left: 8px;
   }
-
 
   .balanceItem span {
     font-size: 11px;
   }
 
-
   .balanceItem strong {
     font-size: 23px;
   }
 
-
   .balanceItem strong small {
     font-size: 12px;
   }
-
 
   .balanceItem p {
     margin-top: 5px;
@@ -636,10 +531,8 @@
     font-size: 10px;
   }
 
-
   .divider {
     width: 100%;
-
     height: 1px;
 
     background:
@@ -659,45 +552,35 @@
 ========================================================= */
 
 @media (max-width: 380px) {
-
   .balanceCard {
     padding: 15px;
   }
-
 
   .header h2 {
     font-size: 17px;
   }
 
-
   .header p {
     font-size: 10px;
   }
 
-
   .actions button {
     width: 32px;
-
     height: 32px;
   }
-
 
   .balanceItem {
     gap: 11px;
   }
 
-
   .icon {
     width: 46px;
-
     height: 46px;
   }
-
 
   .coinInner span {
     font-size: 19px;
   }
-
 
   .balanceItem strong {
     font-size: 21px;
@@ -710,7 +593,7 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
+  .balanceCard,
   .balanceItem:hover .icon,
   .actions button {
     transition: none;

@@ -16,14 +16,27 @@ import {
 
 import styles from "./Navbar.module.css";
 
+
 function Navbar() {
+  /* =====================================================
+     MOBILE MENU
+  ===================================================== */
 
   const [mobileOpen, setMobileOpen] =
     useState(false);
 
+
+  /* =====================================================
+     PROFILE DROPDOWN
+  ===================================================== */
+
   const [profileOpen, setProfileOpen] =
     useState(false);
 
+
+  /* =====================================================
+     NAVIGATION ITEMS
+  ===================================================== */
 
   const navItems = [
     {
@@ -49,8 +62,34 @@ function Navbar() {
   ];
 
 
+  /* =====================================================
+     CURRENT PATH
+  ===================================================== */
+
   const currentPath =
     window.location.pathname;
+
+
+  /* =====================================================
+     ACTIVE NAV ITEM
+  ===================================================== */
+
+  const isActive = (href) => {
+    const normalizedCurrentPath =
+      currentPath
+        .replace(/\/+$/, "")
+        .toLowerCase();
+
+    const normalizedHref =
+      href
+        .replace(/\/+$/, "")
+        .toLowerCase();
+
+    return (
+      normalizedCurrentPath ===
+      normalizedHref
+    );
+  };
 
 
   return (
@@ -58,9 +97,9 @@ function Navbar() {
 
       <div className={styles.navbarInner}>
 
-        {/* =========================
+        {/* =================================================
             LOGO
-        ========================= */}
+        ================================================= */}
 
         <a
           href="/dashboard"
@@ -86,9 +125,9 @@ function Navbar() {
         </a>
 
 
-        {/* =========================
+        {/* =================================================
             DESKTOP NAV
-        ========================= */}
+        ================================================= */}
 
         <nav className={styles.desktopNav}>
 
@@ -97,8 +136,7 @@ function Navbar() {
             const Icon = item.icon;
 
             const active =
-              currentPath ===
-              item.href;
+              isActive(item.href);
 
             return (
               <a
@@ -125,11 +163,15 @@ function Navbar() {
         </nav>
 
 
-        {/* =========================
+        {/* =================================================
             RIGHT SIDE
-        ========================= */}
+        ================================================= */}
 
         <div className={styles.navRight}>
+
+          {/* =================================================
+              NOTIFICATIONS
+          ================================================= */}
 
           <button
             type="button"
@@ -153,7 +195,9 @@ function Navbar() {
           <div className={styles.navDivider} />
 
 
-          {/* PROFILE */}
+          {/* =================================================
+              PROFILE
+          ================================================= */}
 
           <div
             className={
@@ -171,6 +215,8 @@ function Navbar() {
                   !profileOpen
                 )
               }
+              aria-expanded={profileOpen}
+              aria-label="Open profile menu"
             >
 
               <div
@@ -206,6 +252,10 @@ function Navbar() {
 
             </button>
 
+
+            {/* =================================================
+                PROFILE DROPDOWN
+            ================================================= */}
 
             {profileOpen && (
 
@@ -266,7 +316,9 @@ function Navbar() {
           </div>
 
 
-          {/* MOBILE BUTTON */}
+          {/* =================================================
+              MOBILE MENU BUTTON
+          ================================================= */}
 
           <button
             type="button"
@@ -279,6 +331,7 @@ function Navbar() {
               )
             }
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
 
             {mobileOpen ? (
@@ -294,9 +347,9 @@ function Navbar() {
       </div>
 
 
-      {/* =========================
+      {/* =====================================================
           MOBILE MENU
-      ========================= */}
+      ===================================================== */}
 
       {mobileOpen && (
 
@@ -313,8 +366,7 @@ function Navbar() {
               const Icon = item.icon;
 
               const active =
-                currentPath ===
-                item.href;
+                isActive(item.href);
 
               return (
                 <a

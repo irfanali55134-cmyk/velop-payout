@@ -1,6 +1,6 @@
-/* =========================
+/* =========================================================
    WRAPPER
-========================= */
+========================================================= */
 
 .wrapper {
   width: 100%;
@@ -8,9 +8,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    HEADING
-========================= */
+========================================================= */
 
 .heading {
   margin-bottom: 18px;
@@ -22,7 +22,11 @@
   color: #ffffff;
 
   font-size: clamp(19px, 2vw, 22px);
+  font-weight: 700;
+
   line-height: 1.3;
+
+  letter-spacing: -0.2px;
 }
 
 .heading p {
@@ -31,13 +35,14 @@
   color: #858a9f;
 
   font-size: 12px;
+
   line-height: 1.5;
 }
 
 
-/* =========================
+/* =========================================================
    METHOD GRID
-========================= */
+========================================================= */
 
 .grid {
   display: grid;
@@ -49,9 +54,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    METHOD CARD
-========================= */
+========================================================= */
 
 .card {
   position: relative;
@@ -91,9 +96,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    HOVER
-========================= */
+========================================================= */
 
 .card:hover:not(.disabled) {
   transform: translateY(-3px);
@@ -112,9 +117,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    SELECTED
-========================= */
+========================================================= */
 
 .selected {
   border-color: #8b5cf6;
@@ -127,19 +132,19 @@
     );
 
   box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.22),
-    0 12px 32px rgba(92, 45, 190, 0.18);
+    0 0 0 1px rgba(139, 92, 246, 0.18),
+    0 12px 32px rgba(92, 45, 190, 0.16);
 }
 
 
-/* =========================
+/* =========================================================
    UNAVAILABLE / PAYPAL
-========================= */
+========================================================= */
 
 .disabled {
   opacity: 0.55;
 
-  cursor: pointer;
+  cursor: not-allowed;
 }
 
 .disabled:hover {
@@ -158,13 +163,13 @@
 }
 
 
-/* =========================
+/* =========================================================
    ICON BOX
-========================= */
+========================================================= */
 
 .iconBox {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
 
   flex-shrink: 0;
 
@@ -177,50 +182,53 @@
 
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.12);
+
+  overflow: hidden;
 }
 
 
-/* =========================
-   BRAND ICON
-========================= */
+/* =========================================================
+   BRAND IMAGE
+========================================================= */
 
-.brandIcon {
+.brandImage {
   display: block;
 
+  width: 47px;
+  height: 47px;
+
   flex-shrink: 0;
+
+  object-fit: contain;
+  object-position: center;
 }
 
 
-/* =========================
-   UPI LOGO
-========================= */
+/* =========================================================
+   UPI IMAGE
+========================================================= */
 
-.upiLogo {
-  width: 38px;
-  height: 38px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
+.upiImage {
+  width: 50px;
+  height: 50px;
 }
 
 
-/*
-   UPI-style brand treatment
-*/
+/* =========================================================
+   PAYPAL FALLBACK
+========================================================= */
 
-.upiText {
-  position: relative;
+.paypalFallback {
+  display: grid;
+  place-items: center;
 
-  color: #6f2c91;
+  width: 43px;
+  height: 43px;
 
-  font-size: 17px;
+  color: #0070ba;
 
-  font-weight: 900;
-
-  letter-spacing: -1.2px;
+  font-size: 31px;
+  font-weight: 800;
 
   font-style: italic;
 
@@ -228,78 +236,20 @@
 }
 
 
-/* Small brand accent */
-
-.upiText::after {
-  content: "";
-
-  position: absolute;
-
-  left: 1px;
-  bottom: -4px;
-
-  width: 24px;
-  height: 3px;
-
-  border-radius: 10px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #f59e0b,
-      #22c55e,
-      #3b82f6
-    );
-
-  transform: skewX(-18deg);
-}
-
-
-/* =========================
-   AMAZON
-========================= */
-
-.amazonBrand {
-  width: 35px;
-  height: 35px;
-
-  color: #111111;
-}
-
-
-/* =========================
-   GOOGLE PLAY
-========================= */
-
-.playBrand {
-  width: 35px;
-  height: 35px;
-
-  color: #34a853;
-}
-
-
-/* =========================
-   PAYPAL
-========================= */
-
-.paypalBrand {
-  width: 37px;
-  height: 37px;
-
-  color: #0070ba;
-}
-
-
-/* =========================
+/* =========================================================
    CONTENT
-========================= */
+========================================================= */
 
 .content {
   min-width: 0;
 
   flex: 1;
 }
+
+
+/* =========================================================
+   TITLE ROW
+========================================================= */
 
 .titleRow {
   display: flex;
@@ -317,6 +267,8 @@
   color: #ffffff;
 
   font-size: 16px;
+  font-weight: 700;
+
   line-height: 1.3;
 
   white-space: nowrap;
@@ -325,6 +277,11 @@
 
   text-overflow: ellipsis;
 }
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .content p {
   margin: 8px 0 0;
@@ -337,9 +294,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    SELECTED CHECK
-========================= */
+========================================================= */
 
 .check {
   width: 22px;
@@ -363,9 +320,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    COMING SOON
-========================= */
+========================================================= */
 
 .comingSoon {
   margin-left: auto;
@@ -384,13 +341,15 @@
 
   font-weight: 600;
 
+  line-height: 1.2;
+
   white-space: nowrap;
 }
 
 
-/* =========================
+/* =========================================================
    UNAVAILABLE
-========================= */
+========================================================= */
 
 .unavailable {
   display: flex;
@@ -408,10 +367,24 @@
   line-height: 1.4;
 }
 
+.unavailable svg {
+  flex-shrink: 0;
+}
 
-/* =========================
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.card:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 1000px) {
   .grid {
@@ -425,9 +398,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    SMALL TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 768px) {
   .wrapper {
@@ -441,30 +414,32 @@
   }
 
   .iconBox {
+    width: 49px;
+    height: 49px;
+  }
+
+  .brandImage {
+    width: 44px;
+    height: 44px;
+  }
+
+  .upiImage {
     width: 47px;
     height: 47px;
   }
 
-  .amazonBrand {
-    width: 32px;
-    height: 32px;
-  }
+  .paypalFallback {
+    width: 39px;
+    height: 39px;
 
-  .playBrand {
-    width: 32px;
-    height: 32px;
-  }
-
-  .paypalBrand {
-    width: 34px;
-    height: 34px;
+    font-size: 28px;
   }
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 600px) {
   .wrapper {
@@ -500,41 +475,27 @@
   }
 
   .iconBox {
-    width: 45px;
-    height: 45px;
+    width: 47px;
+    height: 47px;
 
     border-radius: 11px;
   }
 
-  .upiLogo {
-    width: 34px;
-    height: 34px;
+  .brandImage {
+    width: 41px;
+    height: 41px;
   }
 
-  .upiText {
-    font-size: 15px;
+  .upiImage {
+    width: 44px;
+    height: 44px;
   }
 
-  .upiText::after {
-    width: 22px;
-    height: 2px;
+  .paypalFallback {
+    width: 35px;
+    height: 35px;
 
-    bottom: -3px;
-  }
-
-  .amazonBrand {
-    width: 29px;
-    height: 29px;
-  }
-
-  .playBrand {
-    width: 29px;
-    height: 29px;
-  }
-
-  .paypalBrand {
-    width: 31px;
-    height: 31px;
+    font-size: 26px;
   }
 
   .titleRow h3 {
@@ -566,9 +527,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 380px) {
   .card {
@@ -578,32 +539,25 @@
   }
 
   .iconBox {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
   }
 
-  .upiLogo {
-    width: 31px;
-    height: 31px;
+  .brandImage {
+    width: 38px;
+    height: 38px;
   }
 
-  .upiText {
-    font-size: 14px;
+  .upiImage {
+    width: 41px;
+    height: 41px;
   }
 
-  .amazonBrand {
-    width: 27px;
-    height: 27px;
-  }
+  .paypalFallback {
+    width: 32px;
+    height: 32px;
 
-  .playBrand {
-    width: 27px;
-    height: 27px;
-  }
-
-  .paypalBrand {
-    width: 29px;
-    height: 29px;
+    font-size: 24px;
   }
 
   .titleRow {
@@ -621,5 +575,17 @@
   .check {
     width: 18px;
     height: 18px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .check {
+    transition: none !important;
   }
 }
