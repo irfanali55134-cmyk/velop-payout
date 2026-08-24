@@ -106,6 +106,8 @@ function Payout() {
   const [selectedMethod, setSelectedMethod] =
     useState(getMethodFromURL);
 
+    const [pageTransition, setPageTransition] =
+  useState("none");
 
   /* =========================================================
      SELECTED REWARD
@@ -224,13 +226,22 @@ function Payout() {
 
   const handleMethodChange = (method) => {
 
-    if (method === "paypal") {
+  if (method === "paypal") {
 
-      setShowPaypalUnavailable(true);
+    setShowPaypalUnavailable(true);
 
-      return;
-    }
+    return;
+  }
 
+  // Prevent multiple clicks during transition
+  if (pageTransition !== "none") {
+    return;
+  }
+
+  // Start exit animation
+  setPageTransition("exit");
+
+  setTimeout(() => {
 
     setSelectedMethod(method);
 
@@ -247,12 +258,23 @@ function Payout() {
     setUpiValue("");
     setEmailValue("");
 
-
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "instant",
     });
-  };
+
+    // Start new page entrance animation
+    requestAnimationFrame(() => {
+      setPageTransition("enter");
+    });
+
+    // Remove animation state
+    setTimeout(() => {
+      setPageTransition("none");
+    }, 500);
+
+  }, 220);
+};
 
 
   /* =========================================================
@@ -545,8 +567,9 @@ function Payout() {
       <>
         <Navbar />
 
-        <main className="payout-page">
-
+<main
+  className={`payout-page payout-page-transition ${pageTransition}`}
+>
           <section className="payout-header">
 
             <div className="payout-header-content">
@@ -897,7 +920,15 @@ function Payout() {
     <>
       <Navbar />
 
-      <main className="payout-page payout-method-page">
+     <main
+  className={`
+    payout-page
+    payout-method-page
+    payout-theme-${selectedMethod}
+    payout-page-transition
+    ${pageTransition}
+  `}
+>
 
         {/* =================================================
             METHOD HEADER
@@ -1036,31 +1067,49 @@ function Payout() {
 
 
           {/* =================================================
-              REDEEM BUTTON
+              REDEEM ACTION
           ================================================= */}
 
-          <button
-            type="button"
-            className="redeem-button"
-            disabled={
-              !selectedReward ||
-              availableVEs <
-                selectedReward.requiredVEs
-            }
-            onClick={
-              handleRewardContinue
-            }
-          >
+          <div className="redeem-action-card">
 
-            <span>
-              Redeem Reward
-            </span>
+            <div className="redeem-security-icon">
+              🔒
+            </div>
 
-            <span className="redeem-arrow">
-              →
-            </span>
+            <div className="redeem-action-content">
 
-          </button>
+              <h3>
+                100% Secure Redemption
+              </h3>
+
+              <p>
+                Your data and transactions are always protected.
+              </p>
+
+            </div>
+
+            <button
+              type="button"
+              className="redeem-button"
+              disabled={
+                !selectedReward ||
+                availableVEs <
+                  selectedReward.requiredVEs
+              }
+              onClick={handleRewardContinue}
+            >
+
+              <span>
+                Redeem
+              </span>
+
+              <span className="redeem-arrow">
+                →
+              </span>
+
+            </button>
+
+          </div>
 
         </section>
 
