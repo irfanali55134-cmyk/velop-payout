@@ -1,220 +1,95 @@
 /* =========================================================
-   PAYOUT PAGE
+   METHOD-SPECIFIC PAYOUT PAGE
 ========================================================= */
 
-.payout-page {
-  width: 100%;
-  min-height: 100vh;
-
-  padding:
-    34px
-    clamp(18px, 4vw, 48px)
-    70px;
-
-  background:
-    radial-gradient(
-      circle at 82% 4%,
-      rgba(124, 58, 237, 0.07),
-      transparent 27%
-    ),
-    radial-gradient(
-      circle at 12% 48%,
-      rgba(79, 70, 229, 0.025),
-      transparent 24%
-    ),
-    #161827;
-
-  color: #ffffff;
-
-  overflow-x: hidden;
+.payout-method-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
 }
 
 
 /* =========================================================
-   CONTENT WIDTH
+   METHOD HEADER
 ========================================================= */
 
-.payout-page > * {
-  width: 100%;
-  max-width: 1280px;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.payout-header {
-  margin-bottom: 28px;
-}
-
-.payout-header-content {
-  max-width: 720px;
-}
-
-.payout-eyebrow,
-.section-eyebrow {
-  display: block;
-
-  margin-bottom: 8px;
-
-  color: #a78bfa;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  line-height: 1.2;
-
-  letter-spacing: 1.35px;
-
-  text-transform: uppercase;
-}
-
-.payout-header h1 {
-  margin: 0;
-
-  color: #ffffff;
-
-  font-size: clamp(32px, 4vw, 46px);
-  font-weight: 750;
-
-  line-height: 1.1;
-
-  letter-spacing: -1px;
-}
-
-.payout-header h1 span {
-  color: #a78bfa;
-}
-
-.payout-header p {
-  max-width: 650px;
-
-  margin: 11px 0 0;
-
-  color: #9297aa;
-
-  font-size: 14px;
-
-  line-height: 1.6;
-}
-
-
-/* =========================================================
-   BALANCE
-========================================================= */
-
-.balance-section {
-  margin-top: 24px;
-}
-
-
-/* =========================================================
-   METHOD SELECTOR
-========================================================= */
-
-.method-section {
-  margin-top: 25px;
-}
-
-
-/* =========================================================
-   METHOD VISUAL
-========================================================= */
-
-.method-visual-section {
-  margin-top: 18px;
-}
-
-
-/* =========================================================
-   REWARDS SECTION
-========================================================= */
-
-.rewards-section {
-  position: relative;
-
-  margin-top: 26px;
-
-  padding:
-    clamp(21px, 3vw, 29px);
-
-  border: 1px solid #2d3047;
-  border-radius: 20px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(25, 28, 49, 0.98),
-      rgba(15, 17, 34, 0.99)
-    );
-
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.16);
-
-  overflow: hidden;
-}
-
-
-/* subtle section highlight */
-
-.rewards-section::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 18%;
-  right: 18%;
-
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(167, 139, 250, 0.2),
-      transparent
-    );
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   REWARDS HEADING
-========================================================= */
-
-.rewards-heading {
+.method-page-header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  margin-bottom: 22px;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
-.rewards-heading h2 {
+
+.method-back-button {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #252b46;
+  border-radius: 50%;
+
+  background: #0d1226;
+
+  color: #f5f7ff;
+
+  font-size: 25px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.method-back-button:hover {
+  border-color: #8b5cf6;
+
+  background: #151a35;
+
+  transform: translateX(-2px);
+}
+
+
+.method-title-content {
+  min-width: 0;
+  flex: 1;
+}
+
+
+.method-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+.method-title-row h1 {
   margin: 0;
 
-  color: #ffffff;
+  color: #f5f7ff;
 
-  font-size: clamp(20px, 2vw, 24px);
-  font-weight: 700;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 750;
 
-  line-height: 1.3;
+  line-height: 1.15;
 
-  letter-spacing: -0.25px;
+  letter-spacing: -0.5px;
 }
 
-.rewards-heading p {
+
+.method-title-content p {
   margin: 6px 0 0;
 
-  color: #858a9f;
+  color: #a8b0d0;
 
   font-size: 13px;
 
@@ -222,52 +97,120 @@
 }
 
 
+.method-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 13px;
+
+  border: 1px solid #252b46;
+  border-radius: 9px;
+
+  background: #0d1226;
+
+  color: #a78bfa;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: capitalize;
+}
+
+
 /* =========================================================
-   METHOD BADGE
+   BANNER
 ========================================================= */
 
-.reward-method-badge {
-  flex-shrink: 0;
+.payout-method-banner {
+  width: 100%;
 
-  padding: 7px 11px;
+  margin-bottom: 24px;
 
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  border-radius: 8px;
+  border-radius: 14px;
 
-  background:
-    rgba(124, 58, 237, 0.07);
+  overflow: hidden;
+}
 
-  color: #b9a7ff;
 
-  font-size: 10px;
-  font-weight: 650;
+.payout-method-banner img {
+  display: block;
 
-  line-height: 1.2;
+  width: 100%;
+  height: auto;
 
-  letter-spacing: 0.2px;
+  max-height: 180px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   METHOD REWARDS HEADING
+========================================================= */
+
+.payout-method-page .rewards-section {
+  width: 100%;
+}
+
+
+.payout-method-page .rewards-heading {
+  margin-bottom: 18px;
+}
+
+
+.payout-method-page .section-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 5px;
+
+  color: #a78bfa;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+
+.payout-method-page .rewards-heading h2 {
+  margin: 0;
+
+  color: #f5f7ff;
+
+  font-size: clamp(20px, 2.2vw, 25px);
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+
+.payout-method-page .rewards-heading p {
+  max-width: 650px;
+
+  margin: 7px 0 0;
+
+  color: #a8b0d0;
+
+  font-size: 12px;
+
+  line-height: 1.55;
 }
 
 
 /* =========================================================
    REWARD GRID
+   KEEPING EXISTING REWARD CARD DESIGN
 ========================================================= */
 
-.reward-grid {
+.payout-method-page .reward-grid {
   display: grid;
 
   grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    repeat(2, minmax(0, 1fr));
 
-  gap: 14px;
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.reward-progress-section {
-  margin-top: 20px;
+  gap: 12px;
 }
 
 
@@ -275,177 +218,78 @@
    REDEEM BUTTON
 ========================================================= */
 
-.redeem-button {
-  position: relative;
-
+.payout-method-page .redeem-button {
   width: 100%;
-  min-height: 52px;
+
+  min-height: 50px;
+
+  margin-top: 18px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 9px;
+  gap: 10px;
 
-  margin-top: 20px;
-  padding: 14px 20px;
-
-  border: 1px solid rgba(167, 139, 250, 0.15);
+  border: 1px solid #8b5cf6;
   border-radius: 12px;
 
   background:
     linear-gradient(
-      90deg,
-      #6d28d9,
-      #7c3aed
+      135deg,
+      #8b5cf6,
+      #6d3fd1
     );
 
   color: #ffffff;
 
-  font-size: 15px;
-  font-weight: 650;
-
-  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 700;
 
   cursor: pointer;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 8px 24px rgba(109, 40, 217, 0.15);
 
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    border-color 0.2s ease,
     opacity 0.2s ease;
 }
 
 
-/* button highlight */
-
-.redeem-button::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: -30%;
-
-  width: 30%;
-  height: 100%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.08),
-      transparent
-    );
-
-  transform: skewX(-18deg);
-
-  transition:
-    left 0.45s ease;
-
-  pointer-events: none;
-}
-
-.redeem-button:hover:not(:disabled)::before {
-  left: 105%;
-}
-
-
-/* arrow */
-
-.redeem-arrow {
-  font-size: 18px;
-
-  transition:
-    transform 0.2s ease;
-}
-
-.redeem-button:hover:not(:disabled) {
+.payout-method-page .redeem-button:hover:not(:disabled) {
   transform: translateY(-2px);
 
-  border-color: rgba(196, 181, 253, 0.25);
-
   box-shadow:
-    0 12px 30px rgba(109, 40, 217, 0.22);
+    0 10px 25px
+    rgba(139, 92, 246, 0.25);
 }
 
-.redeem-button:hover:not(:disabled) .redeem-arrow {
-  transform: translateX(3px);
-}
 
-.redeem-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.redeem-button:disabled {
-  opacity: 0.35;
+.payout-method-page .redeem-button:disabled {
+  opacity: 0.4;
 
   cursor: not-allowed;
+}
 
-  box-shadow: none;
+
+.payout-method-page .redeem-arrow {
+  font-size: 18px;
 }
 
 
 /* =========================================================
-   LOWER SECTIONS
+   AMAZON
 ========================================================= */
 
-.before-redeem-section,
-.security-section,
-.faq-section {
-  margin-top: 24px;
+.payout-method-page
+  .method-badge {
+  border-color: rgba(251, 191, 36, 0.3);
 }
 
 
-/* =========================================================
-   FLOW PAGE
-========================================================= */
-
-.payout-flow-page {
-  padding-top: 30px;
-}
-
-
-/* =========================================================
-   FOCUS
-========================================================= */
-
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #a78bfa;
-
-  outline-offset: 3px;
-}
-
-
-/* =========================================================
-   PAGE ENTRANCE
-========================================================= */
-
-.payout-page {
-  animation:
-    payoutPageIn 0.4s ease-out;
-}
-
-@keyframes payoutPageIn {
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(7px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0);
-  }
+.payout-method-page
+  .method-title-row
+  + p {
+  color: #a8b0d0;
 }
 
 
@@ -453,22 +297,22 @@ input:focus-visible {
    TABLET
 ========================================================= */
 
-@media (max-width: 1024px) {
-  .payout-page {
-    padding:
-      28px
-      22px
-      55px;
+@media (max-width: 900px) {
+
+  .payout-method-page {
+    padding: 24px 18px 50px;
   }
 
-  .payout-header h1 {
-    font-size: 38px;
+
+  .payout-method-banner img {
+    max-height: 155px;
   }
 
-  .reward-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+
+  .payout-method-page .reward-grid {
+    grid-template-columns: 1fr;
   }
+
 }
 
 
@@ -476,90 +320,107 @@ input:focus-visible {
    MOBILE
 ========================================================= */
 
-@media (max-width: 650px) {
-  .payout-page {
-    padding:
-      24px
-      15px
-      42px;
+@media (max-width: 600px) {
+
+  .payout-method-page {
+    padding: 20px 12px 40px;
   }
 
-  .payout-header {
-    margin-bottom: 22px;
+
+  .method-page-header {
+    gap: 11px;
+
+    margin-bottom: 14px;
   }
 
-  .payout-header h1 {
-    font-size: 30px;
 
-    letter-spacing: -0.7px;
+  .method-back-button {
+    width: 36px;
+    height: 36px;
+
+    font-size: 21px;
   }
 
-  .payout-header p {
-    font-size: 13px;
+
+  .method-title-row {
+    gap: 7px;
   }
 
-  .balance-section {
-    margin-top: 20px;
+
+  .method-title-row h1 {
+    font-size: 21px;
   }
 
-  .method-section {
-    margin-top: 22px;
+
+  .method-title-content p {
+    margin-top: 4px;
+
+    font-size: 11px;
   }
 
-  .method-visual-section {
-    margin-top: 16px;
+
+  .method-badge {
+    padding: 5px 9px;
+
+    font-size: 9px;
   }
 
-  .rewards-section {
-    margin-top: 21px;
 
-    padding:
-      18px 14px;
+  .payout-method-banner {
+    margin-bottom: 18px;
 
-    border-radius: 17px;
+    border-radius: 11px;
   }
 
-  .rewards-heading {
-    gap: 12px;
 
-    margin-bottom: 17px;
+  .payout-method-banner img {
+    width: 100%;
+
+    max-height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 11px;
   }
 
-  .rewards-heading h2 {
+
+  .payout-method-page .rewards-heading {
+    margin-bottom: 13px;
+  }
+
+
+  .payout-method-page .section-eyebrow {
+    font-size: 9px;
+  }
+
+
+  .payout-method-page .rewards-heading h2 {
     font-size: 19px;
   }
 
-  .rewards-heading p {
-    font-size: 12px;
+
+  .payout-method-page .rewards-heading p {
+    margin-top: 5px;
+
+    font-size: 10px;
   }
 
-  .reward-method-badge {
-    display: none;
+
+  .payout-method-page .reward-grid {
+    gap: 10px;
   }
 
-  .reward-grid {
-    grid-template-columns: 1fr;
 
-    gap: 11px;
+  .payout-method-page .redeem-button {
+    min-height: 46px;
+
+    margin-top: 14px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
   }
 
-  .reward-progress-section {
-    margin-top: 15px;
-  }
-
-  .redeem-button {
-    min-height: 50px;
-
-    margin-top: 16px;
-
-    font-size: 14px;
-  }
-
-  .before-redeem-section,
-  .security-section,
-  .faq-section {
-    margin-top: 20px;
-  }
 }
 
 
@@ -568,39 +429,915 @@ input:focus-visible {
 ========================================================= */
 
 @media (max-width: 380px) {
-  .payout-page {
-    padding:
-      20px
-      11px
-      32px;
+
+  .payout-method-page {
+    padding-left: 9px;
+    padding-right: 9px;
   }
+
+
+  .method-title-row h1 {
+    font-size: 19px;
+  }
+
+
+  .method-title-content p {
+    font-size: 10px;
+  }
+
+
+  .payout-method-banner img {
+    max-height: 100px;
+  }
+
+}
+/* =========================================================
+   PAYOUT MAIN PAGE - RESTORE ORIGINAL LAYOUT
+========================================================= */
+
+.payout-page {
+  width: 100%;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  background: #050a18;
+  color: #f5f7ff;
+}
+
+
+/* =========================================================
+   NORMAL PAYOUT HOME
+========================================================= */
+
+.payout-page:not(.payout-method-page) {
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: 40px 32px 70px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAYOUT HEADER
+========================================================= */
+
+.payout-header {
+  width: 100%;
+
+  margin-bottom: 36px;
+}
+
+
+.payout-header-content {
+  max-width: 900px;
+}
+
+
+.payout-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #a78bfa;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+
+.payout-header h1 {
+  margin: 0;
+
+  color: #f5f7ff;
+
+  font-size: clamp(32px, 4vw, 46px);
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+}
+
+
+.payout-header h1 span {
+  color: #8b5cf6;
+}
+
+
+.payout-header p {
+  margin: 12px 0 0;
+
+  color: #a8b0d0;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   METHOD SECTION
+========================================================= */
+
+.method-section {
+  width: 100%;
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .payout-page:not(.payout-method-page) {
+    padding: 28px 18px 50px;
+  }
+
+
+  .payout-header {
+    margin-bottom: 28px;
+  }
+
+
+  .payout-eyebrow {
+    font-size: 10px;
+
+    letter-spacing: 1.2px;
+  }
+
+
+  .payout-header h1 {
+    font-size: 30px;
+
+    letter-spacing: -0.6px;
+  }
+
+
+  .payout-header p {
+    margin-top: 9px;
+
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .payout-page:not(.payout-method-page) {
+    padding: 22px 14px 40px;
+  }
+
+
+  .payout-header {
+    margin-bottom: 24px;
+  }
+
 
   .payout-header h1 {
     font-size: 27px;
   }
 
+
   .payout-header p {
     font-size: 12px;
   }
 
-  .rewards-section {
-    padding:
-      15px 12px;
+}
+/* =========================================================
+   EXTRA MAIN PAYOUT PAGE SECTIONS
+   These styles only affect the method-selection page
+========================================================= */
+
+
+/* =========================================================
+   PAYOUT BENEFITS
+========================================================= */
+
+.payout-benefits {
+  width: 100%;
+  margin-top: 34px;
+}
+
+
+/* MAIN BENEFIT */
+
+.benefit-card {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  width: 100%;
+
+  padding: 20px 22px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #252b46;
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151a35 0%,
+      #0d1226 100%
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+
+  background:
+    rgba(139, 92, 246, 0.12);
+
+  border: 1px solid
+    rgba(139, 92, 246, 0.3);
+
+  color: #a78bfa;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+
+.benefit-content {
+  min-width: 0;
+}
+
+
+.benefit-card h3 {
+  margin: 0;
+
+  color: #f5f7ff;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+
+.benefit-card p {
+  margin: 5px 0 0;
+
+  color: #a8b0d0;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+.benefit-arrow {
+  margin-left: auto;
+
+  flex-shrink: 0;
+
+  color: #a8b0d0;
+
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   SMALL BENEFITS
+========================================================= */
+
+.benefit-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 12px;
+}
+
+
+.benefit-small-card {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  min-width: 0;
+
+  padding: 17px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #252b46;
+
+  border-radius: 14px;
+
+  background: #0d1226;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.benefit-small-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #3b4163;
+}
+
+
+.small-benefit-icon {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(139, 92, 246, 0.1);
+
+  color: #a78bfa;
+
+  font-size: 15px;
+}
+
+
+.benefit-small-card h4 {
+  margin: 0;
+
+  color: #f5f7ff;
+
+  font-size: 13px;
+
+  line-height: 1.3;
+}
+
+
+.benefit-small-card p {
+  margin: 5px 0 0;
+
+  color: #858eac;
+
+  font-size: 10px;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   SECURITY RULES
+========================================================= */
+
+.security-rules {
+  width: 100%;
+
+  margin-top: 28px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #252b46;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #11172d,
+      #0a0f20
+    );
+}
+
+
+.security-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.security-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background:
+    rgba(34, 197, 94, 0.08);
+
+  border: 1px solid
+    rgba(34, 197, 94, 0.2);
+
+  color: #22c55e;
+
+  font-size: 21px;
+}
+
+
+.security-header span {
+  display: block;
+
+  color: #22c55e;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+}
+
+
+.security-header h2 {
+  margin: 4px 0 0;
+
+  color: #f5f7ff;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+
+.security-header p {
+  margin: 5px 0 0;
+
+  color: #858eac;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* SECURITY ITEMS */
+
+.security-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+
+.security-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding: 13px;
+
+  box-sizing: border-box;
+
+  border: 1px solid
+    rgba(37, 43, 70, 0.8);
+
+  border-radius: 11px;
+
+  background:
+    rgba(13, 18, 38, 0.65);
+}
+
+
+.security-item > span {
+  flex-shrink: 0;
+
+  color: #8b5cf6;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.security-item p {
+  margin: 0;
+
+  color: #a8b0d0;
+
+  font-size: 10px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.payout-faq {
+  width: 100%;
+
+  margin-top: 28px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #252b46;
+
+  border-radius: 17px;
+
+  background: #0d1226;
+}
+
+
+.faq-heading span {
+  display: block;
+
+  color: #a78bfa;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+}
+
+
+.faq-heading h2 {
+  margin: 5px 0 0;
+
+  color: #f5f7ff;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+
+.faq-heading p {
+  margin: 6px 0 0;
+
+  color: #858eac;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+.faq-list {
+  display: grid;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+
+.faq-item {
+  border: 1px solid #252b46;
+
+  border-radius: 11px;
+
+  background: #0a0f20;
+
+  overflow: hidden;
+}
+
+
+.faq-item summary {
+  position: relative;
+
+  display: block;
+
+  padding: 15px 40px 15px 15px;
+
+  box-sizing: border-box;
+
+  color: #f5f7ff;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  cursor: pointer;
+
+  list-style: none;
+}
+
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+
+.faq-item summary::after {
+  content: "+";
+
+  position: absolute;
+
+  right: 15px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #a78bfa;
+
+  font-size: 18px;
+
+  font-weight: 400;
+}
+
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+
+.faq-item p {
+  margin: 0;
+
+  padding: 0 15px 15px;
+
+  color: #858eac;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .benefit-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
 
-  .rewards-heading h2 {
+  .security-list {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .payout-benefits {
+    margin-top: 24px;
+  }
+
+
+  .benefit-card {
+    padding: 16px;
+
+    gap: 12px;
+  }
+
+
+  .benefit-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+  }
+
+
+  .benefit-card h3 {
+    font-size: 14px;
+  }
+
+
+  .benefit-card p {
+    font-size: 10px;
+  }
+
+
+  .benefit-grid {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+  }
+
+
+  .benefit-small-card {
+    padding: 14px;
+  }
+
+
+  .security-rules,
+  .payout-faq {
+    margin-top: 20px;
+
+    padding: 17px;
+  }
+
+
+  .security-list {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+  }
+
+
+  .security-header {
+    gap: 12px;
+  }
+
+
+  .security-header h2 {
+    font-size: 16px;
+  }
+
+
+  .security-header p {
+    font-size: 10px;
+  }
+
+
+  .faq-heading h2 {
     font-size: 18px;
   }
 
-  .rewards-heading p {
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .benefit-card {
+    align-items: flex-start;
+
+    padding: 14px;
+  }
+
+
+  .benefit-arrow {
+    display: none;
+  }
+
+
+  .benefit-card h3 {
+    font-size: 13px;
+  }
+
+
+  .benefit-card p {
+    font-size: 9px;
+  }
+
+
+  .benefit-small-card {
+    padding: 13px;
+  }
+
+
+  .small-benefit-icon {
+    width: 32px;
+    height: 32px;
+
+    font-size: 14px;
+  }
+
+
+  .benefit-small-card h4 {
+    font-size: 12px;
+  }
+
+
+  .benefit-small-card p {
+    font-size: 9px;
+  }
+
+
+  .security-header {
+    gap: 10px;
+  }
+
+
+  .security-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 11px;
+
+    font-size: 18px;
+  }
+
+
+  .security-header span {
+    font-size: 8px;
+  }
+
+
+  .security-header h2 {
+    font-size: 14px;
+  }
+
+
+  .security-header p {
+    font-size: 9px;
+  }
+
+
+  .security-item {
+    padding: 11px;
+  }
+
+
+  .security-item p {
+    font-size: 9px;
+  }
+
+
+  .payout-faq {
+    padding: 15px;
+  }
+
+
+  .faq-heading h2 {
+    font-size: 16px;
+  }
+
+
+  .faq-heading p {
+    font-size: 9px;
+  }
+
+
+  .faq-item summary {
+    padding: 13px 35px 13px 13px;
+
     font-size: 11px;
   }
 
-  .redeem-button {
-    min-height: 48px;
 
-    font-size: 13px;
+  .faq-item p {
+    padding:
+      0 13px 13px;
+
+    font-size: 9px;
   }
+
 }
 
 
@@ -609,11 +1346,9 @@ input:focus-visible {
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .payout-page,
-  .redeem-button,
-  .reward-grid > * {
-    animation: none !important;
 
+  .benefit-small-card {
     transition: none !important;
   }
+
 }

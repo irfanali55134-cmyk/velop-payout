@@ -7,60 +7,114 @@
 
   width: 100%;
   min-width: 0;
-  min-height: 182px;
+
+  /*
+    Auto height prevents the status section
+    from getting pushed outside the card.
+  */
+  height: 166px;
+  min-height: 166px;
+
+  margin-bottom: 14px;
+
+  padding: 12px 16px 9px;
 
   display: flex;
   flex-direction: column;
 
-  padding: 20px;
+  box-sizing: border-box;
 
   text-align: left;
 
-  border: 1px solid #2d3047;
-  border-radius: 16px;
+  border: 1px solid var(--card-border);
+
+  border-radius: 15px;
 
   background:
     linear-gradient(
-      145deg,
-      #1b1e33 0%,
-      #121426 100%
+      135deg,
+      #151a35 0%,
+      #0d1226 55%,
+      #070b18 100%
     );
 
-  color: #ffffff;
+  color: #f5f7ff;
 
   cursor: pointer;
 
   overflow: hidden;
 
   transition:
-    transform 0.22s ease,
-    border-color 0.22s ease,
-    background 0.22s ease,
-    box-shadow 0.22s ease;
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* subtle top highlight */
+
+/* =========================================================
+   TOP RIGHT CUT CORNER
+========================================================= */
+
+.card::after {
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+  right: -1px;
+
+  width: 32px;
+  height: 32px;
+
+  background: #050a18;
+
+  clip-path: polygon(
+    0 0,
+    100% 100%,
+    100% 0
+  );
+
+  border-left:
+    1px solid var(--card-border);
+
+  border-bottom:
+    1px solid var(--card-border);
+
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   TOP RIGHT DOT PATTERN
+========================================================= */
 
 .card::before {
   content: "";
 
   position: absolute;
 
-  top: 0;
-  left: 18px;
-  right: 18px;
+  top: 8px;
+  right: 8px;
 
-  height: 1px;
+  width: 34px;
+  height: 34px;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.12),
-      transparent
+  background-image:
+    radial-gradient(
+      circle,
+      var(--accent) 1.4px,
+      transparent 1.5px
     );
 
+  background-size: 9px 9px;
+
+  opacity: 0.35;
+
   pointer-events: none;
+
+  z-index: 2;
 }
 
 
@@ -69,219 +123,589 @@
 ========================================================= */
 
 .card:hover:not(:disabled) {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 
-  border-color: rgba(139, 92, 246, 0.65);
-
-  background:
-    linear-gradient(
-      145deg,
-      #20233b 0%,
-      #14172a 100%
-    );
+  border-color: var(--accent);
 
   box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.18);
+    0 8px 25px var(--glow);
 }
 
 
 /* =========================================================
-   SELECTED
+   UPI
 ========================================================= */
 
-.selected {
-  border-color: #8b5cf6;
+.upi {
+  --accent: #8b5cf6;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(124, 58, 237, 0.18),
-      rgba(18, 20, 38, 0.98)
-    );
+  --glow:
+    rgba(167, 139, 250, 0.22);
 
-  box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.12),
-    0 12px 30px rgba(0, 0, 0, 0.18);
-}
-
-.selected:hover:not(:disabled) {
-  border-color: #a78bfa;
-
-  box-shadow:
-    0 0 0 1px rgba(167, 139, 250, 0.15),
-    0 14px 32px rgba(0, 0, 0, 0.2);
+  --card-border:
+    rgba(139, 92, 246, 0.55);
 }
 
 
 /* =========================================================
-   CHECK
+   AMAZON
 ========================================================= */
 
-.check {
-  position: absolute;
+.amazon {
+  --accent: #fbbf24;
 
-  top: 13px;
-  right: 13px;
+  --glow:
+    rgba(245, 158, 11, 0.2);
 
+  --card-border:
+    rgba(251, 191, 36, 0.5);
+}
+
+
+/* =========================================================
+   GOOGLE PLAY
+========================================================= */
+
+.googlePlay {
+  --accent: #06d6d6;
+
+  --glow:
+    rgba(20, 241, 225, 0.2);
+
+  --card-border:
+    rgba(6, 214, 214, 0.5);
+}
+
+
+/* =========================================================
+   TOP ROW
+========================================================= */
+
+.topRow {
+  position: relative;
+
+  z-index: 4;
+
+  min-height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.badge {
+  width: fit-content;
+
+  height: 27px;
+
+  padding: 0 11px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 55%,
+      transparent
+    );
+
+  border-radius: 15px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 13%,
+      transparent
+    );
+
+  color: var(--accent);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LOCK
+========================================================= */
+
+.lock {
   width: 25px;
   height: 25px;
 
   display: grid;
+
   place-items: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
 
-  background: #7c3aed;
+  background:
+    rgba(255, 255, 255, 0.04);
 
-  color: #ffffff;
+  color: #777f9b;
 
-  box-shadow:
-    0 4px 12px rgba(124, 58, 237, 0.25);
-
-  animation: checkIn 0.2s ease-out;
+  flex-shrink: 0;
 }
 
 
 /* =========================================================
-   CARD TOP
+   MAIN CONTENT
 ========================================================= */
 
-.cardTop {
+.mainContent {
+  position: relative;
+
+  z-index: 2;
+
   display: flex;
 
   align-items: center;
-  justify-content: space-between;
 
-  min-height: 34px;
+  gap: 12px;
 
-  gap: 10px;
+  margin-top: 7px;
+
+  min-width: 0;
+
+  flex-shrink: 0;
 }
 
 
 /* =========================================================
-   AMOUNT
+   LOGO
 ========================================================= */
 
-.amount {
-  color: #ffffff;
+.logoBox {
+  width: 66px;
+  height: 66px;
 
-  font-size: clamp(25px, 3vw, 31px);
+  flex-shrink: 0;
 
-  font-weight: 750;
+  display: grid;
+
+  place-items: center;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.logo {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.info {
+  min-width: 0;
+
+  flex: 1;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   AMOUNT NEXT TO LOGO
+========================================================= */
+
+.amountInline {
+  display: flex;
+
+  align-items: center;
+
+  gap: 2px;
+
+  line-height: 1;
+
+  margin-bottom: 2px;
+}
+
+
+.amountInline .rupee {
+  color: #22c55e;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+
+.amountInline .amount {
+  color: #f5f7ff;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.4px;
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.name {
+  color: #f5f7ff;
+
+  font-size: 15px;
+
+  font-weight: 800;
 
   line-height: 1.1;
 
-  letter-spacing: -0.6px;
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
 
 /* =========================================================
-   LOCK ICON
+   SUBTITLE
 ========================================================= */
 
-.lockIcon {
-  flex-shrink: 0;
+.subtitle {
+  margin-top: 3px;
 
-  color: #777d94;
+  color: #a8b0d0;
 
-  opacity: 0.85;
-}
-
-
-/* =========================================================
-   REWARD TYPE
-========================================================= */
-
-.rewardType {
-  margin-top: 5px;
-
-  color: #9297aa;
-
-  font-size: 12px;
+  font-size: 10px;
 
   font-weight: 500;
 
-  line-height: 1.4;
+  line-height: 1.2;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
 
 /* =========================================================
-   REQUIRED VES
+   DELIVERY
 ========================================================= */
 
-.required {
+.delivery {
+  margin-top: 6px;
+
   display: flex;
 
   align-items: center;
 
-  gap: 8px;
+  gap: 5px;
 
-  margin-top: 18px;
+  color: #a8b0d0;
 
-  color: #d7d9e4;
-
-  font-size: 13px;
+  font-size: 9px;
 
   font-weight: 600;
 
-  line-height: 1.3;
+  white-space: nowrap;
+}
+
+
+.delivery svg {
+  color: var(--accent);
+
+  flex-shrink: 0;
 }
 
 
 /* =========================================================
-   VE COIN
+   RIGHT SIDE REQUIRED VES
 ========================================================= */
 
-.veCoin {
-  position: relative;
+.veSide {
+  flex-shrink: 0;
 
-  width: 24px;
-  height: 24px;
+  width: 82px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  padding-left: 9px;
+
+  border-left:
+    1px solid
+    rgba(168, 176, 208, 0.12);
+
+  box-sizing: border-box;
+}
+
+
+.veSideLabel {
+  color: #a8b0d0;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+.veSideValue {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #f5f7ff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SMALL VE COIN
+========================================================= */
+
+.veCoinSmall {
+  width: 23px;
+  height: 23px;
 
   display: grid;
+
   place-items: center;
 
   flex-shrink: 0;
-
-  border: 1px solid rgba(245, 158, 11, 0.4);
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle at 35% 30%,
-      #ffd978 0%,
-      #f59e0b 42%,
-      #b45309 100%
+      #ffe47d 0%,
+      #f5b900 48%,
+      #b47700 100%
     );
 
-  color: #fff7df;
+  color: #ffffff;
 
-  font-size: 11px;
+  font-size: 10px;
 
-  font-weight: 800;
+  font-weight: 900;
 
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 3px 8px rgba(245, 158, 11, 0.16);
+    0 3px 9px
+    rgba(245, 185, 0, 0.25);
 }
 
 
-/* inner coin ring */
+/* =========================================================
+   VE PROGRESS ROW
+========================================================= */
 
-.veCoin::after {
-  content: "";
+.veRow {
+  position: relative;
 
-  position: absolute;
+  z-index: 2;
 
-  inset: 3px;
+  display: flex;
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 7px;
+
+  margin-left: 78px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MAIN VE COIN
+========================================================= */
+
+.veCoin {
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(245, 185, 0, 0.6);
 
   border-radius: 50%;
 
-  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #ffe47d 0%,
+      #f5b900 48%,
+      #b47700 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 4px 10px
+    rgba(245, 185, 0, 0.25);
+}
+
+
+/* =========================================================
+   CURRENT VES
+========================================================= */
+
+.current {
+  color: #22c55e;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   OF
+========================================================= */
+
+.of {
+  color: #a8b0d0;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   REQUIRED VE
+========================================================= */
+
+.requiredVE {
+  color: #a8b0d0;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   VE TEXT
+========================================================= */
+
+.veText {
+  color: #a8b0d0;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   PROGRESS TRACK
+========================================================= */
+
+.progressTrack {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    calc(100% - 78px);
+
+  height: 6px;
+
+  margin-top: 5px;
+
+  margin-left: 78px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: #292f4a;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progressBar {
+  width: 0;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 9px var(--glow);
+
+  transition:
+    width 0.3s ease;
 }
 
 
@@ -290,51 +714,49 @@
 ========================================================= */
 
 .status {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    calc(100% - 78px);
+
+  height: 21px;
+
+  min-height: 21px;
+
+  margin-top: 5px;
+
+  margin-left: 78px;
+
+  padding: 3px 8px;
+
   display: flex;
 
   align-items: center;
 
-  min-height: 31px;
+  justify-content: center;
 
-  margin-top: auto;
+  box-sizing: border-box;
 
-  padding: 7px 10px;
+  border:
+    1px solid
+    rgba(34, 197, 94, 0.14);
 
-  border-radius: 8px;
+  border-radius: 7px;
 
-  font-size: 10.5px;
-
-  font-weight: 650;
-
-  line-height: 1.3;
-}
-
-
-/* =========================================================
-   ELIGIBLE
-========================================================= */
-
-.eligible {
   background:
-    rgba(34, 197, 94, 0.08);
+    rgba(34, 197, 94, 0.07);
 
-  color: #65d98a;
+  color: #22c55e;
 
-  border: 1px solid rgba(34, 197, 94, 0.1);
-}
+  font-size: 8.5px;
 
+  font-weight: 700;
 
-/* =========================================================
-   NOT ELIGIBLE
-========================================================= */
+  line-height: 1;
 
-.notEligible {
-  background:
-    rgba(239, 68, 68, 0.07);
-
-  color: #f48787;
-
-  border: 1px solid rgba(239, 68, 68, 0.08);
+  flex-shrink: 0;
 }
 
 
@@ -343,70 +765,46 @@
 ========================================================= */
 
 .locked {
+  opacity: 0.58;
+
   cursor: not-allowed;
-
-  opacity: 0.72;
-
-  background:
-    linear-gradient(
-      145deg,
-      #181a2b,
-      #111321
-    );
 }
+
 
 .locked:hover {
   transform: none;
 
-  border-color: #2d3047;
+  border-color: var(--card-border);
 
   box-shadow: none;
+}
+
+
+.locked .progressBar {
+  opacity: 0.7;
+}
+
+
+.locked .status {
+  color: #7d849d;
+
+  border-color: #252b46;
 
   background:
-    linear-gradient(
-      145deg,
-      #181a2b,
-      #111321
-    );
+    rgba(255, 255, 255, 0.025);
 }
 
 
 /* =========================================================
-   ACTIVE PRESS
+   SELECTED
 ========================================================= */
 
-.card:active:not(:disabled) {
-  transform: translateY(-1px);
-}
+.selected {
+  border-color: var(--accent);
 
-
-/* =========================================================
-   FOCUS
-========================================================= */
-
-.card:focus-visible {
-  outline: 2px solid #a78bfa;
-
-  outline-offset: 3px;
-}
-
-
-/* =========================================================
-   ANIMATION
-========================================================= */
-
-@keyframes checkIn {
-  from {
-    opacity: 0;
-
-    transform: scale(0.7);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: scale(1);
-  }
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 8px 25px var(--glow);
 }
 
 
@@ -414,20 +812,91 @@
    TABLET
 ========================================================= */
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
+
   .card {
-    min-height: 175px;
+    height: 164px;
 
-    padding: 18px;
+    min-height: 164px;
+
+    margin-bottom: 13px;
+
+    padding: 11px 14px 9px;
   }
 
-  .amount {
-    font-size: 27px;
+
+  .logoBox {
+    width: 62px;
+
+    height: 62px;
   }
 
-  .required {
-    margin-top: 16px;
+
+  .mainContent {
+    gap: 10px;
+
+    margin-top: 6px;
   }
+
+
+  .name {
+    font-size: 14px;
+  }
+
+
+  .subtitle {
+    font-size: 9px;
+  }
+
+
+  .delivery {
+    font-size: 8.5px;
+  }
+
+
+  .veSide {
+    width: 76px;
+
+    padding-left: 7px;
+  }
+
+
+  .veSideLabel {
+    font-size: 8px;
+  }
+
+
+  .veSideValue {
+    font-size: 11px;
+  }
+
+
+  .veRow {
+    margin-left: 72px;
+
+    margin-top: 6px;
+  }
+
+
+  .progressTrack {
+    width:
+      calc(100% - 72px);
+
+    margin-left: 72px;
+
+    margin-top: 5px;
+  }
+
+
+  .status {
+    width:
+      calc(100% - 72px);
+
+    margin-left: 72px;
+
+    margin-top: 6px;
+  }
+
 }
 
 
@@ -435,49 +904,215 @@
    MOBILE
 ========================================================= */
 
-@media (max-width: 650px) {
-  .card {
-    min-height: 150px;
+@media (max-width: 600px) {
 
-    padding: 17px;
+  .card {
+    /*
+      Slightly more height so the status bar
+      has breathing room and never touches bottom.
+    */
+
+    height: 166px;
+
+    min-height: 166px;
+
+    margin-bottom: 13px;
+
+    padding: 9px 11px 9px;
 
     border-radius: 14px;
   }
 
-  .amount {
-    font-size: 25px;
+
+  .topRow {
+    min-height: 25px;
   }
 
-  .rewardType {
-    font-size: 11px;
+
+  .badge {
+    height: 25px;
+
+    padding: 0 9px;
+
+    font-size: 9px;
   }
 
-  .required {
-    margin-top: 13px;
 
+  .mainContent {
+    gap: 8px;
+
+    margin-top: 6px;
+  }
+
+
+  .logoBox {
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 10px;
+  }
+
+
+  .amountInline {
+    margin-bottom: 1px;
+  }
+
+
+  .amountInline .rupee {
+    font-size: 14px;
+  }
+
+
+  .amountInline .amount {
+    font-size: 20px;
+  }
+
+
+  .name {
     font-size: 12px;
   }
 
-  .veCoin {
-    width: 23px;
-    height: 23px;
+
+  .subtitle {
+    margin-top: 2px;
+
+    font-size: 8px;
   }
 
-  .status {
-    min-height: 29px;
 
-    padding: 6px 9px;
+  .delivery {
+    margin-top: 4px;
 
+    gap: 4px;
+
+    font-size: 7.5px;
+  }
+
+
+  .veSide {
+    width: 68px;
+
+    gap: 4px;
+
+    padding-left: 6px;
+  }
+
+
+  .veSideLabel {
+    font-size: 7px;
+  }
+
+
+  .veSideValue {
+    gap: 4px;
+
+    font-size: 9px;
+  }
+
+
+  .veCoinSmall {
+    width: 20px;
+
+    height: 20px;
+
+    font-size: 9px;
+  }
+
+
+  .veRow {
+    margin-left: 63px;
+
+    margin-top: 5px;
+
+    gap: 4px;
+  }
+
+
+  .veCoin {
+    width: 22px;
+
+    height: 22px;
+
+    font-size: 9px;
+  }
+
+
+  .current {
     font-size: 10px;
   }
 
-  .check {
-    width: 23px;
-    height: 23px;
 
-    top: 11px;
-    right: 11px;
+  .of {
+    font-size: 9px;
   }
+
+
+  .requiredVE {
+    font-size: 10px;
+  }
+
+
+  .veText {
+    font-size: 9px;
+  }
+
+
+  /* =====================================================
+     MOBILE PROGRESS
+  ===================================================== */
+
+  .progressTrack {
+    width:
+      calc(100% - 63px);
+
+    height: 5px;
+
+    margin-left: 63px;
+
+    margin-top: 5px;
+  }
+
+
+  /* =====================================================
+     MOBILE STATUS
+  ===================================================== */
+
+  .status {
+    width:
+      calc(100% - 63px);
+
+    height: 20px;
+
+    min-height: 20px;
+
+    margin-left: 63px;
+
+    /*
+      This is the important spacing.
+      It moves the status slightly upward from
+      the card bottom while keeping a small gap
+      after the progress bar.
+    */
+
+    margin-top: 6px;
+
+    padding: 3px 8px;
+
+    border-radius: 7px;
+
+    font-size: 7.5px;
+
+    line-height: 1;
+  }
+
+
+  .lock {
+    width: 22px;
+
+    height: 22px;
+  }
+
 }
 
 
@@ -485,37 +1120,223 @@
    SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 400px) {
+
   .card {
-    min-height: 142px;
+    height: 164px;
 
-    padding: 15px;
+    min-height: 164px;
+
+    margin-bottom: 12px;
+
+    padding: 8px 9px 9px;
   }
 
-  .amount {
-    font-size: 23px;
+
+  .badge {
+    height: 23px;
+
+    padding: 0 8px;
+
+    font-size: 8px;
   }
 
-  .required {
-    margin-top: 11px;
 
+  .logoBox {
+    width: 52px;
+
+    height: 52px;
+  }
+
+
+  .mainContent {
     gap: 7px;
 
+    margin-top: 5px;
+  }
+
+
+  .amountInline .amount {
+    font-size: 18px;
+  }
+
+
+  .amountInline .rupee {
+    font-size: 13px;
+  }
+
+
+  .name {
     font-size: 11px;
   }
 
-  .veCoin {
-    width: 22px;
-    height: 22px;
 
-    font-size: 10px;
+  .subtitle {
+    font-size: 7.5px;
   }
 
-  .status {
-    min-height: 27px;
 
+  .delivery {
+    font-size: 7px;
+  }
+
+
+  .veSide {
+    width: 62px;
+
+    padding-left: 5px;
+  }
+
+
+  .veSideLabel {
+    font-size: 6.5px;
+  }
+
+
+  .veSideValue {
+    font-size: 8px;
+
+    gap: 3px;
+  }
+
+
+  .veCoinSmall {
+    width: 18px;
+
+    height: 18px;
+
+    font-size: 8px;
+  }
+
+
+  .veRow {
+    margin-left: 59px;
+
+    margin-top: 4px;
+
+    gap: 4px;
+  }
+
+
+  .veCoin {
+    width: 21px;
+
+    height: 21px;
+
+    font-size: 8.5px;
+  }
+
+
+  .current {
     font-size: 9.5px;
   }
+
+
+  .of {
+    font-size: 8.5px;
+  }
+
+
+  .requiredVE {
+    font-size: 9.5px;
+  }
+
+
+  .veText {
+    font-size: 8.5px;
+  }
+
+
+  .progressTrack {
+    width:
+      calc(100% - 59px);
+
+    height: 5px;
+
+    margin-left: 59px;
+
+    margin-top: 5px;
+  }
+
+
+  .status {
+    width:
+      calc(100% - 59px);
+
+    height: 19px;
+
+    min-height: 19px;
+
+    margin-left: 59px;
+
+    margin-top: 6px;
+
+    padding: 3px 7px;
+
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 350px) {
+
+  .card {
+    height: 162px;
+
+    min-height: 162px;
+
+    padding-left: 8px;
+
+    padding-right: 8px;
+  }
+
+
+  .logoBox {
+    width: 50px;
+
+    height: 50px;
+  }
+
+
+  .mainContent {
+    gap: 6px;
+  }
+
+
+  .veSide {
+    width: 58px;
+
+    padding-left: 4px;
+  }
+
+
+  .veRow {
+    margin-left: 56px;
+  }
+
+
+  .progressTrack {
+    width:
+      calc(100% - 56px);
+
+    margin-left: 56px;
+  }
+
+
+  .status {
+    width:
+      calc(100% - 56px);
+
+    margin-left: 56px;
+
+    margin-top: 6px;
+  }
+
 }
 
 
@@ -524,10 +1345,13 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .card,
-  .check {
-    animation: none !important;
 
+  .card,
+  .check,
+  .progressBar {
     transition: none !important;
+
+    animation: none !important;
   }
+
 }
