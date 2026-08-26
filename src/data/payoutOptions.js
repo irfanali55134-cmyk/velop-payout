@@ -19,11 +19,27 @@ const payoutOptions = {
       },
       {
         amount: 50,
-        requiredVEs: 11000,
+        requiredVEs: 10000,
       },
       {
         amount: 100,
-        requiredVEs: 22000,
+        requiredVEs: 19500,
+      },
+      {
+        amount: 150,
+        requiredVEs: 28500,
+      },
+      {
+        amount: 300,
+        requiredVEs: 52500,
+      },
+      {
+        amount: 500,
+        requiredVEs: 80500,
+      },
+      {
+        amount: 1000,
+        requiredVEs: 150000,
       },
     ],
   },
@@ -40,19 +56,23 @@ const payoutOptions = {
     rewards: [
       {
         amount: 10,
-        requiredVEs: 2400,
+        requiredVEs: 2500,
       },
       {
         amount: 25,
-        requiredVEs: 5800,
+        requiredVEs: 5900,
       },
       {
         amount: 50,
-        requiredVEs: 11000,
+        requiredVEs: 10500,
       },
       {
         amount: 100,
-        requiredVEs: 22000,
+        requiredVEs: 19800,
+      },
+      {
+        amount: 250,
+        requiredVEs: 47000,
       },
     ],
   },
@@ -69,11 +89,11 @@ const payoutOptions = {
     rewards: [
       {
         amount: 10,
-        requiredVEs: 2400,
+        requiredVEs: 2600,
       },
       {
         amount: 25,
-        requiredVEs: 5800,
+        requiredVEs: 6000,
       },
       {
         amount: 50,
@@ -81,7 +101,11 @@ const payoutOptions = {
       },
       {
         amount: 100,
-        requiredVEs: 22000,
+        requiredVEs: 20500,
+      },
+      {
+        amount: 150,
+        requiredVEs: 30000,
       },
     ],
   },

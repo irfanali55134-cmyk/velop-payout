@@ -136,11 +136,11 @@
   display: block;
 
   width: 100%;
-  max-width: 900px;
-
   height: auto;
 
-  margin: 0 auto;
+  max-height: 180px;
+
+  object-fit: cover;
 
   border-radius: 14px;
 }
@@ -215,117 +215,31 @@
 
 
 /* =========================================================
-   REDEEM ACTION CARD
-========================================================= */
-
-.payout-method-page .redeem-action-card {
-  width: 100%;
-
-  margin-top: 16px;
-  padding: 14px 14px 14px 18px;
-
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-
-  gap: 14px;
-
-  border: 1px solid #252b46;
-  border-radius: 14px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #11172d,
-      #0a0f20
-    );
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-
-/* =========================================================
-   SECURITY ICON
-========================================================= */
-
-.payout-method-page .redeem-security-icon {
-  width: 44px;
-  height: 44px;
-
-  flex-shrink: 0;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 12px;
-
-  background: rgba(139, 92, 246, 0.10);
-
-  border: 1px solid rgba(139, 92, 246, 0.28);
-
-  color: #a78bfa;
-
-  font-size: 19px;
-}
-
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.payout-method-page .redeem-action-content {
-  min-width: 0;
-
-  flex: 1;
-}
-
-
-.payout-method-page .redeem-action-content h3 {
-  margin: 0;
-
-  color: #f5f7ff;
-
-  font-size: 13px;
-  font-weight: 700;
-
-  line-height: 1.3;
-}
-
-
-.payout-method-page .redeem-action-content p {
-  margin: 4px 0 0;
-
-  color: #858eac;
-
-  font-size: 10px;
-
-  line-height: 1.45;
-}
-
-
-/* =========================================================
    REDEEM BUTTON
 ========================================================= */
 
 .payout-method-page .redeem-button {
-  min-width: 145px;
-  min-height: 48px;
+  width: 100%;
 
-  flex-shrink: 0;
+  min-height: 50px;
 
-  padding: 0 18px;
+  margin-top: 18px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 9px;
+  gap: 10px;
 
-  border: 1px solid transparent;
-  border-radius: 10px;
+  border: 1px solid #8b5cf6;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #6d3fd1
+    );
 
   color: #ffffff;
 
@@ -337,150 +251,28 @@
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    opacity 0.2s ease,
-    background 0.2s ease;
+    opacity 0.2s ease;
 }
 
 
-/* =========================================================
-   UPI - PURPLE
-========================================================= */
-
-.payout-theme-upi .redeem-button {
-  background:
-    linear-gradient(
-      135deg,
-      #8b5cf6,
-      #6d3fd1
-    );
-
-  border-color: #8b5cf6;
-
-  box-shadow:
-    0 8px 22px rgba(139, 92, 246, 0.18);
-}
-
-
-.payout-theme-upi .redeem-button:hover:not(:disabled) {
+.payout-method-page .redeem-button:hover:not(:disabled) {
   transform: translateY(-2px);
 
   box-shadow:
-    0 12px 28px rgba(139, 92, 246, 0.30);
+    0 10px 25px
+    rgba(139, 92, 246, 0.25);
 }
 
-
-/* =========================================================
-   AMAZON - GOLD / ORANGE
-========================================================= */
-
-.payout-theme-amazon .redeem-button {
-  background:
-    linear-gradient(
-      135deg,
-      #fbbf24,
-      #f59e0b
-    );
-
-  border-color: #fbbf24;
-
-  color: #111111;
-
-  box-shadow:
-    0 8px 22px rgba(245, 158, 11, 0.18);
-}
-
-
-.payout-theme-amazon .redeem-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 28px rgba(245, 158, 11, 0.30);
-}
-
-
-/* =========================================================
-   GOOGLE PLAY - CYAN
-========================================================= */
-
-.payout-theme-googlePlay .redeem-button {
-  background:
-    linear-gradient(
-      135deg,
-      #14d9d0,
-      #08bdb7
-    );
-
-  border-color: #14d9d0;
-
-  color: #041516;
-
-  box-shadow:
-    0 8px 22px rgba(20, 217, 208, 0.18);
-}
-
-
-.payout-theme-googlePlay .redeem-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 28px rgba(20, 217, 208, 0.30);
-}
-
-
-/* =========================================================
-   DISABLED
-========================================================= */
 
 .payout-method-page .redeem-button:disabled {
-  opacity: 0.35;
+  opacity: 0.4;
 
   cursor: not-allowed;
-
-  transform: none;
-
-  box-shadow: none;
 }
 
-
-/* =========================================================
-   ARROW
-========================================================= */
 
 .payout-method-page .redeem-arrow {
   font-size: 18px;
-
-  line-height: 1;
-}
-
-
-/* =========================================================
-   SECURITY ICON THEME
-========================================================= */
-
-.payout-theme-upi .redeem-security-icon {
-  background: rgba(139, 92, 246, 0.10);
-
-  border-color: rgba(139, 92, 246, 0.28);
-
-  color: #a78bfa;
-}
-
-
-.payout-theme-amazon .redeem-security-icon {
-  background: rgba(251, 191, 36, 0.10);
-
-  border-color: rgba(251, 191, 36, 0.28);
-
-  color: #fbbf24;
-}
-
-
-.payout-theme-googlePlay .redeem-security-icon {
-  background: rgba(20, 217, 208, 0.10);
-
-  border-color: rgba(20, 217, 208, 0.28);
-
-  color: #14d9d0;
 }
 
 
@@ -583,11 +375,6 @@
 
   .payout-method-banner img {
     width: 100%;
-    max-width: none;
-
-    height: auto;
-
-    margin: 0;
 
     max-height: 120px;
 
@@ -627,63 +414,11 @@
   .payout-method-page .redeem-button {
     min-height: 46px;
 
-    margin-top: 0;
+    margin-top: 14px;
 
     border-radius: 10px;
 
     font-size: 13px;
-  }
-
-
-  .payout-method-page .redeem-action-card {
-    margin-top: 14px;
-
-    padding: 12px;
-
-    gap: 10px;
-
-    border-radius: 12px;
-  }
-
-
-  .payout-method-page .redeem-security-icon {
-    width: 38px;
-    height: 38px;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-  }
-
-
-  .payout-method-page .redeem-action-content h3 {
-    font-size: 11px;
-  }
-
-
-  .payout-method-page .redeem-action-content p {
-    margin-top: 3px;
-
-    font-size: 8px;
-  }
-
-
-  .payout-method-page .redeem-button {
-    min-width: 105px;
-    min-height: 42px;
-
-    padding: 0 12px;
-
-    border-radius: 9px;
-
-    font-size: 11px;
-
-    gap: 6px;
-  }
-
-
-  .payout-method-page .redeem-arrow {
-    font-size: 15px;
   }
 
 }
@@ -694,41 +429,6 @@
 ========================================================= */
 
 @media (max-width: 380px) {
-
-  .payout-method-page .redeem-action-card {
-    padding: 10px;
-
-    gap: 8px;
-  }
-
-
-  .payout-method-page .redeem-security-icon {
-    width: 34px;
-    height: 34px;
-
-    font-size: 14px;
-  }
-
-
-  .payout-method-page .redeem-action-content h3 {
-    font-size: 10px;
-  }
-
-
-  .payout-method-page .redeem-action-content p {
-    font-size: 7px;
-  }
-
-
-  .payout-method-page .redeem-button {
-    min-width: 88px;
-    min-height: 38px;
-
-    padding: 0 9px;
-
-    font-size: 10px;
-  }
-
 
   .payout-method-page {
     padding-left: 9px;
@@ -1653,113 +1353,1089 @@
 
 }
 /* =========================================================
-   PREMIUM PAYOUT PAGE TRANSITION
-   UPI / AMAZON / GOOGLE PLAY
+   FINAL REWARD LAYOUT
+   Desktop/tablet = one vertical column.
 ========================================================= */
 
-.payout-page-transition {
-  will-change: opacity, transform, filter;
+@media (min-width: 601px) {
 
-  transform-origin: center top;
+  .payout-method-page .reward-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
 }
 
 
 /* =========================================================
-   EXIT
+   MOBILE - REMOVE UNWANTED VERTICAL SPACE
 ========================================================= */
 
-.payout-page-transition.exit {
-  animation: payoutPageExit 220ms
-    cubic-bezier(0.4, 0, 1, 1)
-    forwards;
+@media (max-width: 600px) {
+
+  .payout-method-page {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: 10px !important;
+    padding-bottom: 25px !important;
+  }
+
+  .payout-method-page .payout-method-banner {
+    margin-bottom: 10px !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .payout-method-page .payout-method-banner img {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 120px !important;
+    margin: 0 !important;
+  }
+
+  .payout-method-page .rewards-section {
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .payout-method-page .rewards-heading {
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 9px !important;
+    padding: 0 !important;
+  }
+
+  .payout-method-page .reward-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-content: start !important;
+  }
+
+  .payout-method-page .reward-grid > * {
+    margin: 0 !important;
+  }
+
 }
 
 
 /* =========================================================
-   ENTER
+   VERY SMALL MOBILE - SAME COMPACT START
 ========================================================= */
 
-.payout-page-transition.enter {
-  animation: payoutPageEnter 500ms
-    cubic-bezier(0.16, 1, 0.3, 1)
-    forwards;
+@media (max-width: 420px) {
+
+  .payout-method-page {
+    padding-top: 7px !important;
+  }
+
+  .payout-method-page .payout-method-banner {
+    margin-bottom: 8px !important;
+  }
+
+  .payout-method-page .rewards-heading {
+    margin-bottom: 8px !important;
+  }
+
+}
+/* =========================================================
+   FINAL FIX - METHOD PAYOUT REWARDS SECTION
+   DO NOT CHANGE REWARD CARD DESIGN
+========================================================= */
+
+.payout-method-page .rewards-section {
+  width: 100% !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
 }
 
 
 /* =========================================================
-   EXIT ANIMATION
+   REWARDS HEADING
 ========================================================= */
 
-@keyframes payoutPageExit {
+.payout-method-page .rewards-heading {
+  width: 100% !important;
 
-  0% {
-    opacity: 1;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
 
-    transform:
-      translateY(0)
-      scale(1);
+  gap: 28px !important;
+  margin: 0 0 20px !important;
 
-    filter: blur(0);
+  box-sizing: border-box !important;
+}
+
+.payout-method-page .rewards-heading-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+
+/* =========================================================
+   AVAILABLE VOUCHERS
+========================================================= */
+
+.payout-method-page .section-eyebrow {
+  display: block !important;
+
+  margin: 0 0 5px !important;
+
+  color: #a78bfa !important;
+
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: 1.2px !important;
+}
+
+
+/* =========================================================
+   REWARDS TITLE
+========================================================= */
+
+.payout-method-page .rewards-heading h2 {
+  margin: 0 !important;
+
+  color: #f5f7ff !important;
+
+  font-size: clamp(22px, 2.2vw, 28px) !important;
+  line-height: 1.2 !important;
+
+  font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.payout-method-page .rewards-heading p {
+  margin: 7px 0 0 !important;
+
+  max-width: 680px !important;
+
+  color: #a8b0d0 !important;
+
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+
+/* =========================================================
+   VE INFORMATION BOX
+========================================================= */
+
+.payout-method-page .ve-info-box {
+  flex: 0 0 365px !important;
+
+  width: 365px !important;
+  min-height: 92px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 16px !important;
+
+  padding: 18px 20px !important;
+
+  border: 1px solid #252b46 !important;
+  border-radius: 16px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #11172d,
+      #0a0f20
+    ) !important;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.16) !important;
+}
+
+
+.payout-method-page .ve-info-icon {
+  width: 42px !important;
+  height: 42px !important;
+
+  flex: 0 0 42px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border-radius: 50% !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c5ce8
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+
+.payout-method-page .ve-info-box p {
+  margin: 0 !important;
+
+  color: #d8ddf5 !important;
+
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+
+  font-weight: 500 !important;
+}
+
+
+/* =========================================================
+   REWARD GRID
+   KEEP CARD DESIGN UNTOUCHED
+========================================================= */
+
+.payout-method-page .reward-grid {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 720px) !important;
+
+  justify-content: start !important;
+
+  gap: 12px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   REDEEM ACTION
+========================================================= */
+
+.payout-method-page .redeem-action-card {
+  width: 100% !important;
+
+  margin-top: 16px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .payout-method-page .rewards-heading {
+    gap: 18px !important;
   }
 
-  100% {
-    opacity: 0;
+  .payout-method-page .ve-info-box {
+    flex: 0 0 300px !important;
 
-    transform:
-      translateY(-10px)
-      scale(0.985);
+    width: 300px !important;
 
-    filter: blur(3px);
+    min-height: 82px !important;
+
+    padding: 15px 16px !important;
+  }
+
+  .payout-method-page .ve-info-icon {
+    width: 38px !important;
+    height: 38px !important;
+
+    flex-basis: 38px !important;
+
+    font-size: 19px !important;
+  }
+
+  .payout-method-page .ve-info-box p {
+    font-size: 12px !important;
+  }
+
+  .payout-method-page .reward-grid {
+    grid-template-columns:
+      minmax(0, 720px) !important;
+
+    justify-content: start !important;
   }
 }
 
 
 /* =========================================================
-   ENTER ANIMATION
+   MOBILE
 ========================================================= */
 
-@keyframes payoutPageEnter {
+@media (max-width: 600px) {
 
-  0% {
-    opacity: 0;
-
-    transform:
-      translateY(18px)
-      scale(0.985);
-
-    filter: blur(4px);
+  .payout-method-page {
+    padding-top: 12px !important;
   }
 
-  55% {
-    opacity: 0.85;
+
+  /* REMOVE THE HUGE EMPTY SPACE */
+
+  .payout-method-page .rewards-section {
+    margin-top: 0 !important;
+    padding: 0 !important;
   }
 
-  100% {
-    opacity: 1;
 
-    transform:
-      translateY(0)
-      scale(1);
+  /* STACK HEADING + INFO BOX */
 
-    filter: blur(0);
+  .payout-method-page .rewards-heading {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    gap: 14px !important;
+
+    margin: 0 0 14px !important;
+  }
+
+
+  .payout-method-page .rewards-heading-text {
+    width: 100% !important;
+  }
+
+
+  .payout-method-page .section-eyebrow {
+    margin-bottom: 4px !important;
+
+    font-size: 9px !important;
+  }
+
+
+  .payout-method-page .rewards-heading h2 {
+    font-size: 20px !important;
+
+    line-height: 1.2 !important;
+  }
+
+
+  .payout-method-page .rewards-heading p {
+    margin-top: 5px !important;
+
+    max-width: none !important;
+
+    font-size: 10px !important;
+
+    line-height: 1.45 !important;
+  }
+
+
+  /* VE INFO BOX */
+
+  .payout-method-page .ve-info-box {
+    width: 100% !important;
+
+    min-height: 72px !important;
+
+    flex: none !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 12px !important;
+
+    padding: 12px 14px !important;
+
+    border-radius: 14px !important;
+  }
+
+
+  .payout-method-page .ve-info-icon {
+    width: 34px !important;
+    height: 34px !important;
+
+    flex: 0 0 34px !important;
+
+    font-size: 17px !important;
+  }
+
+
+  .payout-method-page .ve-info-box p {
+    margin: 0 !important;
+
+    font-size: 10px !important;
+
+    line-height: 1.45 !important;
+  }
+
+
+  /* ONE CARD PER ROW */
+
+  .payout-method-page .reward-grid {
+    width: 100% !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr) !important;
+
+    gap: 10px !important;
+
+    justify-content: stretch !important;
+  }
+
+
+  /* REDEEM CARD */
+
+  .payout-method-page .redeem-action-card {
+    width: 100% !important;
+
+    margin-top: 12px !important;
+
+    padding: 10px !important;
+
+    gap: 9px !important;
+
+    border-radius: 12px !important;
+  }
+
+
+  .payout-method-page .redeem-security-icon {
+    width: 34px !important;
+    height: 34px !important;
+
+    flex: 0 0 34px !important;
+
+    border-radius: 9px !important;
+
+    font-size: 14px !important;
+  }
+
+
+  .payout-method-page .redeem-action-content {
+    min-width: 0 !important;
+  }
+
+
+  .payout-method-page .redeem-action-content h3 {
+    font-size: 10px !important;
+
+    line-height: 1.3 !important;
+  }
+
+
+  .payout-method-page .redeem-action-content p {
+    margin-top: 2px !important;
+
+    font-size: 7px !important;
+
+    line-height: 1.35 !important;
+  }
+
+
+  .payout-method-page .redeem-button {
+    min-width: 88px !important;
+
+    min-height: 34px !important;
+
+    padding: 0 9px !important;
+
+    border-radius: 8px !important;
+
+    font-size: 9px !important;
+  }
+
+
+  .payout-method-page .redeem-arrow {
+    font-size: 13px !important;
   }
 }
 
 
 /* =========================================================
-   REDUCED MOTION
+   VERY SMALL MOBILE
 ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 380px) {
 
-  .payout-page-transition.exit,
-  .payout-page-transition.enter {
-    animation: none !important;
+  .payout-method-page {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
 
-    opacity: 1 !important;
 
-    transform: none !important;
+  .payout-method-page .rewards-heading {
+    gap: 11px !important;
+    margin-bottom: 11px !important;
+  }
 
-    filter: none !important;
+
+  .payout-method-page .rewards-heading h2 {
+    font-size: 19px !important;
+  }
+
+
+  .payout-method-page .rewards-heading p {
+    font-size: 9px !important;
+  }
+
+
+  .payout-method-page .ve-info-box {
+    min-height: 64px !important;
+
+    padding: 10px 12px !important;
+
+    gap: 10px !important;
+  }
+
+
+  .payout-method-page .ve-info-icon {
+    width: 31px !important;
+    height: 31px !important;
+
+    flex-basis: 31px !important;
+
+    font-size: 15px !important;
+  }
+
+
+  .payout-method-page .ve-info-box p {
+    font-size: 9px !important;
+  }
+
+
+  .payout-method-page .reward-grid {
+    gap: 8px !important;
+  }
+
+
+  .payout-method-page .redeem-action-card {
+    margin-top: 10px !important;
+
+    padding: 9px !important;
+
+    gap: 7px !important;
+  }
+
+
+  .payout-method-page .redeem-button {
+    min-width: 78px !important;
+
+    min-height: 32px !important;
+
+    font-size: 8px !important;
+  }
+}
+/* =========================================================
+   FINAL PAYOUT METHOD LAYOUT FIX
+========================================================= */
+
+/* =========================
+   REWARD CARDS
+   DESKTOP = 3 CARDS / ROW
+========================= */
+
+.payout-method-page .reward-grid {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 14px !important;
+
+  align-items: stretch !important;
+}
+
+
+/* =========================
+   REWARDS HEADING
+========================= */
+
+.payout-method-page .rewards-heading {
+  width: 100% !important;
+
+  display: flex !important;
+
+  align-items: flex-start !important;
+
+  justify-content: space-between !important;
+
+  gap: 25px !important;
+
+  margin-bottom: 20px !important;
+}
+
+
+.payout-method-page .rewards-heading-text {
+  flex: 1 !important;
+
+  min-width: 0 !important;
+}
+
+
+.payout-method-page .section-eyebrow {
+  display: block !important;
+
+  margin-bottom: 5px !important;
+
+  color: #a78bfa !important;
+
+  font-size: 11px !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: 1.2px !important;
+}
+
+
+.payout-method-page .rewards-heading h2 {
+  margin: 0 !important;
+
+  color: #f5f7ff !important;
+
+  font-size: clamp(22px, 2.2vw, 28px) !important;
+
+  font-weight: 800 !important;
+
+  line-height: 1.2 !important;
+}
+
+
+.payout-method-page .rewards-heading p {
+  margin: 7px 0 0 !important;
+
+  max-width: 650px !important;
+
+  color: #a8b0d0 !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.5 !important;
+}
+
+
+/* =========================
+   VE INFO BOX
+========================= */
+
+.payout-method-page .ve-info-box {
+  width: 340px !important;
+
+  min-height: 80px !important;
+
+  flex: 0 0 340px !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 12px !important;
+
+  padding: 14px 16px !important;
+
+  box-sizing: border-box !important;
+
+  border: 1px solid #252b46 !important;
+
+  border-radius: 14px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #11172d,
+      #0a0f20
+    ) !important;
+}
+
+
+.payout-method-page .ve-info-icon {
+  width: 36px !important;
+
+  height: 36px !important;
+
+  flex: 0 0 36px !important;
+
+  display: grid !important;
+
+  place-items: center !important;
+
+  border-radius: 50% !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c5ce8
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-size: 18px !important;
+
+  font-weight: 800 !important;
+}
+
+
+.payout-method-page .ve-info-box p {
+  margin: 0 !important;
+
+  color: #cbd1eb !important;
+
+  font-size: 12px !important;
+
+  line-height: 1.45 !important;
+}
+
+
+/* =========================================================
+   SECURE REDEMPTION CARD
+========================================================= */
+
+.payout-method-page .redeem-action-card {
+  width: 100% !important;
+
+  min-height: 76px !important;
+
+  margin-top: 16px !important;
+
+  padding: 14px 16px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  align-items: center !important;
+
+  justify-content: flex-start !important;
+
+  gap: 14px !important;
+
+  border: 1px solid #252b46 !important;
+
+  border-radius: 14px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #11172d,
+      #0a0f20
+    ) !important;
+}
+
+
+/* =========================
+   LOCK ICON
+========================= */
+
+.payout-method-page .redeem-security-icon {
+  width: 42px !important;
+
+  height: 42px !important;
+
+  flex: 0 0 42px !important;
+
+  display: grid !important;
+
+  place-items: center !important;
+
+  border-radius: 11px !important;
+
+  background: rgba(139, 92, 246, 0.10) !important;
+
+  border: 1px solid rgba(139, 92, 246, 0.28) !important;
+
+  color: #a78bfa !important;
+
+  font-size: 18px !important;
+
+  line-height: 1 !important;
+}
+
+
+/* =========================
+   SECURE TEXT
+========================= */
+
+.payout-method-page .redeem-action-content {
+  min-width: 0 !important;
+
+  flex: 1 1 auto !important;
+}
+
+
+.payout-method-page .redeem-action-content h3 {
+  margin: 0 !important;
+
+  color: #f5f7ff !important;
+
+  font-size: 14px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.3 !important;
+}
+
+
+.payout-method-page .redeem-action-content p {
+  margin: 4px 0 0 !important;
+
+  color: #858eac !important;
+
+  font-size: 10px !important;
+
+  line-height: 1.45 !important;
+}
+
+
+/* =========================
+   REDEEM BUTTON
+========================= */
+
+.payout-method-page .redeem-button {
+  width: auto !important;
+
+  min-width: 135px !important;
+
+  max-width: 160px !important;
+
+  height: 46px !important;
+
+  min-height: 46px !important;
+
+  flex: 0 0 auto !important;
+
+  display: inline-flex !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  gap: 8px !important;
+
+  padding: 0 18px !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+
+  border-radius: 10px !important;
+
+  font-size: 13px !important;
+
+  font-weight: 700 !important;
+}
+
+
+.payout-method-page .redeem-arrow {
+  font-size: 16px !important;
+
+  line-height: 1 !important;
+}
+
+
+/* =========================================================
+   TABLET
+   2 CARDS / ROW
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .payout-method-page .reward-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .payout-method-page .ve-info-box {
+    width: 300px !important;
+
+    flex-basis: 300px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   1 CARD / ROW
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .payout-method-page .rewards-heading {
+    flex-direction: column !important;
+
+    gap: 13px !important;
+
+    margin-bottom: 14px !important;
+  }
+
+
+  .payout-method-page .rewards-heading h2 {
+    font-size: 20px !important;
+  }
+
+
+  .payout-method-page .rewards-heading p {
+    font-size: 10px !important;
+  }
+
+
+  .payout-method-page .ve-info-box {
+    width: 100% !important;
+
+    flex: none !important;
+
+    min-height: 68px !important;
+
+    padding: 11px 13px !important;
+  }
+
+
+  .payout-method-page .ve-info-icon {
+    width: 34px !important;
+
+    height: 34px !important;
+
+    flex-basis: 34px !important;
+
+    font-size: 16px !important;
+  }
+
+
+  .payout-method-page .ve-info-box p {
+    font-size: 10px !important;
+  }
+
+
+  /* MOBILE = ONE CARD */
+
+  .payout-method-page .reward-grid {
+    grid-template-columns:
+      1fr !important;
+
+    gap: 10px !important;
+  }
+
+
+  /* SECURE CARD */
+
+  .payout-method-page .redeem-action-card {
+    min-height: 70px !important;
+
+    padding: 10px !important;
+
+    gap: 9px !important;
+  }
+
+
+  .payout-method-page .redeem-security-icon {
+    width: 36px !important;
+
+    height: 36px !important;
+
+    flex-basis: 36px !important;
+
+    font-size: 15px !important;
+  }
+
+
+  .payout-method-page .redeem-action-content h3 {
+    font-size: 11px !important;
+  }
+
+
+  .payout-method-page .redeem-action-content p {
+    font-size: 8px !important;
+  }
+
+
+  .payout-method-page .redeem-button {
+    min-width: 95px !important;
+
+    max-width: 105px !important;
+
+    height: 38px !important;
+
+    min-height: 38px !important;
+
+    padding: 0 10px !important;
+
+    font-size: 10px !important;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .payout-method-page .redeem-action-card {
+    gap: 7px !important;
+
+    padding: 8px !important;
+  }
+
+
+  .payout-method-page .redeem-security-icon {
+    width: 32px !important;
+
+    height: 32px !important;
+
+    flex-basis: 32px !important;
+
+    font-size: 13px !important;
+  }
+
+
+  .payout-method-page .redeem-action-content h3 {
+    font-size: 10px !important;
+  }
+
+
+  .payout-method-page .redeem-action-content p {
+    font-size: 7px !important;
+  }
+
+
+  .payout-method-page .redeem-button {
+    min-width: 82px !important;
+
+    max-width: 90px !important;
+
+    height: 34px !important;
+
+    min-height: 34px !important;
+
+    padding: 0 8px !important;
+
+    font-size: 9px !important;
   }
 }

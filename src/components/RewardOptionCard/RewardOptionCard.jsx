@@ -23,28 +23,28 @@ function RewardOptionCard({
 
   const methods = {
     upi: {
-      name: "UPI Voucher",
+      name: "UPI Transfer",
       subtitle: "Instant Bank Transfer",
       badge: "INSTANT",
-      delivery: "Instant Transfer",
+      delivery: "Processing within 24 hours",
       logo: upiLogo,
       className: styles.upi,
     },
 
     amazon: {
-      name: "Amazon Pay Voucher",
+      name: "Amazon Pay",
       subtitle: "Gift Card Balance",
       badge: "POPULAR",
-      delivery: "Instant Delivery",
+      delivery: "Instant delivery",
       logo: amazonLogo,
       className: styles.amazon,
     },
 
     googlePlay: {
-      name: "Google Play Voucher",
+      name: "Google Play",
       subtitle: "App Store Credit",
       badge: "FAST",
-      delivery: "Instant Delivery",
+      delivery: "Instant delivery",
       logo: googlePlayLogo,
       className: styles.googlePlay,
     },
@@ -54,10 +54,6 @@ function RewardOptionCard({
   const method =
     methods[payoutMethod] || methods.upi;
 
-
-  /* =====================================================
-     PROGRESS CALCULATION
-  ===================================================== */
 
   const progress =
     requiredVEs > 0
@@ -70,10 +66,6 @@ function RewardOptionCard({
       : 0;
 
 
-  /* =====================================================
-     CURRENT VES
-  ===================================================== */
-
   const currentVEs = Math.min(
     availableVEs,
     requiredVEs
@@ -81,49 +73,167 @@ function RewardOptionCard({
 
 
   return (
-    <button
-      type="button"
-
-      className={`
-        ${styles.card}
-        ${method.className}
-        ${selected ? styles.selected : ""}
-        ${!eligible ? styles.locked : ""}
-      `}
-
-      /*
-        IMPORTANT:
-        disabled={!eligible} intentionally removed.
-
-        This allows an ineligible reward card to be clicked,
-        so Payout.jsx can show the insufficient-balance state.
-      */
-
-      onClick={onSelect}
+    <div
+      className={`${styles.cardWrap} ${method.className}`}
     >
 
+      <button
+        type="button"
+        className={`
+          ${styles.card}
+          ${selected ? styles.selected : ""}
+          ${!eligible ? styles.locked : ""}
+        `}
+        onClick={onSelect}
+      >
 
-      {/* =================================================
-          TOP BADGE
-      ================================================= */}
+        {/* TOP RIGHT DOTS */}
 
-      <div className={styles.topRow}>
+        <div className={styles.dots} />
 
-        <div className={styles.badge}>
 
-          <Zap
-            size={15}
-            strokeWidth={2.7}
-          />
+        {/* CONTENT */}
 
-          <span>
-            {method.badge}
-          </span>
+        <div className={styles.cardContent}>
+
+          {/* BADGE */}
+
+          <div className={styles.badge}>
+
+            <Zap
+              size={14}
+              strokeWidth={2.6}
+            />
+
+            <span>
+              {method.badge}
+            </span>
+
+          </div>
+
+
+          {/* MAIN ROW */}
+
+          <div className={styles.mainRow}>
+
+            {/* LEFT */}
+
+            <div className={styles.leftContent}>
+
+              <div className={styles.logoBox}>
+
+                <img
+                  src={method.logo}
+                  alt={`${method.name} logo`}
+                  className={styles.logo}
+                />
+
+              </div>
+
+
+              <div className={styles.info}>
+
+                <div className={styles.name}>
+                  {method.name}
+                </div>
+
+                <div className={styles.subtitle}>
+                  {method.subtitle}
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* AMOUNT */}
+
+            <div className={styles.amountBox}>
+
+              <span className={styles.rupee}>
+                ₹
+              </span>
+
+              <span>
+                {amount}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          {/* DELIVERY */}
+
+          <div className={styles.delivery}>
+
+            <Clock
+              size={14}
+              strokeWidth={2.2}
+            />
+
+            <span>
+              {method.delivery}
+            </span>
+
+          </div>
+
+
+          {/* VES */}
+
+          <div className={styles.veRow}>
+
+            <span className={styles.veCoin}>
+              V
+            </span>
+
+            <span className={styles.currentVEs}>
+              {currentVEs.toLocaleString()}
+            </span>
+
+            <span className={styles.of}>
+              Of
+            </span>
+
+            <span className={styles.requiredVEs}>
+              {requiredVEs.toLocaleString()}
+            </span>
+
+            <span className={styles.veText}>
+              VEs
+            </span>
+
+          </div>
+
+
+          {/* PROGRESS */}
+
+          <div className={styles.progressTrack}>
+
+            <div
+              className={styles.progressBar}
+              style={{
+                width: `${progress}%`,
+              }}
+            />
+
+          </div>
+
+
+          {/* STATUS */}
+
+          <div className={styles.status}>
+
+            {eligible
+              ? "Eligible to redeem"
+              : "Not enough VEs"}
+
+          </div>
 
         </div>
 
 
-        {/* LOCK ICON */}
+        {/* LOCK */}
 
         {!eligible && (
           <div className={styles.lock}>
@@ -136,179 +246,9 @@ function RewardOptionCard({
           </div>
         )}
 
-      </div>
+      </button>
 
-
-      {/* =================================================
-          MAIN CONTENT
-      ================================================= */}
-
-      <div className={styles.mainContent}>
-
-
-        {/* =================================================
-            LOGO
-        ================================================= */}
-
-        <div className={styles.logoBox}>
-
-          <img
-            src={method.logo}
-            alt={`${method.name} logo`}
-            className={styles.logo}
-          />
-
-        </div>
-
-
-        {/* =================================================
-            INFORMATION
-        ================================================= */}
-
-        <div className={styles.info}>
-
-
-          {/* AMOUNT */}
-
-          <div className={styles.amountInline}>
-
-            <span className={styles.rupee}>
-              ₹
-            </span>
-
-            <span className={styles.amount}>
-              {amount}
-            </span>
-
-          </div>
-
-
-          {/* NAME */}
-
-          <div className={styles.name}>
-            {method.name}
-          </div>
-
-
-          {/* SUBTITLE */}
-
-          <div className={styles.subtitle}>
-            {method.subtitle}
-          </div>
-
-
-          {/* DELIVERY */}
-
-          <div className={styles.delivery}>
-
-            <Clock
-              size={13}
-              strokeWidth={2.4}
-            />
-
-            <span>
-              {method.delivery}
-            </span>
-
-          </div>
-
-        </div>
-
-
-        {/* =================================================
-            RIGHT SIDE - REQUIRED VES
-        ================================================= */}
-
-        <div className={styles.veSide}>
-
-
-          <div className={styles.veSideLabel}>
-            Required VEs
-          </div>
-
-
-          <div className={styles.veSideValue}>
-
-            <span className={styles.veCoinSmall}>
-              V
-            </span>
-
-            <span>
-              {requiredVEs.toLocaleString()}
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      {/* =================================================
-          CURRENT VES / REQUIRED VES
-      ================================================= */}
-
-      <div className={styles.veRow}>
-
-        <span className={styles.veCoin}>
-          V
-        </span>
-
-
-        <span className={styles.current}>
-          {currentVEs.toLocaleString()}
-        </span>
-
-
-        <span className={styles.of}>
-          Of
-        </span>
-
-
-        <span className={styles.requiredVE}>
-          {requiredVEs.toLocaleString()}
-        </span>
-
-
-        <span className={styles.veText}>
-          VEs
-        </span>
-
-      </div>
-
-
-      {/* =================================================
-          PROGRESS BAR
-      ================================================= */}
-
-      <div className={styles.progressTrack}>
-
-        <div
-          className={styles.progressBar}
-
-          style={{
-            width: `${progress}%`,
-          }}
-
-        />
-
-      </div>
-
-
-      {/* =================================================
-          STATUS
-      ================================================= */}
-
-      <div className={styles.status}>
-
-        {eligible
-          ? "Eligible to redeem"
-          : "Not enough VEs"}
-
-      </div>
-
-
-    </button>
+    </div>
   );
 }
 

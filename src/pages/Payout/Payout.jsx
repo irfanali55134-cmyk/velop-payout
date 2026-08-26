@@ -57,9 +57,9 @@ const payoutPageConfig = {
     subtitle: "Instant bank transfer to your UPI ID",
     badge: "Instant",
     banner: upiBanner,
-    rewardTitle: "Available Vouchers",
+    rewardTitle: "Available Rewards",
     rewardDescription:
-      "Redeem UPI vouchers instantly and enjoy hassle-free withdrawals directly to your bank account.",
+      "Redeem UPI rewards instantly and enjoy hassle-free withdrawals directly to your bank account.",
   },
 
   amazon: {
@@ -68,7 +68,7 @@ const payoutPageConfig = {
       "Redeem your reward for Amazon Gift Cards",
     badge: "Popular",
     banner: amazonBanner,
-    rewardTitle: "Available Vouchers",
+    rewardTitle: "Available Rewards",
     rewardDescription:
       "Redeem your rewards for Amazon Gift Cards and withdraw instantly.",
   },
@@ -79,7 +79,7 @@ const payoutPageConfig = {
       "Redeem your reward for Google Play Store Credit",
     badge: "Fast",
     banner: googlePlayBanner,
-    rewardTitle: "Available Vouchers",
+    rewardTitle: "Available Rewards",
     rewardDescription:
       "Redeem your rewards for Google Play Store Credit and enjoy unlimited entertainment.",
   },
@@ -990,9 +990,9 @@ function Payout() {
 
         <section className="rewards-section">
 
-          <div className="rewards-heading">
+                    <div className="rewards-heading">
 
-            <div>
+            <div className="rewards-heading-text">
 
               <span className="section-eyebrow">
                 AVAILABLE VOUCHERS
@@ -1004,6 +1004,25 @@ function Payout() {
 
               <p>
                 {pageConfig.rewardDescription}
+              </p>
+
+            </div>
+
+
+            {/* =================================================
+                VEs INFO BOX
+            ================================================= */}
+
+            <div className="ve-info-box">
+
+              <span className="ve-info-icon">
+                i
+              </span>
+
+              <p>
+                VEs are the primary virtual
+                <br />
+                currency of VELOOP Rewards.
               </p>
 
             </div>

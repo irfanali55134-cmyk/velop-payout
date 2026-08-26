@@ -2,199 +2,210 @@
    REWARD OPTION CARD
 ========================================================= */
 
-.card {
+.cardWrap {
+  --accent: #9855ff;
+  --accent-light: #b47cff;
+
   position: relative;
 
   width: 100%;
-  min-width: 0;
 
-  /*
-    Auto height prevents the status section
-    from getting pushed outside the card.
-  */
-  height: 166px;
-  min-height: 166px;
-
-  margin-bottom: 14px;
-
-  padding: 12px 16px 9px;
-
-  display: flex;
-  flex-direction: column;
+  filter:
+    drop-shadow(
+      0 0 15px
+      color-mix(
+        in srgb,
+        var(--accent) 30%,
+        transparent
+      )
+    );
 
   box-sizing: border-box;
+}
 
-  text-align: left;
 
-  border: 1px solid var(--card-border);
+/* =========================================================
+   OUTER BORDER
+   REFERENCE STYLE
+========================================================= */
+
+.cardWrap::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: var(--accent);
+
+  border-radius: 16px;
+
+  clip-path: polygon(
+    0 0,
+    calc(100% - 46px) 0,
+    100% 46px,
+    100% 100%,
+    0 100%
+  );
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+  position: relative;
+
+  display: block;
+
+  width: calc(100% - 2px);
+
+  height: 100%;
+
+  margin: 1px;
+
+  padding:
+    22px 26px 20px;
+
+  border: none;
 
   border-radius: 15px;
 
   background:
     linear-gradient(
-      135deg,
-      #151a35 0%,
-      #0d1226 55%,
-      #070b18 100%
+      145deg,
+      #14161f,
+      #0c0d14
     );
 
-  color: #f5f7ff;
+  color: #ffffff;
 
-  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+
+  text-align: left;
 
   overflow: hidden;
 
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-
-/* =========================================================
-   TOP RIGHT CUT CORNER
-========================================================= */
-
-.card::after {
-  content: "";
-
-  position: absolute;
-
-  top: -1px;
-  right: -1px;
-
-  width: 32px;
-  height: 32px;
-
-  background: #050a18;
-
   clip-path: polygon(
     0 0,
+    calc(100% - 45px) 0,
+    100% 45px,
     100% 100%,
-    100% 0
+    0 100%
   );
 
-  border-left:
-    1px solid var(--card-border);
+  cursor: pointer;
 
-  border-bottom:
-    1px solid var(--card-border);
+  box-sizing: border-box;
 
-  pointer-events: none;
+  z-index: 1;
 
-  z-index: 3;
+  transition:
+    transform 0.22s ease,
+    filter 0.22s ease;
 }
 
 
 /* =========================================================
-   TOP RIGHT DOT PATTERN
+   DOT PATTERN
+   SAME AS REFERENCE DESIGN
 ========================================================= */
 
-.card::before {
-  content: "";
-
+.dots {
   position: absolute;
 
-  top: 8px;
-  right: 8px;
+  top: 0;
 
-  width: 34px;
-  height: 34px;
+  right: 0;
+
+  width: 110px;
+
+  height: 90px;
+
+  z-index: 3;
+
+  pointer-events: none;
 
   background-image:
     radial-gradient(
-      circle,
-      var(--accent) 1.4px,
-      transparent 1.5px
+      rgba(152, 85, 255, 0.58) 1.2px,
+      transparent 1.2px
     );
 
-  background-size: 9px 9px;
+  background-size: 10px 10px;
 
-  opacity: 0.35;
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom left,
+      black 0%,
+      black 38%,
+      transparent 78%
+    );
 
-  pointer-events: none;
+  mask-image:
+    linear-gradient(
+      to bottom left,
+      black 0%,
+      black 38%,
+      transparent 78%
+    );
 
-  z-index: 2;
+  opacity: 1;
 }
 
 
 /* =========================================================
-   HOVER
+   DOT COLORS
 ========================================================= */
 
-.card:hover:not(:disabled) {
-  transform: translateY(-2px);
+.upi .dots {
+  background-image:
+    radial-gradient(
+      rgba(152, 85, 255, 0.58) 1.2px,
+      transparent 1.2px
+    );
+}
 
-  border-color: var(--accent);
 
-  box-shadow:
-    0 8px 25px var(--glow);
+.amazon .dots {
+  background-image:
+    radial-gradient(
+      rgba(245, 180, 0, 0.60) 1.2px,
+      transparent 1.2px
+    );
+}
+
+
+.googlePlay .dots {
+  background-image:
+    radial-gradient(
+      rgba(8, 217, 217, 0.60) 1.2px,
+      transparent 1.2px
+    );
 }
 
 
 /* =========================================================
-   UPI
+   CONTENT
 ========================================================= */
 
-.upi {
-  --accent: #8b5cf6;
-
-  --glow:
-    rgba(167, 139, 250, 0.22);
-
-  --card-border:
-    rgba(139, 92, 246, 0.55);
-}
-
-
-/* =========================================================
-   AMAZON
-========================================================= */
-
-.amazon {
-  --accent: #fbbf24;
-
-  --glow:
-    rgba(245, 158, 11, 0.2);
-
-  --card-border:
-    rgba(251, 191, 36, 0.5);
-}
-
-
-/* =========================================================
-   GOOGLE PLAY
-========================================================= */
-
-.googlePlay {
-  --accent: #06d6d6;
-
-  --glow:
-    rgba(20, 241, 225, 0.2);
-
-  --card-border:
-    rgba(6, 214, 214, 0.5);
-}
-
-
-/* =========================================================
-   TOP ROW
-========================================================= */
-
-.topRow {
+.cardContent {
   position: relative;
 
-  z-index: 4;
+  z-index: 5;
 
-  min-height: 27px;
+  width: 100%;
+
+  height: 100%;
 
   display: flex;
 
-  align-items: center;
-
-  justify-content: space-between;
-
-  flex-shrink: 0;
+  flex-direction: column;
 }
 
 
@@ -203,90 +214,82 @@
 ========================================================= */
 
 .badge {
-  width: fit-content;
+  align-self: flex-start;
 
-  height: 27px;
-
-  padding: 0 11px;
-
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
   gap: 6px;
 
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--accent) 55%,
-      transparent
-    );
+  padding:
+    6px 13px;
 
-  border-radius: 15px;
+  margin-bottom: 17px;
+
+  border-radius: 20px;
 
   background:
     color-mix(
       in srgb,
-      var(--accent) 13%,
+      var(--accent) 14%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 42%,
       transparent
     );
 
   color: var(--accent);
 
-  font-size: 10px;
+  font-size: 11px;
 
   font-weight: 800;
 
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
 
+  line-height: 1;
+}
+
+
+.badge svg {
   flex-shrink: 0;
 }
 
 
 /* =========================================================
-   LOCK
+   MAIN ROW
 ========================================================= */
 
-.lock {
-  width: 25px;
-  height: 25px;
+.mainRow {
+  display: flex;
 
-  display: grid;
+  align-items: center;
 
-  place-items: center;
+  justify-content: space-between;
 
-  border-radius: 50%;
+  gap: 18px;
 
-  background:
-    rgba(255, 255, 255, 0.04);
-
-  color: #777f9b;
-
-  flex-shrink: 0;
+  width: 100%;
 }
 
 
 /* =========================================================
-   MAIN CONTENT
+   LEFT CONTENT
 ========================================================= */
 
-.mainContent {
-  position: relative;
-
-  z-index: 2;
+.leftContent {
+  min-width: 0;
 
   display: flex;
 
   align-items: center;
 
-  gap: 12px;
-
-  margin-top: 7px;
-
-  min-width: 0;
-
-  flex-shrink: 0;
+  gap: 14px;
 }
 
 
@@ -295,29 +298,29 @@
 ========================================================= */
 
 .logoBox {
-  width: 66px;
-  height: 66px;
+  width: 110px;
+
+  height: 110px;
 
   flex-shrink: 0;
 
-  display: grid;
-
-  place-items: center;
+  border-radius: 13px;
 
   overflow: hidden;
 
-  border-radius: 12px;
-
   background: #ffffff;
 
-  box-shadow:
-    0 5px 18px
-    rgba(0, 0, 0, 0.2);
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 }
 
 
 .logo {
   width: 100%;
+
   height: 100%;
 
   display: block;
@@ -333,90 +336,96 @@
 .info {
   min-width: 0;
 
-  flex: 1;
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+.name {
+  color: #f3f4f8;
+
+  font-size: 24px;
+
+  font-weight: 800;
+
+  line-height: 1.15;
+
+  white-space: nowrap;
 
   overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.subtitle {
+  margin-top: 7px;
+
+  color: #9298ad;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
 
 /* =========================================================
-   AMOUNT NEXT TO LOGO
+   AMOUNT
 ========================================================= */
 
-.amountInline {
+.amountBox {
+  flex-shrink: 0;
+
+  min-width: 115px;
+
+  height: 56px;
+
+  padding:
+    0 17px;
+
   display: flex;
 
   align-items: center;
 
-  gap: 2px;
+  justify-content: center;
 
-  line-height: 1;
+  gap: 4px;
 
-  margin-bottom: 2px;
-}
+  border:
+    2px solid var(--accent);
 
+  border-radius: 12px;
 
-.amountInline .rupee {
-  color: #22c55e;
+  background:
+    rgba(0, 200, 130, 0.06);
 
-  font-size: 16px;
+  color: #f3f4f8;
 
-  font-weight: 800;
-}
-
-
-.amountInline .amount {
-  color: #f5f7ff;
-
-  font-size: 22px;
+  font-size: 29px;
 
   font-weight: 800;
 
-  letter-spacing: -0.4px;
+  box-sizing: border-box;
 }
 
 
-/* =========================================================
-   NAME
-========================================================= */
+.rupee {
+  color: #22d38a;
 
-.name {
-  color: #f5f7ff;
-
-  font-size: 15px;
+  font-size: 23px;
 
   font-weight: 800;
-
-  line-height: 1.1;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-}
-
-
-/* =========================================================
-   SUBTITLE
-========================================================= */
-
-.subtitle {
-  margin-top: 3px;
-
-  color: #a8b0d0;
-
-  font-size: 10px;
-
-  font-weight: 500;
-
-  line-height: 1.2;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
 }
 
 
@@ -425,199 +434,73 @@
 ========================================================= */
 
 .delivery {
-  margin-top: 6px;
-
   display: flex;
 
   align-items: center;
 
-  gap: 5px;
+  gap: 7px;
 
-  color: #a8b0d0;
+  margin-top: 13px;
 
-  font-size: 9px;
+  color: #9aa0b5;
 
-  font-weight: 600;
+  font-size: 13px;
 
-  white-space: nowrap;
+  font-weight: 500;
 }
 
 
 .delivery svg {
-  color: var(--accent);
+  color: #9aa0b5;
 
   flex-shrink: 0;
 }
 
 
 /* =========================================================
-   RIGHT SIDE REQUIRED VES
-========================================================= */
-
-.veSide {
-  flex-shrink: 0;
-
-  width: 82px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: flex-start;
-
-  justify-content: center;
-
-  gap: 5px;
-
-  padding-left: 9px;
-
-  border-left:
-    1px solid
-    rgba(168, 176, 208, 0.12);
-
-  box-sizing: border-box;
-}
-
-
-.veSideLabel {
-  color: #a8b0d0;
-
-  font-size: 9px;
-
-  font-weight: 600;
-
-  white-space: nowrap;
-}
-
-
-.veSideValue {
-  display: flex;
-
-  align-items: center;
-
-  gap: 5px;
-
-  color: #f5f7ff;
-
-  font-size: 12px;
-
-  font-weight: 800;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================================
-   SMALL VE COIN
-========================================================= */
-
-.veCoinSmall {
-  width: 23px;
-  height: 23px;
-
-  display: grid;
-
-  place-items: center;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      #ffe47d 0%,
-      #f5b900 48%,
-      #b47700 100%
-    );
-
-  color: #ffffff;
-
-  font-size: 10px;
-
-  font-weight: 900;
-
-  box-shadow:
-    0 3px 9px
-    rgba(245, 185, 0, 0.25);
-}
-
-
-/* =========================================================
-   VE PROGRESS ROW
+   VES ROW
 ========================================================= */
 
 .veRow {
-  position: relative;
-
-  z-index: 2;
-
   display: flex;
 
   align-items: center;
 
-  gap: 6px;
+  gap: 7px;
 
-  margin-top: 7px;
+  margin-top: auto;
 
-  margin-left: 78px;
+  padding-top: 18px;
 
-  font-size: 11px;
+  font-size: 15px;
 
-  font-weight: 700;
-
-  white-space: nowrap;
-
-  flex-shrink: 0;
+  line-height: 1;
 }
 
 
-/* =========================================================
-   MAIN VE COIN
-========================================================= */
-
 .veCoin {
-  width: 25px;
-  height: 25px;
+  width: 28px;
+
+  height: 28px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
 
   flex-shrink: 0;
-
-  display: grid;
-
-  place-items: center;
-
-  border:
-    1px solid
-    rgba(245, 185, 0, 0.6);
 
   border-radius: 50%;
 
   background:
-    radial-gradient(
-      circle at 35% 30%,
-      #ffe47d 0%,
-      #f5b900 48%,
-      #b47700 100%
+    linear-gradient(
+      145deg,
+      #ffdd6b,
+      #f5b400
     );
 
   color: #ffffff;
-
-  font-size: 10px;
-
-  font-weight: 900;
-
-  box-shadow:
-    0 4px 10px
-    rgba(245, 185, 0, 0.25);
-}
-
-
-/* =========================================================
-   CURRENT VES
-========================================================= */
-
-.current {
-  color: #22c55e;
 
   font-size: 12px;
 
@@ -625,87 +508,67 @@
 }
 
 
-/* =========================================================
-   OF
-========================================================= */
+.currentVEs {
+  color: #22d38a;
 
-.of {
-  color: #a8b0d0;
-
-  font-size: 11px;
+  font-weight: 800;
 }
 
 
-/* =========================================================
-   REQUIRED VE
-========================================================= */
+.of {
+  color: #a0a6bc;
 
-.requiredVE {
-  color: #a8b0d0;
+  font-weight: 500;
+}
 
-  font-size: 12px;
+
+.requiredVEs {
+  color: var(--accent-light);
 
   font-weight: 700;
 }
 
 
-/* =========================================================
-   VE TEXT
-========================================================= */
-
 .veText {
-  color: #a8b0d0;
+  color: #9ea5bc;
 
-  font-size: 11px;
+  font-weight: 500;
 }
 
 
 /* =========================================================
-   PROGRESS TRACK
+   PROGRESS
 ========================================================= */
 
 .progressTrack {
-  position: relative;
+  width: 100%;
 
-  z-index: 2;
+  height: 7px;
 
-  width:
-    calc(100% - 78px);
+  margin-top: 10px;
 
-  height: 6px;
+  border-radius: 4px;
 
-  margin-top: 5px;
-
-  margin-left: 78px;
+  background: #23242f;
 
   overflow: hidden;
-
-  border-radius: 999px;
-
-  background: #292f4a;
-
-  flex-shrink: 0;
 }
 
 
-/* =========================================================
-   PROGRESS BAR
-========================================================= */
-
 .progressBar {
-  width: 0;
-
   height: 100%;
 
-  border-radius: inherit;
+  border-radius: 4px;
 
-  background: var(--accent);
-
-  box-shadow:
-    0 0 9px var(--glow);
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      var(--accent-light)
+    );
 
   transition:
-    width 0.3s ease;
+    width 0.4s ease;
 }
 
 
@@ -714,22 +577,11 @@
 ========================================================= */
 
 .status {
-  position: relative;
+  width: 100%;
 
-  z-index: 4;
+  min-height: 28px;
 
-  width:
-    calc(100% - 78px);
-
-  height: 21px;
-
-  min-height: 21px;
-
-  margin-top: 5px;
-
-  margin-left: 78px;
-
-  padding: 3px 8px;
+  margin-top: 8px;
 
   display: flex;
 
@@ -737,74 +589,187 @@
 
   justify-content: center;
 
-  box-sizing: border-box;
-
   border:
     1px solid
-    rgba(34, 197, 94, 0.14);
+    color-mix(
+      in srgb,
+      var(--accent) 22%,
+      transparent
+    );
 
-  border-radius: 7px;
+  border-radius: 8px;
+
+  color: #22d38a;
 
   background:
-    rgba(34, 197, 94, 0.07);
+    rgba(0, 200, 130, 0.05);
 
-  color: #22c55e;
-
-  font-size: 8.5px;
+  font-size: 11px;
 
   font-weight: 700;
 
-  line-height: 1;
-
-  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 
 /* =========================================================
-   LOCKED
+   LOCK
 ========================================================= */
 
-.locked {
-  opacity: 0.58;
+.lock {
+  position: absolute;
 
-  cursor: not-allowed;
-}
+  top: 18px;
 
+  right: 18px;
 
-.locked:hover {
-  transform: none;
+  width: 28px;
 
-  border-color: var(--card-border);
+  height: 28px;
 
-  box-shadow: none;
-}
+  display: flex;
 
+  align-items: center;
 
-.locked .progressBar {
-  opacity: 0.7;
-}
+  justify-content: center;
 
-
-.locked .status {
-  color: #7d849d;
-
-  border-color: #252b46;
+  border-radius: 50%;
 
   background:
-    rgba(255, 255, 255, 0.025);
+    rgba(255,255,255,0.04);
+
+  color: #666b7e;
+
+  z-index: 8;
+
+  pointer-events: none;
 }
 
 
 /* =========================================================
-   SELECTED
+   THEMES
 ========================================================= */
 
-.selected {
-  border-color: var(--accent);
+.upi {
+  --accent: #9855ff;
 
-  box-shadow:
-    0 0 0 1px var(--accent),
-    0 8px 25px var(--glow);
+  --accent-light: #b47cff;
+}
+
+
+.amazon {
+  --accent: #f5b400;
+
+  --accent-light: #ffdd6b;
+}
+
+
+.googlePlay {
+  --accent: #08d9d9;
+
+  --accent-light: #42eeee;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.card:hover:not(.locked) {
+  transform: translateY(-2px);
+
+  filter:
+    brightness(1.05);
+}
+
+
+.card.selected {
+  filter:
+    brightness(1.08)
+    drop-shadow(
+      0 0 18px
+      color-mix(
+        in srgb,
+        var(--accent) 25%,
+        transparent
+      )
+    );
+}
+
+
+.card.locked {
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      145deg,
+      #14161f,
+      #0c0d14
+    );
+
+  filter: none;
+}
+
+
+/* Locked card ke content ko muted rakho */
+
+.card.locked .name,
+.card.locked .subtitle,
+.card.locked .delivery,
+.card.locked .delivery svg,
+.card.locked .veText,
+.card.locked .of {
+  opacity: 0.48;
+}
+
+
+.card.locked .logoBox {
+  opacity: 0.62;
+
+  filter: grayscale(0.35);
+}
+
+
+.card.locked .amountBox {
+  opacity: 0.58;
+}
+
+
+.card.locked .badge {
+  opacity: 0.55;
+}
+
+
+.card.locked .currentVEs {
+  opacity: 0.8;
+}
+
+
+.card.locked .requiredVEs {
+  opacity: 0.65;
+}
+
+
+.card.locked .progressBar {
+  opacity: 0.55;
+}
+
+
+.card.locked .status {
+  color: #686d80;
+
+  background:
+    rgba(255,255,255,0.015);
+
+  border-color:
+    rgba(255,255,255,0.08);
+}
+
+
+.card.locked:hover {
+  transform: none;
+
+  filter: none;
 }
 
 
@@ -812,89 +777,88 @@
    TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
 
   .card {
-    height: 164px;
-
-    min-height: 164px;
-
-    margin-bottom: 13px;
-
-    padding: 11px 14px 9px;
+    padding:
+      18px 22px 17px;
   }
 
 
   .logoBox {
-    width: 62px;
+    width: 82px;
 
-    height: 62px;
+    height: 82px;
+
+    border-radius: 11px;
   }
 
 
-  .mainContent {
-    gap: 10px;
-
-    margin-top: 6px;
+  .leftContent {
+    gap: 12px;
   }
 
 
   .name {
-    font-size: 14px;
+    font-size: 20px;
   }
 
 
   .subtitle {
-    font-size: 9px;
-  }
-
-
-  .delivery {
-    font-size: 8.5px;
-  }
-
-
-  .veSide {
-    width: 76px;
-
-    padding-left: 7px;
-  }
-
-
-  .veSideLabel {
-    font-size: 8px;
-  }
-
-
-  .veSideValue {
-    font-size: 11px;
-  }
-
-
-  .veRow {
-    margin-left: 72px;
-
-    margin-top: 6px;
-  }
-
-
-  .progressTrack {
-    width:
-      calc(100% - 72px);
-
-    margin-left: 72px;
+    font-size: 13px;
 
     margin-top: 5px;
   }
 
 
+  .amountBox {
+    min-width: 100px;
+
+    height: 48px;
+
+    border-radius: 10px;
+
+    font-size: 24px;
+  }
+
+
+  .rupee {
+    font-size: 19px;
+  }
+
+
+  .delivery {
+    margin-top: 9px;
+
+    font-size: 11px;
+  }
+
+
+  .veRow {
+    padding-top: 12px;
+
+    font-size: 13px;
+  }
+
+
+  .veCoin {
+    width: 24px;
+
+    height: 24px;
+
+    font-size: 10px;
+  }
+
+
+  .progressTrack {
+    height: 6px;
+  }
+
+
   .status {
-    width:
-      calc(100% - 72px);
+    min-height: 24px;
 
-    margin-left: 72px;
-
-    margin-top: 6px;
+    font-size: 10px;
   }
 
 }
@@ -906,78 +870,155 @@
 
 @media (max-width: 600px) {
 
-  .card {
-    /*
-      Slightly more height so the status bar
-      has breathing room and never touches bottom.
-    */
+  .cardWrap {
+    width: 100%;
 
-    height: 166px;
-
-    min-height: 166px;
-
-    margin-bottom: 13px;
-
-    padding: 9px 11px 9px;
-
-    border-radius: 14px;
+    height: 162px;
   }
 
 
-  .topRow {
-    min-height: 25px;
+  .cardWrap::before {
+    border-radius: 12px;
+
+    clip-path:
+      polygon(
+        0 0,
+        calc(100% - 28px) 0,
+        100% 28px,
+        100% 100%,
+        0 100%
+      );
+  }
+
+
+  .card {
+    width: calc(100% - 2px);
+
+    height: 160px;
+
+    min-height: 160px;
+
+    margin: 1px;
+
+    padding:
+      10px 12px 9px;
+
+    border-radius: 11px;
+
+    clip-path:
+      polygon(
+        0 0,
+        calc(100% - 27px) 0,
+        100% 27px,
+        100% 100%,
+        0 100%
+      );
+  }
+
+
+  /* -----------------------------
+     VISIBLE DOTS
+  ----------------------------- */
+
+  .dots {
+    top: 0;
+
+    right: 0;
+
+    width: 72px;
+
+    height: 60px;
+
+    background-size: 7px 7px;
+
+    -webkit-mask-image:
+      linear-gradient(
+        to bottom left,
+        black 0%,
+        black 35%,
+        transparent 80%
+      );
+
+    mask-image:
+      linear-gradient(
+        to bottom left,
+        black 0%,
+        black 35%,
+        transparent 80%
+      );
+
+    opacity: 1;
   }
 
 
   .badge {
-    height: 25px;
+    padding:
+      4px 9px;
 
-    padding: 0 9px;
+    margin-bottom: 7px;
 
-    font-size: 9px;
+    gap: 4px;
+
+    font-size: 8px;
   }
 
 
-  .mainContent {
-    gap: 8px;
+  .badge svg {
+    width: 10px;
 
-    margin-top: 6px;
+    height: 10px;
+  }
+
+
+  .mainRow {
+    gap: 7px;
+  }
+
+
+  .leftContent {
+    gap: 8px;
   }
 
 
   .logoBox {
-    width: 55px;
+    width: 58px;
 
-    height: 55px;
+    height: 58px;
 
-    border-radius: 10px;
-  }
-
-
-  .amountInline {
-    margin-bottom: 1px;
-  }
-
-
-  .amountInline .rupee {
-    font-size: 14px;
-  }
-
-
-  .amountInline .amount {
-    font-size: 20px;
+    border-radius: 8px;
   }
 
 
   .name {
-    font-size: 12px;
+    font-size: 13px;
   }
 
 
   .subtitle {
-    margin-top: 2px;
+    margin-top: 3px;
 
     font-size: 8px;
+  }
+
+
+  .amountBox {
+    min-width: 63px;
+
+    height: 35px;
+
+    padding:
+      0 7px;
+
+    border-width: 1px;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+  }
+
+
+  .rupee {
+    font-size: 13px;
   }
 
 
@@ -986,159 +1027,100 @@
 
     gap: 4px;
 
-    font-size: 7.5px;
+    font-size: 8px;
   }
 
 
-  .veSide {
-    width: 68px;
+  .delivery svg {
+    width: 9px;
 
-    gap: 4px;
-
-    padding-left: 6px;
-  }
-
-
-  .veSideLabel {
-    font-size: 7px;
-  }
-
-
-  .veSideValue {
-    gap: 4px;
-
-    font-size: 9px;
-  }
-
-
-  .veCoinSmall {
-    width: 20px;
-
-    height: 20px;
-
-    font-size: 9px;
+    height: 9px;
   }
 
 
   .veRow {
-    margin-left: 63px;
-
-    margin-top: 5px;
-
     gap: 4px;
+
+    padding-top: 6px;
+
+    font-size: 8px;
   }
 
 
   .veCoin {
-    width: 22px;
+    width: 16px;
 
-    height: 22px;
+    height: 16px;
 
-    font-size: 9px;
+    font-size: 7px;
   }
 
-
-  .current {
-    font-size: 10px;
-  }
-
-
-  .of {
-    font-size: 9px;
-  }
-
-
-  .requiredVE {
-    font-size: 10px;
-  }
-
-
-  .veText {
-    font-size: 9px;
-  }
-
-
-  /* =====================================================
-     MOBILE PROGRESS
-  ===================================================== */
 
   .progressTrack {
-    width:
-      calc(100% - 63px);
+    height: 4px;
 
-    height: 5px;
-
-    margin-left: 63px;
-
-    margin-top: 5px;
+    margin-top: 4px;
   }
 
 
-  /* =====================================================
-     MOBILE STATUS
-  ===================================================== */
-
   .status {
-    width:
-      calc(100% - 63px);
+    min-height: 18px;
 
-    height: 20px;
+    margin-top: 3px;
 
-    min-height: 20px;
+    border-radius: 5px;
 
-    margin-left: 63px;
-
-    /*
-      This is the important spacing.
-      It moves the status slightly upward from
-      the card bottom while keeping a small gap
-      after the progress bar.
-    */
-
-    margin-top: 6px;
-
-    padding: 3px 8px;
-
-    border-radius: 7px;
-
-    font-size: 7.5px;
-
-    line-height: 1;
+    font-size: 7px;
   }
 
 
   .lock {
-    width: 22px;
+    top: 8px;
 
-    height: 22px;
+    right: 8px;
+
+    width: 18px;
+
+    height: 18px;
+  }
+
+
+  .lock svg {
+    width: 10px;
+
+    height: 10px;
   }
 
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   VERY SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
 
-  .card {
-    height: 164px;
-
-    min-height: 164px;
-
-    margin-bottom: 12px;
-
-    padding: 8px 9px 9px;
+  .cardWrap {
+    height: 150px;
   }
 
 
-  .badge {
-    height: 23px;
+  .card {
+    height: 148px;
 
-    padding: 0 8px;
+    min-height: 148px;
 
-    font-size: 8px;
+    padding:
+      9px 10px 8px;
+  }
+
+
+  .dots {
+    width: 64px;
+
+    height: 54px;
+
+    background-size: 6px 6px;
   }
 
 
@@ -1149,691 +1131,501 @@
   }
 
 
-  .mainContent {
-    gap: 7px;
-
-    margin-top: 5px;
-  }
-
-
-  .amountInline .amount {
-    font-size: 18px;
-  }
-
-
-  .amountInline .rupee {
-    font-size: 13px;
-  }
-
-
   .name {
-    font-size: 11px;
+    font-size: 12px;
   }
 
 
   .subtitle {
-    font-size: 7.5px;
-  }
-
-
-  .delivery {
     font-size: 7px;
   }
 
 
-  .veSide {
-    width: 62px;
+  .amountBox {
+    min-width: 59px;
 
-    padding-left: 5px;
-  }
+    height: 32px;
 
-
-  .veSideLabel {
-    font-size: 6.5px;
-  }
-
-
-  .veSideValue {
-    font-size: 8px;
-
-    gap: 3px;
-  }
-
-
-  .veCoinSmall {
-    width: 18px;
-
-    height: 18px;
-
-    font-size: 8px;
-  }
-
-
-  .veRow {
-    margin-left: 59px;
-
-    margin-top: 4px;
-
-    gap: 4px;
-  }
-
-
-  .veCoin {
-    width: 21px;
-
-    height: 21px;
-
-    font-size: 8.5px;
-  }
-
-
-  .current {
-    font-size: 9.5px;
-  }
-
-
-  .of {
-    font-size: 8.5px;
-  }
-
-
-  .requiredVE {
-    font-size: 9.5px;
-  }
-
-
-  .veText {
-    font-size: 8.5px;
-  }
-
-
-  .progressTrack {
-    width:
-      calc(100% - 59px);
-
-    height: 5px;
-
-    margin-left: 59px;
-
-    margin-top: 5px;
-  }
-
-
-  .status {
-    width:
-      calc(100% - 59px);
-
-    height: 19px;
-
-    min-height: 19px;
-
-    margin-left: 59px;
-
-    margin-top: 6px;
-
-    padding: 3px 7px;
-
-    font-size: 7px;
-  }
-
-}
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 350px) {
-
-  .card {
-    height: 162px;
-
-    min-height: 162px;
-
-    padding-left: 8px;
-
-    padding-right: 8px;
-  }
-
-
-  .logoBox {
-    width: 50px;
-
-    height: 50px;
-  }
-
-
-  .mainContent {
-    gap: 6px;
-  }
-
-
-  .veSide {
-    width: 58px;
-
-    padding-left: 4px;
-  }
-
-
-  .veRow {
-    margin-left: 56px;
-  }
-
-
-  .progressTrack {
-    width:
-      calc(100% - 56px);
-
-    margin-left: 56px;
-  }
-
-
-  .status {
-    width:
-      calc(100% - 56px);
-
-    margin-left: 56px;
-
-    margin-top: 6px;
-  }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .card,
-  .check,
-  .progressBar {
-    transition: none !important;
-
-    animation: none !important;
-  }
-
-}
-/* =========================================================
-   DESKTOP FIX
-   DO NOT CHANGE MOBILE
-========================================================= */
-
-@media (min-width: 601px) {
-
-  /* =========================
-     CARD
-  ========================= */
-
-  .card {
-    height: 166px;
-    min-height: 166px;
-
-    padding: 10px 14px 8px;
-
-    box-sizing: border-box;
-
-    overflow: hidden;
-  }
-
-
-  /* =========================
-     TOP ROW
-  ========================= */
-
-  .topRow {
-    min-height: 25px;
-
-    flex-shrink: 0;
-  }
-
-
-  .badge {
-    height: 25px;
-
-    padding: 0 10px;
-
-    font-size: 9px;
-  }
-
-
-  /* =========================
-     MAIN CONTENT
-  ========================= */
-
-  .mainContent {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: 4px;
-
-    min-height: 58px;
-
-    height: 58px;
-
-    flex-shrink: 0;
-  }
-
-
-  /* =========================
-     LOGO
-  ========================= */
-
-  .logoBox {
-    width: 58px;
-    height: 58px;
-
-    flex-shrink: 0;
-
-    border-radius: 11px;
-  }
-
-
-  /* =========================
-     INFO
-  ========================= */
-
-  .amountInline {
-    margin-bottom: 1px;
-  }
-
-
-  .amountInline .rupee {
     font-size: 15px;
   }
 
 
-  .amountInline .amount {
-    font-size: 20px;
-  }
-
-
-  .name {
-    font-size: 14px;
-
-    line-height: 1.1;
-  }
-
-
-  .subtitle {
-    margin-top: 2px;
-
-    font-size: 9px;
+  .rupee {
+    font-size: 12px;
   }
 
 
   .delivery {
-    margin-top: 4px;
-
-    gap: 4px;
-
-    font-size: 8px;
+    font-size: 7px;
   }
 
-
-  /* =========================
-     REQUIRED VES
-  ========================= */
-
-  .veSide {
-    width: 76px;
-
-    padding-left: 7px;
-
-    gap: 4px;
-
-    flex-shrink: 0;
-  }
-
-
-  .veSideLabel {
-    font-size: 8px;
-  }
-
-
-  .veSideValue {
-    gap: 4px;
-
-    font-size: 11px;
-  }
-
-
-  .veCoinSmall {
-    width: 22px;
-    height: 22px;
-
-    font-size: 9px;
-  }
-
-
-  /* =========================
-     VE ROW
-  ========================= */
 
   .veRow {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    margin-left: 68px;
-
-    margin-top: 4px;
-
-    height: 23px;
-
-    min-height: 23px;
-
-    flex-shrink: 0;
-
-    white-space: nowrap;
+    font-size: 7px;
   }
 
 
   .veCoin {
-    width: 23px;
-    height: 23px;
+    width: 15px;
 
+    height: 15px;
+  }
+
+}
+/* =========================================================
+   FINAL DESKTOP SIZE + SINGLE COLUMN
+   Keep the existing card shape, notch and dots unchanged.
+========================================================= */
+
+@media (min-width: 1025px) {
+
+  .cardWrap {
+    width: 100%;
+    height: 205px;
+    min-height: 205px;
+  }
+
+  .card {
+    width: calc(100% - 2px);
+    height: 203px;
+    min-height: 203px;
+    padding: 13px 22px 11px;
+  }
+
+  .badge {
+    height: 25px;
+    padding: 0 11px;
+    margin-bottom: 8px;
+    gap: 5px;
     font-size: 9px;
   }
 
+  .badge svg {
+    width: 12px;
+    height: 12px;
+  }
 
-  .current {
+  .mainRow {
+    gap: 18px;
+  }
+
+  .leftContent {
+    gap: 20px;
+  }
+
+  .logoBox {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+  }
+
+  .name {
+    font-size: 19px;
+    line-height: 1.08;
+  }
+
+  .subtitle {
+    margin-top: 4px;
     font-size: 11px;
   }
 
-
-  .of {
-    font-size: 10px;
+  .delivery {
+    margin-top: 7px;
+    gap: 5px;
+    font-size: 9px;
   }
 
+  .delivery svg {
+    width: 11px;
+    height: 11px;
+  }
 
-  .requiredVE {
+  .amountBox {
+    min-width: 94px;
+    width: 94px;
+    height: 44px;
+    padding: 0 9px;
+    border-width: 1.5px;
+    border-radius: 9px;
+    font-size: 22px;
+  }
+
+  .rupee {
+    font-size: 17px;
+  }
+
+  .veRow {
+    gap: 5px;
+    margin-top: 9px;
+    padding-top: 0;
+    padding-left: 91px;
     font-size: 11px;
   }
 
-
-  .veText {
-    font-size: 10px;
+  .veCoin {
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
   }
-
-
-  /* =====================================================
-     PROGRESS BAR
-     IMPORTANT:
-     NO ABSOLUTE POSITION
-  ===================================================== */
 
   .progressTrack {
-    position: relative;
-
-    left: auto;
-    right: auto;
-    bottom: auto;
-
-    width: calc(100% - 68px);
-
+    width: calc(100% - 91px);
     height: 6px;
-
-    margin-top: 5px;
-    margin-left: 68px;
-
-    flex-shrink: 0;
-
-    box-sizing: border-box;
+    margin-top: 7px;
+    margin-left: 91px;
   }
 
-
-  /* =====================================================
-     STATUS
-     IMPORTANT:
-     NO ABSOLUTE POSITION
-  ===================================================== */
-
+  /* approved design has no status strip inside the card */
   .status {
-    position: relative;
-
-    left: auto;
-    right: auto;
-    bottom: auto;
-
-    width: calc(100% - 68px);
-
-    height: 18px;
-    min-height: 18px;
-
-    margin-top: 5px;
-    margin-left: 68px;
-
-    padding: 3px 8px;
-
-    box-sizing: border-box;
-
-    font-size: 8px;
-
-    flex-shrink: 0;
+    display: none;
   }
 }
 
 
 /* =========================================================
-   TABLET
+   LAPTOP / TABLET - SINGLE COLUMN
 ========================================================= */
 
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  .cardWrap {
+    width: 100%;
+    height: 205px;
+    min-height: 205px;
+  }
 
   .card {
-    height: 164px;
-    min-height: 164px;
-
-    padding: 10px 12px 8px;
+    height: 203px;
+    min-height: 203px;
+    padding: 13px 20px 11px;
   }
-
-
-  /* =========================
-     TOP
-  ========================= */
-
-  .topRow {
-    min-height: 24px;
-  }
-
 
   .badge {
     height: 24px;
-
-    padding: 0 9px;
-
-    font-size: 8.5px;
+    padding: 0 10px;
+    margin-bottom: 8px;
+    font-size: 9px;
   }
 
-
-  /* =========================
-     MAIN CONTENT
-  ========================= */
-
-  .mainContent {
-    gap: 9px;
-
-    margin-top: 4px;
-
-    height: 56px;
-    min-height: 56px;
+  .mainRow {
+    gap: 15px;
   }
 
-
-  /* =========================
-     LOGO
-  ========================= */
+  .leftContent {
+    gap: 17px;
+  }
 
   .logoBox {
-    width: 56px;
-    height: 56px;
-
+    width: 70px;
+    height: 70px;
     border-radius: 10px;
   }
 
-
-  /* =========================
-     TEXT
-  ========================= */
-
-  .amountInline .rupee {
-    font-size: 14px;
-  }
-
-
-  .amountInline .amount {
-    font-size: 19px;
-  }
-
-
   .name {
-    font-size: 13px;
+    font-size: 18px;
   }
-
 
   .subtitle {
-    margin-top: 2px;
-
-    font-size: 8px;
+    font-size: 10px;
+    margin-top: 3px;
   }
-
 
   .delivery {
-    margin-top: 4px;
-
-    gap: 4px;
-
-    font-size: 7.5px;
+    margin-top: 6px;
+    font-size: 9px;
   }
 
-
-  /* =========================
-     REQUIRED VES
-  ========================= */
-
-  .veSide {
-    width: 72px;
-
-    padding-left: 6px;
-
-    gap: 4px;
+  .amountBox {
+    min-width: 90px;
+    width: 90px;
+    height: 42px;
+    font-size: 21px;
+    border-radius: 9px;
   }
 
-
-  .veSideLabel {
-    font-size: 7.5px;
+  .rupee {
+    font-size: 16px;
   }
 
-
-  .veSideValue {
-    gap: 4px;
-
-    font-size: 10px;
+  .veRow {
+    margin-top: 8px;
+    padding-top: 0;
+    padding-left: 87px;
+    font-size: 11px;
   }
 
-
-  .veCoinSmall {
+  .veCoin {
     width: 21px;
     height: 21px;
-
     font-size: 8px;
   }
 
-
-  /* =========================
-     VE ROW
-  ========================= */
-
-  .veRow {
-    margin-left: 65px;
-
-    margin-top: 4px;
-
-    height: 22px;
-    min-height: 22px;
-
-    gap: 4px;
-  }
-
-
-  .veCoin {
-    width: 22px;
-    height: 22px;
-
-    font-size: 8.5px;
-  }
-
-
-  .current {
-    font-size: 10px;
-  }
-
-
-  .of {
-    font-size: 9px;
-  }
-
-
-  .requiredVE {
-    font-size: 10px;
-  }
-
-
-  .veText {
-    font-size: 9px;
-  }
-
-
-  /* =========================
-     PROGRESS
-  ========================= */
-
   .progressTrack {
-    position: relative;
-
-    left: auto;
-    right: auto;
-    bottom: auto;
-
-    width: calc(100% - 65px);
-
+    width: calc(100% - 87px);
     height: 5px;
-
-    margin-top: 4px;
-    margin-left: 65px;
+    margin-left: 87px;
+    margin-top: 6px;
   }
-
-
-  /* =========================
-     STATUS
-  ========================= */
 
   .status {
-    position: relative;
+    display: none;
+  }
+}
+/* FINAL REWARD CARD OVERRIDE - paste at END of RewardOptionCard.css */
 
-    left: auto;
-    right: auto;
-    bottom: auto;
+@media (min-width: 1025px) {
+  .cardWrap {
+    width: 100% !important;
+    height: 180px !important;
+    margin: 0 0 12px !important;
+  }
 
-    width: calc(100% - 65px);
+  .card {
+    width: calc(100% - 2px) !important;
+    height: 178px !important;
+    min-height: 178px !important;
+    margin: 1px !important;
+    padding: 12px 18px 10px !important;
+    clip-path: polygon(0 0, calc(100% - 31px) 0, 100% 31px, 100% 100%, 0 100%) !important;
+  }
 
-    height: 17px;
-    min-height: 17px;
+  .cardWrap::before {
+    clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%) !important;
+  }
 
-    margin-top: 5px;
-    margin-left: 65px;
+  .dots { width: 72px !important; height: 60px !important; background-size: 8px 8px !important; }
+  .badge { height: 23px !important; padding: 0 9px !important; font-size: 9px !important; }
+  .mainRow { gap: 12px !important; }
+  .leftContent { gap: 10px !important; }
+  .logoBox { width: 72px !important; height: 72px !important; border-radius: 9px !important; }
+  .name { font-size: 17px !important; }
+  .subtitle { margin-top: 4px !important; font-size: 10px !important; }
+  .amountBox { min-width: 82px !important; height: 43px !important; padding: 0 10px !important; border-width: 1.5px !important; border-radius: 9px !important; font-size: 21px !important; }
+  .rupee { font-size: 17px !important; }
+  .delivery { margin-top: 6px !important; gap: 5px !important; font-size: 9px !important; }
+  .veRow { gap: 5px !important; padding-top: 8px !important; font-size: 10px !important; }
+  .veCoin { width: 20px !important; height: 20px !important; font-size: 8px !important; }
+  .progressTrack { height: 5px !important; margin-top: 6px !important; }
+  .status { min-height: 20px !important; height: 20px !important; margin-top: 5px !important; border-radius: 6px !important; font-size: 8px !important; }
+  .lock { top: 12px !important; right: 12px !important; width: 22px !important; height: 22px !important; }
+}
 
-    padding: 3px 7px;
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cardWrap { width: 100% !important; height: 166px !important; }
+  .card { height: 164px !important; min-height: 164px !important; padding: 10px 14px 8px !important; }
+}
 
-    font-size: 7.5px;
+@media (max-width: 600px) {
+  .cardWrap { width: 100% !important; height: 158px !important; margin: 0 0 10px !important; }
+  .card {
+    width: calc(100% - 2px) !important;
+    height: 156px !important;
+    min-height: 156px !important;
+    margin: 1px !important;
+    padding: 8px 10px 7px !important;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%) !important;
+  }
+  .cardWrap::before {
+    clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 0 100%) !important;
+  }
+  .dots { width: 62px !important; height: 54px !important; top: 0 !important; right: 0 !important; background-size: 7px 7px !important; }
+  .badge { height: 22px !important; padding: 0 8px !important; font-size: 8px !important; margin-bottom: 5px !important; }
+  .mainRow { gap: 6px !important; }
+  .leftContent { gap: 7px !important; }
+  .logoBox { width: 52px !important; height: 52px !important; border-radius: 8px !important; }
+  .name { font-size: 11px !important; }
+  .subtitle { margin-top: 2px !important; font-size: 7.5px !important; }
+  .amountBox { min-width: 58px !important; height: 32px !important; padding: 0 6px !important; border-width: 1px !important; border-radius: 7px !important; font-size: 16px !important; }
+  .rupee { font-size: 12px !important; }
+  .delivery { margin-top: 3px !important; gap: 3px !important; font-size: 7px !important; }
+  .veRow { gap: 3px !important; padding-top: 4px !important; font-size: 8px !important; }
+  .veCoin { width: 17px !important; height: 17px !important; font-size: 7px !important; }
+  .progressTrack { height: 4px !important; margin-top: 4px !important; }
+  .status { min-height: 18px !important; height: 18px !important; margin-top: 4px !important; border-radius: 6px !important; font-size: 7px !important; }
+  .lock { top: 8px !important; right: 8px !important; width: 19px !important; height: 19px !important; }
+}
+
+@media (max-width: 380px) {
+  .cardWrap { height: 150px !important; margin-bottom: 8px !important; }
+  .card { height: 148px !important; min-height: 148px !important; padding: 7px 8px 6px !important; }
+  .logoBox { width: 49px !important; height: 49px !important; }
+  .name { font-size: 10.5px !important; }
+  .subtitle { font-size: 7px !important; }
+  .amountBox { min-width: 55px !important; height: 30px !important; font-size: 15px !important; }
+  .rupee { font-size: 11px !important; }
+}
+/* =========================================================
+   FINAL DESKTOP BORDER FIX
+   IMPORTANT: DO NOT CHANGE CARD DESIGN
+========================================================= */
+
+@media (min-width: 1025px) {
+
+  /* Wrapper height will now be controlled by the card */
+  .cardWrap {
+    display: grid !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Outer colored border */
+  .cardWrap::before {
+    content: "" !important;
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    background: var(--accent) !important;
+
+    border-radius: 16px !important;
+
+    clip-path: polygon(
+      0 0,
+      calc(100% - 46px) 0,
+      100% 46px,
+      100% 100%,
+      0 100%
+    ) !important;
+
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Main card */
+  .cardWrap > .card {
+    grid-area: 1 / 1 !important;
+
+    position: relative !important;
+
+    width: calc(100% - 2px) !important;
+
+    /* THIS IS THE IMPORTANT FIX */
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 1px !important;
+
+    padding: 22px 26px 20px !important;
+
+    box-sizing: border-box !important;
+
+    border-radius: 15px !important;
+
+    clip-path: polygon(
+      0 0,
+      calc(100% - 45px) 0,
+      100% 45px,
+      100% 100%,
+      0 100%
+    ) !important;
+
+    z-index: 1 !important;
+  }
+
+  /* Keep card content normal */
+  .cardWrap > .card > .cardContent {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+}/* =========================================================
+   COMPACT DESKTOP REWARD CARDS
+   DESIGN SAME - ONLY SIZE SMALLER
+========================================================= */
+
+@media (min-width: 1025px) {
+
+  .cardWrap {
+    height: 155px !important;
+    min-height: 155px !important;
+    max-height: 155px !important;
+  }
+
+  .cardWrap > .card {
+    height: 153px !important;
+    min-height: 153px !important;
+    max-height: 153px !important;
+
+    padding: 10px 18px 8px !important;
+  }
+
+  .badge {
+    height: 21px !important;
+    padding: 0 9px !important;
+    margin-bottom: 6px !important;
+    font-size: 8px !important;
+  }
+
+  .mainRow {
+    gap: 10px !important;
+  }
+
+  .leftContent {
+    gap: 9px !important;
+  }
+
+  .logoBox {
+    width: 62px !important;
+    height: 62px !important;
+    border-radius: 9px !important;
+  }
+
+  .name {
+    font-size: 16px !important;
+  }
+
+  .subtitle {
+    margin-top: 3px !important;
+    font-size: 9px !important;
+  }
+
+  .amountBox {
+    min-width: 76px !important;
+    width: 76px !important;
+    height: 38px !important;
+    padding: 0 8px !important;
+    font-size: 19px !important;
+    border-radius: 8px !important;
+  }
+
+  .rupee {
+    font-size: 15px !important;
+  }
+
+  .delivery {
+    margin-top: 5px !important;
+    gap: 4px !important;
+    font-size: 8px !important;
+  }
+
+  .veRow {
+    margin-top: 6px !important;
+    padding-top: 0 !important;
+    gap: 4px !important;
+    padding-left: 71px !important;
+    font-size: 9px !important;
+  }
+
+  .veCoin {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 7px !important;
+  }
+
+  .progressTrack {
+    width: calc(100% - 71px) !important;
+    height: 4px !important;
+    margin-left: 71px !important;
+    margin-top: 5px !important;
+  }
+
+  .lock {
+    top: 9px !important;
+    right: 9px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 }
